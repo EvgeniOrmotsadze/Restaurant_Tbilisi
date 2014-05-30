@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+body {
+background-image: url(http://upload.wikimedia.org/wikipedia/commons/6/63/Tbilisi_sunset-6.jpg); /*You will specify your image path here.*/
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+background-position: top center !important;
+background-repeat: no-repeat !important;
+background-attachment: fixed;
+}
