@@ -1,10 +1,122 @@
 @CHARSET "ISO-8859-1";
-body {
-background-image: url(http://upload.wikimedia.org/wikipedia/commons/6/63/Tbilisi_sunset-6.jpg); /*You will specify your image path here.*/
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
+body{
+	margin: 0;
+	text-align: center;
+	background-color: #CCC;
 }
+
+.topmenu{
+	float: left;
+	width: 100%;
+	height: 66px;
+	background-image: url("menubg.png");
+}
+.menufooter{
+	float: left;
+	width: 100%;
+	height: 4px;
+	background-color: #06a45b;
+}
+.logo{
+	float: left;
+	width: 120px;
+	height: 66px;
+}
+.midmenuitem{
+	float: left;
+	width: 1px;
+	height: 66px;
+	background-color: #aaaaaa;
+}
+.menuitem{
+	float: left;
+	width: auto;
+	height: 66px;
+	color: #0f9d5c;
+	line-height: 64px;
+	font-size: 18px;
+}
+.lastmenuitem{
+	float: right;
+	width: auto;
+	height: 66px;
+	color: #0f9d5c;
+	line-height: 64px;
+	font-size: 18px;
+}
+.topbackgroud{
+	float: left;
+	width: 100%;
+	height: 420px;
+	background:url('Tbilisi.png');
+	background-size:100% 420px;
+	background-repeat:no-repeat;
+}
+.container{
+	position: relative;
+	width: 950px;
+	margin-top:0;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;
+	height:auto;
+}
+.tbody{
+	float: left;
+	width: 950px;
+	height: 10px;
+}
+.banner{
+	float: left;
+	width: 200px;
+	height: 120;
+	border-radius: 20px;
+}
+.lastnews{
+	position: absolute;
+	top: 100px;
+	left: 800px;
+	width: 170px;
+	height: 110px;
+
+	border-radius: 16px;
+}
+.lastnews h4{
+	 border-top: 1px solid #96d1f8;
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  
+}
+.adds{
+	position: fixed;
+	top: 120px;
+	left: 600px;
+	width: 120px;
+	height: 120px;
+	border-radius: 16px;
+}
+
+.k-button{
+	position: absolute;
+	width: 80px;
+	background: #65a9d7;
+  	border-top: 1px solid #96d1f8;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   margin: 10px;
+   border-radius: 16px;
+}
+.k-button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.k-button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }

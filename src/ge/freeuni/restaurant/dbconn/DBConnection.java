@@ -48,7 +48,6 @@ public class DBConnection {
 						 "user_id int,"+
 						 "res_id int,"+
 						 "score int," +
-						 "favorite int,"+
 						 "primary key(id),"+
 						 "foreign key(user_id) references user(user_id),"+
 						 "	foreign key(res_id) references restaurants(res_id));";
@@ -68,12 +67,21 @@ public class DBConnection {
 						 "primary key(id),"+
 						 "foreign key(res_id) references restaurants(res_id));";
 			System.out.println("create menu table");
-			
+			String sql6 = "CREATE table IF NOT EXISTS favorite("+
+					 "id int auto_increment,"+
+					 "user_id int,"+
+					 "res_id int,"+
+					 "favorite int,"+
+					 "primary key(id),"+
+					 "foreign key(user_id) references user(user_id),"+
+					 "foreign key(res_id) references restaurants(res_id));";
+		System.out.println("create favorite table");
 			stmt.executeUpdate(sql1);
 			stmt.executeUpdate(sql2);
 			stmt.executeUpdate(sql3);
 			stmt.executeUpdate(sql4);
 			stmt.executeUpdate(sql5);
+			stmt.executeUpdate(sql6);
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} catch (Exception e) {

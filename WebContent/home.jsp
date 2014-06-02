@@ -1,14 +1,102 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- <link rel="stylesheet" type="text/css" href="main.css" />
-<title>Restaurant Of Tbilisi</title>
+<meta charset="utf-8">
+<link href="images.jpg" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="main.css">
+    <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <title></title>
+    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <script src="http://cdn.kendostatic.com/2014.1.528/js/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.528/js/kendo.all.min.js"></script>
+    
 </head>
-<body >
+<body>
+	<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script> 
+	<div class="topmenu">
+		<div class="logo">
+			<a href="/"><img src="logo.png"></a>
+		</div>
+		<div class="midmenuitem"></div>
+		<div onclick="location.href='newurl.html';"class="menuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			&nbsp;	&nbsp; მთავარი &nbsp;	&nbsp;	
+		</div>
+		<div class="midmenuitem"></div>
+		<div class="menuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			&nbsp;	&nbsp;	ჩემი გვერდი  &nbsp;	&nbsp;	
+		</div>
+		<div class="midmenuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';"></div>
+		<div class="menuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			&nbsp;	&nbsp;	რეკლამა &nbsp;	&nbsp;	
+		</div>
+		<div class="midmenuitem"></div>
+		<div class="menuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			&nbsp;	&nbsp;	კონტაქტი  &nbsp;	&nbsp;	
+		</div>
+		<div class="midmenuitem"></div>
+		<div class="menuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			&nbsp;	&nbsp;	რეგისტრაცია  &nbsp;	&nbsp;	
+		</div>
+		<div class="midmenuitem"></div>
+			<div class="lastmenuitem" onmouseover="this.style.background='#06a45b'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			<div class="midmenuitem"></div>
+			&nbsp;	&nbsp; შესვლა  &nbsp;	&nbsp;	
+		</div>
+		
+	</div>
+	<div class="menufooter"></div>
+	<div class="topbackgroud"></div>
+	<div class="menufooter"></div>
+	<div class="container">
+		<marquee behavior="scroll" direction="left">
+			<img src="res1.png" width="100" height="100" alt="smile" />
+			<p>ბოლოს დამატებელი <a href="/html/codes/scrolling_images.cfm">scrolling image</a>.</p>
+		</marquee>
+			<div class="lastnews">
+	       	<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				    
+                <div id="options">
+			        <h4>აირჩიეთ კატეგორია</h4>
+                    <input id="fabric" placeholder="კატეგორია..." /> <br> <br>
+			        &nbsp; &nbsp; &nbsp; &nbsp; <button class="k-button" id="get"> ძებნა </button>
+			    </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    // create ComboBox from input HTML element
+                    $("#fabric").kendoComboBox({
+                        dataTextField: "text",
+                        dataValueField: "value",
+                        dataSource: [
+                            { text: "რესტორნები", value: "1" },
+                            { text: "კაფე–ბარები", value: "2" },
+                            { text: "სახინკლეები", value: "3" },
+                            { text: "სწრაფი კვება", value: "4" }
+                        ],
+                        filter: "contains",
+                        suggest: true,
+                        index: 3
+                    });
+                    // create ComboBox from select HTML element
+                    var fabric = $("#fabric").data("kendoComboBox");
+					$("#get").click(function() {
+					    alert('Thank you! Your Choice is:\n\nFabric ID: ' + fabric.value() );
+                    });
+                });
+            </script>
 	
+	   </div>
 </body>
-
 </html>
