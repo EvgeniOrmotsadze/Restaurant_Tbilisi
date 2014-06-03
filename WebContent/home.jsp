@@ -17,7 +17,10 @@
     
 </head>
 <body>
+
+	<%-- 
 	<div id="fb-root"></div>
+			
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
@@ -25,21 +28,17 @@
 			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script> 
+	--%>
 	<%@include file="menu-top.jsp"%>
-	<div class="topbackgroud"></div>
-	<div class="menufooter"></div>
-	<div class="container">
-		<marquee behavior="scroll" direction="left">
-			<img src="res1.png" width="100" height="100" alt="smile" />
-			<p>ბოლოს დამატებელი <a href="/html/codes/scrolling_images.cfm">scrolling image</a>.</p>
-		</marquee>
+	
+	<div class="topbackgroud">
+	</div>
 			<div class="lastnews">
-	       	<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-				    
+	     <%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
                 <div id="options">
 			        <h4>აირჩიეთ კატეგორია</h4>
                     <input id="fabric" placeholder="კატეგორია..." /> <br> <br>
-			        &nbsp; &nbsp; &nbsp; &nbsp; <button class="k-button" id="get"> ძებნა </button>
+			        &nbsp; &nbsp;<button class="k-button" id="get"> ძებნა </button>
 			    </div>
             </div>
             <script>
@@ -65,7 +64,10 @@
                     });
                 });
             </script>
-	
-	   </div>
+	   
+            <marquee behavior="scroll" direction="left">
+				<img src="res1.png" width="100" height="100" alt="smile" />
+				<p>ბოლოს დამატებელი <a href="/html/codes/scrolling_images.cfm">scrolling image</a>.</p>
+			</marquee>
 </body>
 </html>

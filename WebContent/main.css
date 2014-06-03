@@ -12,72 +12,52 @@ body{
 	background:url('Tbilisi.png');
 	background-size:100% 420px;
 	background-repeat:no-repeat;
+	background-size:100% 420px;
+	background-size: cover;
+	-webkit-filter: blur(2px);
+	z-index: 0;
 }
-.container{
-	position: relative;
-	width: 950px;
-	margin-top:0;
-	margin-left:auto;
-	margin-right:auto;
-	text-align:left;
-	height:auto;
-}
-.tbody{
-	float: left;
-	width: 950px;
-	height: 10px;
-}
-.banner{
-	float: left;
-	width: 200px;
-	height: 120;
-	border-radius: 20px;
+
+.toptext{
+    display: table-cell;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px dotted #656565;
 }
 .lastnews{
 	position: absolute;
-	top: 100px;
-	left: 800px;
+	top: 80px;
+	left: 1050px;
 	width: 170px;
-	height: 110px;
-
+	height: 130px;
+	background-color:#CCC;
+	backround: #fff;
 	border-radius: 16px;
 }
 .lastnews h4{
-	 border-top: 1px solid #96d1f8;
-   padding: 5px 10px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  
-}
-.adds{
-	position: fixed;
-	top: 120px;
-	left: 600px;
-	width: 120px;
-	height: 120px;
-	border-radius: 16px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 14px;
 }
 
 .k-button{
-	position: absolute;
-	width: 80px;
-	background: #65a9d7;
-  	border-top: 1px solid #96d1f8;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   margin: 10px;
-   border-radius: 16px;
+	width: 100px;
+	height: 25px;
+	background: #3FE6BF;
+	border: 1px solid #fff;
+	cursor: pointer;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 24px;
+	margin-top: 5px;
 }
 .k-button:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
+  opacity: 0.8;
    }
 .k-button:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
+   	opacity: 0.6;
+ }
+ 
+ 

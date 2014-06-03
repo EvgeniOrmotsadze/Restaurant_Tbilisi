@@ -63,7 +63,6 @@
 	padding: 10px;
 	z-index: 2;
 }
-
 .login input[type=text]{
 	width: 250px;
 	height: 30px;
@@ -107,11 +106,11 @@
 }
 
 .btnLogin:hover{
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 .btnLogin:active{
-	opacity: 0.6;
+	opacity: 0.3;
 }
 
 .login input[type=text]:focus{
@@ -138,6 +137,7 @@
 .btnFb { 
    cursor: pointer;
     width: 260px;
+    	
 	height: 35px;
 	background:url('fb.png'); no-repeat;
     -webkit-background-size: cover;
@@ -150,11 +150,11 @@
    
 }
 .btnFb:hover{ 
-      	opacity: 0.8;
+     opacity: 0.6;
 }
 
 .btnFb:active{
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 </style>
@@ -174,8 +174,6 @@
 				<input type="button" value="Login" class="btnLogin">
 				<input type="button" value="" class="btnFb">
 		</div>
-		
-
 </body>
 
 </html>
