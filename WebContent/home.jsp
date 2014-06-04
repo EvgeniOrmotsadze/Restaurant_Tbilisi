@@ -32,6 +32,7 @@
 	<%@include file="menu-top.jsp"%>
 	
 	<div class="topbackgroud">
+	
 	</div>
 			<div class="lastnews">
 	     <%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
