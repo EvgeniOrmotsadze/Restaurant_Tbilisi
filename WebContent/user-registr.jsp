@@ -30,7 +30,6 @@
 </head>
 <body>
 	<%@include file="menu-top.jsp"%>
-	<form action="CheckRegistrationParameters"  method="post">
 	<table style="position: absolute; left: 250px; top: 120px;">
 		<tr>
 			<td class="label">სახელი:</td>
@@ -79,6 +78,5 @@
 				value="რეგისტრაცია"/></td>
 		</tr>
 	</table>
-	</form>
 </body>
 </html>
