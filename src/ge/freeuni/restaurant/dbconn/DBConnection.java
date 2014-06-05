@@ -39,6 +39,7 @@ public class DBConnection {
 					"address varchar(255)," + 
 					"category int," + 
 					"phone varchar(255),"+
+					"location varchar(255)," +
 					"cordinate_x  double,"+
 					"cordinate_y double,"+
 					"counter int,"+
