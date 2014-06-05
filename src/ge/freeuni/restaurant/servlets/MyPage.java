@@ -36,11 +36,7 @@ public class MyPage extends HttpServlet {
 		dispatcher.forward(request, response);
 		DBQuery query =  new DBQuery();
 		User user = new User();
-		try {
-			query.AddUser(user);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**
