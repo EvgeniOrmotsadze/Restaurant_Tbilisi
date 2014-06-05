@@ -1,6 +1,7 @@
 package ge.freeuni.restaurant.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,12 +29,14 @@ public class CheckRegistrationParameters extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		HttpSession session = request.getSession();
 		session.setAttribute("firstName", request.getAttribute("firstName"));
 		session.setAttribute("lastName", request.getAttribute("lastName"));
@@ -42,6 +45,7 @@ public class CheckRegistrationParameters extends HttpServlet {
 		session.setAttribute("password", request.getAttribute("password"));
 		
 		request.getRequestDispatcher("verifyByEmail.jsp").forward(request,response);
+		
 	}
 
 }

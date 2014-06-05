@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>HomePage</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.HomePage</servlet-class>
@@ -12,4 +13,23 @@
     <servlet-name>HomePage</servlet-name>
     <url-pattern>/HomePage</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>MyPage</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.MyPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyPage</servlet-name>
+    <url-pattern>/MyPage</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>CheckRegistrationParameters</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.CheckRegistrationParameters</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckRegistrationParameters</servlet-name>
+    <url-pattern>/CheckRegistrationParameters</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

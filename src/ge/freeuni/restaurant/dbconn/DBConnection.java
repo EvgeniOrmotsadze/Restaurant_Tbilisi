@@ -23,20 +23,22 @@ public class DBConnection {
 			
 			String sql1 = "CREATE table IF NOT EXISTS  user("+
 					"user_id INT NOT null auto_increment," +
-					" first_name varchar(255) not null, "+ 
-					" last_name varchar(255) not null," + 
-					"user_email varchar(255) not null, "+
-					" user_password varchar(255) not null,"+
+					" name varchar(255) not null, "+ 
+					" lastname varchar(255) not null," + 
+					"email varchar(255) not null, "+
+					"phone varchar(255) not null, "+
+					"password varchar(255) not null, "+
+					" repassword varchar(255) not null,"+
 					"createdate datetime," +
 					"PRIMARY key (user_id));";
 			System.out.println("create user table");
 			String sql2 = "CREATE table IF NOT EXISTS  restaurants("+
 					"res_id int not null auto_increment,"+
 					"user_id  int not null,"+
-					"res_name varchar(255) not null," +
-					"res_address varchar(255)," +
+					"name varchar(255) not null," +
+					"address varchar(255)," + 
 					"category int," + 
-					"res_phone varchar(255),"+
+					"phone varchar(255),"+
 					"cordinate_x  double,"+
 					"cordinate_y double,"+
 					"counter int,"+
@@ -55,15 +57,15 @@ public class DBConnection {
 			String sql4 = " CREATE table IF NOT EXISTS picture("+
 						 "id int not null auto_increment,"+
 						 "res_id int,"+
-						 "picture_name varchar(255),"+
+						 "name varchar(255),"+
 						 "primary key(id),"+
 						 "foreign key(res_id) references restaurants(res_id));";
 			System.out.println("create picture table");
 			String sql5 = "CREATE table IF NOT EXISTS menu("+
 						 "id int not null auto_increment,"+
 						 "res_id int,"+
-						 "menu_name varchar(255),"+
-						 "menu_price double,"+
+						 "foodname varchar(255),"+
+						 "foodprice double,"+
 						 "primary key(id),"+
 						 "foreign key(res_id) references restaurants(res_id));";
 			System.out.println("create menu table");
@@ -71,7 +73,6 @@ public class DBConnection {
 					 "id int auto_increment,"+
 					 "user_id int,"+
 					 "res_id int,"+
-					 "favorite int,"+
 					 "primary key(id),"+
 					 "foreign key(user_id) references user(user_id),"+
 					 "foreign key(res_id) references restaurants(res_id));";

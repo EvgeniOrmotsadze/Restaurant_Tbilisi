@@ -93,7 +93,7 @@
 .btnLogin{
 	width: 260px;
 	height: 35px;
-	background: #3FE6BF;
+	background: #C1D6D9;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;

@@ -57,7 +57,7 @@
     border-color: #c4d9df #a4c3ca #83afb7;            
     width: 260px;
     height: 25px;
-     margin: 5px 0 0 100px;
+    margin: 5px 0 0 140px;
     overflow: hidden; /* Clear floats */
 }
 #search, 
@@ -66,7 +66,7 @@
 }
 #search {
     padding: 5px 9px;
-    height: 19px;
+    height: 18px;
     width: 203px;
     border: 1px solid #a4c3ca;
     background: #f1f1f1;
@@ -116,7 +116,7 @@
 		</div>
 		
 		<div class="midmenuitem"></div>	
-		<div onclick="location.href='/Restaurants/HomePage';" class="menuitem" onmouseover="this.style.background='#2AE8E5';   this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+		<div onclick="location.href='/Restaurants/MyPage';" class="menuitem" onmouseover="this.style.background='#2AE8E5';   this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
 			&nbsp;	&nbsp;	ჩემი გვერდი  &nbsp;	&nbsp;	
 		</div>
 		
