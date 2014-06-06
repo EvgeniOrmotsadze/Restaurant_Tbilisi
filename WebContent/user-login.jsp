@@ -166,7 +166,6 @@
 	
   <%@include file="menu-top.jsp"%>
   <div class="body"></div>
-  	
 		<br>
 		<div class="login">
 				<input type="text" placeholder="username" name="user"><br>

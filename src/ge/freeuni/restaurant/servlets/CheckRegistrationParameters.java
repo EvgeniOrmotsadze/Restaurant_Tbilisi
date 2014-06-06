@@ -1,6 +1,9 @@
 package ge.freeuni.restaurant.servlets;
 
+import ge.freeuni.restaurant.service.MessageSender;
+
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,16 +39,38 @@ public class CheckRegistrationParameters extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		HttpSession session = request.getSession();
-		session.setAttribute("firstName", request.getAttribute("firstName"));
-		session.setAttribute("lastName", request.getAttribute("lastName"));
-		session.setAttribute("companyName", request.getAttribute("companyName"));
-		session.setAttribute("email", request.getAttribute("email"));
-		session.setAttribute("password", request.getAttribute("password"));
+		//check user data on server
+		boolean validation = false;
+		if(request.getParameter("firstName").isEmpty() || request.getParameter("lastName").isEmpty()){
+			validation = true;
+		}
 		
-		request.getRequestDispatcher("verifyByEmail.jsp").forward(request,response);
+		String emailreg = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+		if(!request.getParameter("email").matches(emailreg)){
+			validation = true;
+		}
 		
+		if(request.getParameter("password").length() < 6){
+			validation = true;
+		}
+		if(!request.getParameter("password").equals(request.getParameter("repassword"))){
+			validation = true;
+		}
+		if(validation){
+			request.getRequestDispatcher("user-register.jsp").forward(request, response);
+		}else{
+			HttpSession session = request.getSession();
+			session.setAttribute("firstName", request.getAttribute("firstName"));
+			session.setAttribute("lastName", request.getAttribute("lastName"));
+			session.setAttribute("email", request.getAttribute("email"));
+			session.setAttribute("password", request.getAttribute("password"));
+			Random r = new Random( System.currentTimeMillis() );
+			String code = ""+10000 + r.nextInt(20000);
+			request.getSession().setAttribute("code", code);
+			MessageSender.sendMsg(request.getParameter("email"),code,"restaurantoftbilisi@gmail.com","evgeni1221");
+			request.getRequestDispatcher("verifyByEmail.jsp").forward(request,response);
+		}
+			
 	}
 
 }
