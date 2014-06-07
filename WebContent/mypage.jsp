@@ -10,6 +10,9 @@
 </head>
 <body>
 <%@include file="menu-top.jsp"%>
-
+<% if (request.getSession().getAttribute("user") == null) { 
+	request.getRequestDispatcher("user-login.jsp").forward(request, response);
+   }
+%>
 </body>
 </html>

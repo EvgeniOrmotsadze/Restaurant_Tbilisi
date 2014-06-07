@@ -28,7 +28,6 @@ public class DBConnection {
 					"email varchar(255) not null, "+
 					"phone varchar(255) not null, "+
 					"password varchar(255) not null, "+
-					" repassword varchar(255) not null,"+
 					"createdate datetime," +
 					"PRIMARY key (user_id));";
 			System.out.println("create user table");

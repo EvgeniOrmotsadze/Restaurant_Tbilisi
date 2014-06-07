@@ -60,10 +60,13 @@ public class CheckRegistrationParameters extends HttpServlet {
 			request.getRequestDispatcher("user-register.jsp").forward(request, response);
 		}else{
 			HttpSession session = request.getSession();
-			session.setAttribute("firstName", request.getAttribute("firstName"));
-			session.setAttribute("lastName", request.getAttribute("lastName"));
-			session.setAttribute("email", request.getAttribute("email"));
-			session.setAttribute("password", request.getAttribute("password"));
+			
+			session.setAttribute("firstName", request.getParameter("firstName"));
+			session.setAttribute("lastName", request.getParameter("lastName"));
+			session.setAttribute("email", request.getParameter("email"));
+			session.setAttribute("phone", request.getParameter("phone"));
+			session.setAttribute("password", request.getParameter("password"));
+			
 			Random r = new Random( System.currentTimeMillis() );
 			String code = ""+10000 + r.nextInt(20000);
 			request.getSession().setAttribute("code", code);

@@ -12,9 +12,9 @@
 .body{
 	float: left;
 	width: 100%;
-	height: 550px;
+	height: 580px;
 	background:url('Tbilisi.png');
-	background-size:100% 550px;
+	background-size:100% 580px;
 	background-repeat:no-repeat;
 	
 	background-size: cover;
@@ -56,8 +56,8 @@
 
 .login{
 	position: absolute;
-	top: calc(50% - 75px);
-	left: calc(50% - 50px);
+	top: calc(50% - 40px);
+	left: calc(50% - 40px);
 	height: 150px;
 	width: 350px;
 	padding: 10px;
@@ -167,12 +167,16 @@
   <%@include file="menu-top.jsp"%>
   <div class="body"></div>
 		<br>
-		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login" class="btnLogin">
-				<input type="button" value="" class="btnFb">
-		</div>
+		
+			<div class="login">
+					<form action="LoginServlet" method="post">
+						<input type="text" placeholder="e-mail" name="email"><br>
+						<input type="password" placeholder="password" name="password"><br>
+						<input type="submit" value="Login" class="btnLogin">
+					</form>
+					<input type="button" value="" class="btnFb">
+			</div>
+	
 </body>
 
 </html>

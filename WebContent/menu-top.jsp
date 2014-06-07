@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page  import="ge.freeuni.restaurant.model.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,19 +122,22 @@
 		</div>
 		
 		<div class="midmenuitem"></div>	
-		<div onclick="location.href='';" class="menuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+		<div onclick="location.href='/Restaurants/MyPage';" class="menuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
 			&nbsp;	&nbsp;	რეკლამა &nbsp;	&nbsp;	
 		</div>
 		
 		<div class="midmenuitem"></div>
-		<div onclick="location.href='/HomePage';" class="menuitem" onmouseover="this.style.background='#2AE8E5';  this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+		<div onclick="location.href='/Restaurants/MyPage';" class="menuitem" onmouseover="this.style.background='#2AE8E5';  this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
 			&nbsp;	&nbsp;	კონტაქტი  &nbsp;	&nbsp;	
 		</div>
+		<%
+			if (request.getSession().getAttribute("user") == null) {
+		%>
 		<div class="midmenuitem"></div>
-		<div onclick="location.href='/HomePage';" class="menuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+		<div onclick="location.href='/Restaurants/RegisterPage';" class="menuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
 			&nbsp;	&nbsp;	რეგისტრაცია  &nbsp;	&nbsp;	
 		</div>
-		
+		 
 		<div class="midmenuitem"></div>	
 		<form id="searchbox" action="">
     		<input id="search" type="text" placeholder="ძებნა...">
@@ -141,11 +145,35 @@
 		</form>
 		
 		<div class="midmenuitem"></div>
-			<div onclick="location.href='/HomePage';" class="lastmenuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			<div onclick="location.href='/Restaurants/LoginServletForward';" class="lastmenuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
 			<div class="midmenuitem"></div>
 			&nbsp;	&nbsp; შესვლა  &nbsp;	&nbsp;	
 		</div>
+		<%
+			} else {
+				User user = (User) request.getSession().getAttribute("user");
+				String name = user.getName();
+		%>
 		
+		 
+		<div class="midmenuitem"></div>	
+		<form id="searchbox" action="">
+    		<input id="search" type="text" placeholder="ძებნა...">
+  			  <input id="submit" type="submit" value="" >
+		</form>
+		
+		<div class="midmenuitem"></div>
+			<div onclick="location.href='/Restaurants/LoginOutServlet';" class="lastmenuitem" onmouseover="this.style.background='#2AE8E5'; this.style.color='#fff';" onmouseout="this.style.background='url(menubg.png)'; this.style.color='#0f9d5c';">
+			<div class="midmenuitem"></div>
+			&nbsp;	&nbsp; გამოსვლა  &nbsp;	&nbsp;	
+		</div>
+		
+		<div class="midmenuitem"></div>
+			<div  class="lastmenuitem">
+			<div class="midmenuitem"></div>
+			&nbsp;	&nbsp; <%=name %>  &nbsp;	&nbsp;	
+		</div>
+		<%}%>
 	</div>
 	<div class="menufooter"></div>
 

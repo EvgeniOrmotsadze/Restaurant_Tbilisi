@@ -1,6 +1,5 @@
 package ge.freeuni.restaurant.servlets;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MyPage
+ * Servlet implementation class LoginServletForward
  */
-@WebServlet("/MyPage")
-public class MyPage extends HttpServlet {
+@WebServlet("/LoginServletForward")
+public class LoginServletForward extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPage() {
+    public LoginServletForward() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +28,8 @@ public class MyPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-login.jsp");
 		dispatcher.forward(request, response);
-	
 	}
 
 	/**
@@ -39,7 +37,6 @@ public class MyPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
-		
 	}
 
 }
