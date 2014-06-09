@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <div id="stars-div" style="height: 32px;"></div>
+        <script type="text/javascript">
+var div = document.getElementById('stars-div')
+
+var stars = [],
+    starsCount = 5,
+    rating = Math.floor(Math.random() * starsCount)
+
+reload()
+
+function reload () {
+    stars = []
+    div.innerHTML = ''
+    for (var i = 0; i < starsCount; i++) {
+        (function (index) {
+            var img = new Image()
+            if (index <= rating) {
+                img.src = 'star-yellow.jpg'
+            } else {
+                img.src = 'star-white.jpg'
+            }
+            img.style.cursor = 'pointer'
+            stars.push(img)
+            div.appendChild(img)
+            
+            img.addEventListener('mouseover', function () {
+                var currentIndex = stars.indexOf(img)
+                for (var i = 0; i < stars.length; i++) {
+                    if (i <= currentIndex) {
+                        stars[i].src = 'star-yellow.jpg'
+                    } else {
+                        stars[i].src = 'star-white.jpg'
+                    }
+                }
+            })
+            img.addEventListener('mouseout', function () {
+                var currentIndex = stars.indexOf(img)
+                for (var i = 0; i < stars.length; i++) {
+                    if (i <= rating) {
+                        stars[i].src = 'star-yellow.jpg'
+                    } else {
+                        stars[i].src = 'star-white.jpg'
+                    }
+                }
+            })
+            
+            img.addEventListener('click', function () {
+                var currentIndex = stars.indexOf(img)
+                rating = currentIndex
+                reload()
+            })
+        })(i)
+    }
+}
+         </script>
+    </body>
+</html>
