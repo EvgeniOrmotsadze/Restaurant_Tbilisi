@@ -9,18 +9,15 @@
 <title>მომხმარებლის რეგისტრაცია</title>
 <style>
 
-.body {
-	float: left;
-	width: 100%;
-	height: 580px;
-	background: url('Tbilisi.png');
-	background-size: 100% 580px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	-webkit-filter: blur(5px);
-	z-index: 0;
-}
 
+html,body {
+	height: 100%;
+	margin: 0px;
+	background: #471016 url("bg.jpg") no-repeat top center
+		fixed;
+	background-size: cover;
+	
+}
 
 
 .textField input[type=text] {
@@ -149,7 +146,6 @@ function validatePassword2() {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<form action="CheckRegistrationParameters" method="post">
-		<div class="body"></div>
 		<table style="position: absolute; left: 750px; top: 100px;">
 			<tr>
 				<td class="textField"><input id="firstName" type="text"

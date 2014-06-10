@@ -1,21 +1,12 @@
 @CHARSET "ISO-8859-1";
-body{
-	margin: 0;
-	text-align: center;
-	background-color: #CCC;
-}
 
-.topbackgroud{
-	float: left;
-	width: 100%;
-	height: 420px;
-	background:url('Tbilisi.png');
-	background-size:100% 420px;
-	background-repeat:no-repeat;
-	background-size:100% 420px;
+html,body {
+	height: 100%;
+	margin: 0px;
+	background: #471016 url("bg.jpg") no-repeat top center
+		fixed;
 	background-size: cover;
-	-webkit-filter: blur(2px);
-	z-index: 0;
+	
 }
 
 .toptext{
@@ -40,6 +31,11 @@ body{
 	color: #fff;
 	font-family: 'Exo', sans-serif;
 	font-size: 14px;
+	left: 10px;
+}
+
+.lastnews #fabric{
+	left: 10px;
 }
 
 .k-button{

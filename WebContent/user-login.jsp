@@ -9,17 +9,14 @@
 
   <title>Login Form </title>
  <style>
-.body{
-	float: left;
-	width: 100%;
-	height: 580px;
-	background:url('Tbilisi.png');
-	background-size:100% 580px;
-	background-repeat:no-repeat;
-	
+ html,body {
+	height: 100%;
+	margin: 0px;
+	background: #471016 url("bg.jpg") no-repeat top center
+		fixed;
 	background-size: cover;
-	-webkit-filter: blur(5px);
-	z-index: 0;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .grad{
