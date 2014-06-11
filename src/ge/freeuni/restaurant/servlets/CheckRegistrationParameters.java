@@ -1,8 +1,10 @@
 package ge.freeuni.restaurant.servlets;
 
+import ge.freeuni.restaurant.controllers.DBQuery;
 import ge.freeuni.restaurant.service.MessageSender;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -41,6 +43,7 @@ public class CheckRegistrationParameters extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//check user data on server
 		boolean validation = false;
+		
 		if(request.getParameter("firstName").isEmpty() || request.getParameter("lastName").isEmpty()){
 			validation = true;
 		}
@@ -56,11 +59,26 @@ public class CheckRegistrationParameters extends HttpServlet {
 		if(!request.getParameter("password").equals(request.getParameter("repassword"))){
 			validation = true;
 		}
+		
+		DBQuery query = new DBQuery();
+		boolean ifExist = true;
+		try {
+			ifExist = query.ifExistUser(request.getParameter("email"));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(ifExist){
+			validation = true;
+			String msg =  "არნიშნული Email გამოყენებულია, გთხოვთ მიუთითოდ სხვა Email ";
+			request.setAttribute("isExist", msg);
+		}
 		if(validation){
 			request.getRequestDispatcher("user-register.jsp").forward(request, response);
 		}else{
 			HttpSession session = request.getSession();
-			
 			session.setAttribute("firstName", request.getParameter("firstName"));
 			session.setAttribute("lastName", request.getParameter("lastName"));
 			session.setAttribute("email", request.getParameter("email"));
@@ -73,7 +91,5 @@ public class CheckRegistrationParameters extends HttpServlet {
 			MessageSender.sendMsg(request.getParameter("email"),code,"restaurantoftbilisi@gmail.com","evgeni1221");
 			request.getRequestDispatcher("verifyByEmail.jsp").forward(request,response);
 		}
-			
 	}
-
 }

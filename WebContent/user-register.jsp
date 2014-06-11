@@ -8,20 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>მომხმარებლის რეგისტრაცია</title>
 <style>
-
-.body {
-	float: left;
-	width: 100%;
-	height: 580px;
-	background: url('Tbilisi.png');
-	background-size: 100% 580px;
-	background-repeat: no-repeat;
+html,body {
+	height: 100%;
+	margin: 0px;
+	background: #471016 url("bg.jpg") no-repeat top center fixed;
 	background-size: cover;
-	-webkit-filter: blur(5px);
-	z-index: 0;
 }
-
-
 
 .textField input[type=text] {
 	margin: 5px;
@@ -87,61 +79,58 @@
 </style>
 
 <script type="text/javascript">
-function namevalidates() {
-	if(document.getElementById("firstName").value.length === 0){
-		document.getElementById("FName").innerHTML="სახელი არ არის მითითებული";
-		document.getElementById("registerButton").disabled = true;
-	}else{
-		document.getElementById("registerButton").disabled = false;
-		document.getElementById("FName").innerHTML="*";
+	function namevalidates() {
+		if (document.getElementById("firstName").value.length === 0) {
+			document.getElementById("FName").innerHTML = "სახელი არ არის მითითებული";
+			document.getElementById("registerButton").disabled = true;
+		} else {
+			document.getElementById("registerButton").disabled = false;
+			document.getElementById("FName").innerHTML = "*";
+		}
 	}
-}
-function lastnamevalidates() {
-	if(document.getElementById("lastName").value.length === 0){
-		document.getElementById("LName").innerHTML="გვარი არ არის მითითებული";
-		document.getElementById("registerButton").disabled = true;
-	}else{
-		document.getElementById("registerButton").disabled = false;
-		document.getElementById("LName").innerHTML="*";
+	function lastnamevalidates() {
+		if (document.getElementById("lastName").value.length === 0) {
+			document.getElementById("LName").innerHTML = "გვარი არ არის მითითებული";
+			document.getElementById("registerButton").disabled = true;
+		} else {
+			document.getElementById("registerButton").disabled = false;
+			document.getElementById("LName").innerHTML = "*";
+		}
 	}
-}
 
-function emailvalidates() {
-	 var email = document.getElementById('email');
-	 var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	 if (!filter.test(email.value)) {
-		document.getElementById("Email").innerHTML="არასწორი ფორმატი";
-		document.getElementById("registerButton").disabled = true;
-	}else{
-		document.getElementById("registerButton").disabled = false;
-		document.getElementById("Email").innerHTML="*";
+	function emailvalidates() {
+		var email = document.getElementById('email');
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if (!filter.test(email.value)) {
+			document.getElementById("Email").innerHTML = "არასწორი ფორმატი";
+			document.getElementById("registerButton").disabled = true;
+		} else {
+			document.getElementById("registerButton").disabled = false;
+			document.getElementById("Email").innerHTML = "*";
+		}
 	}
-}
-function validatePassword1() {
-	var pass = document.getElementById("password").value;
-	if (pass.length < 6) {
-		document.getElementById("pass").innerHTML="პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს!";
-		document.getElementById("registerButton").disabled = true;
-	}else{
-		document.getElementById("registerButton").disabled = false;
-		document.getElementById("pass").innerHTML="*";
+	function validatePassword1() {
+		var pass = document.getElementById("password").value;
+		if (pass.length < 6) {
+			document.getElementById("pass").innerHTML = "პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს!";
+			document.getElementById("registerButton").disabled = true;
+		} else {
+			document.getElementById("registerButton").disabled = false;
+			document.getElementById("pass").innerHTML = "*";
+		}
 	}
-}
 
-function validatePassword2() {
-	var pass = document.getElementById("password").value;
-	var repass = document.getElementById("repassword").value;
-	if (pass != repass) {
-		document.getElementById("repass").innerHTML="არ ემთხვევა პაროლი";
-		document.getElementById("registerButton").disabled = true;
-	}else{
-		document.getElementById("registerButton").disabled = false;
-		document.getElementById("repass").innerHTML="";
+	function validatePassword2() {
+		var pass = document.getElementById("password").value;
+		var repass = document.getElementById("repassword").value;
+		if (pass != repass) {
+			document.getElementById("repass").innerHTML = "არ ემთხვევა პაროლი";
+			document.getElementById("registerButton").disabled = true;
+		} else {
+			document.getElementById("registerButton").disabled = false;
+			document.getElementById("repass").innerHTML = "";
+		}
 	}
-}
-
-
-
 </script>
 
 </head>
@@ -149,7 +138,6 @@ function validatePassword2() {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<form action="CheckRegistrationParameters" method="post">
-		<div class="body"></div>
 		<table style="position: absolute; left: 750px; top: 100px;">
 			<tr>
 				<td class="textField"><input id="firstName" type="text"
@@ -158,14 +146,15 @@ function validatePassword2() {
 			</tr>
 			<tr>
 				<td class="textField"><input id="lastName" type="text"
-					name="lastName" placeholder="გვარი"  onchange="lastnamevalidates()"><font id="LName"
-					color="red" size=2>*</font></td>
+					name="lastName" placeholder="გვარი" onchange="lastnamevalidates()"><font
+					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="email" type="text"
-					name="email" placeholder="ელ–ფოსტა"
-					onchange="emailvalidates()"><font id="Email"
-					color="red" size=2>*</font></td>
+					name="email" placeholder="ელ–ფოსტა" onchange="emailvalidates()"><font
+					id="Email" color="red" size=2>* <%if(request.getAttribute("isExist") !=null){%>
+						<%=request.getAttribute("isExist")%> <%} %>
+					</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="phone" type="text"
@@ -183,10 +172,11 @@ function validatePassword2() {
 					color="red" size=2></font></td>
 			</tr>
 			<tr>
-				<td><br> <input class="button"
-					id="registerButton" type="submit" value="რეგისტრაცია" /></td>
+				<td><br> <input class="button" id="registerButton"
+					type="submit" value="რეგისტრაცია" /></td>
 			</tr>
 		</table>
 	</form>
+	
 </body>
 </html>

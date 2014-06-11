@@ -1,5 +1,6 @@
 package ge.freeuni.restaurant.model;
 public class User {
+	private int ID;
 	private String name;
 	private String lastname;
 	private String mail;
@@ -7,6 +8,10 @@ public class User {
 	private String password;
 	private String repassword;
 
+	public void setID(int ID){
+		this.ID = ID;
+	}
+	
 	public void setName(String name){
 		this.name = name;
 	}
@@ -53,6 +58,9 @@ public class User {
 	
 	public String getRePassword(){
 		return this.repassword;
+	}
+	public int getID(){
+		return this.ID;
 	}
 }
 

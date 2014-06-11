@@ -3,9 +3,12 @@ package ge.freeuni.restaurant.model;
 public class Restaurant {
 	private String name;
 	private String address;
-	private int category;
+	private String category;
 	private String phone;
 	private String location;
+	private String cordinate_x;
+	private String cordinate_y;
+	private int counter;
 	
 	
 	public void setName(String name){
@@ -16,7 +19,7 @@ public class Restaurant {
 		this.address = address;
 	}
 	
-	public void setCategory(int category){
+	public void setCategory(String category){
 		this.category = category;
 	}
 	
@@ -26,13 +29,24 @@ public class Restaurant {
 	public void setLocation(String location){
 		this.location = location;
 	}
+	public void setX(String cordinate_x){
+		this.cordinate_x = cordinate_x;
+	}
+	public void setY(String cordinate_y){
+		this.cordinate_y = cordinate_y;
+	}
+	
+	public void setCounter(int counter){
+		this.counter = counter;
+	}
+	
 	public String getName(){
 		return this.name;
 	}
 	public String getAddress(){
 		return this.address;
 	}
-	public int getCategory(){
+	public String getCategory(){
 		return this.category;
 	}
 	public String getPhone(){
@@ -42,5 +56,14 @@ public class Restaurant {
 		return this.location;
 	}
 	
+	public String getX(){
+		return this.cordinate_x;
+	}
+	public String getY(){
+		return this.cordinate_y;
+	}
+	public int getCounter(){
+		return this.counter;
+	}
 
 }
