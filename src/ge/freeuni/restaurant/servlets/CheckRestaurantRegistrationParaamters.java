@@ -44,7 +44,7 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 
 	private boolean checkParamater(HttpServletRequest request) {
 		if (request.getParameter("Name").isEmpty()
-				|| request.getParameter("Adress").isEmpty()
+				|| request.getParameter("Address").isEmpty()
 				|| request.getParameter("Category").isEmpty()
 				|| request.getParameter("Phone").isEmpty()
 				|| request.getParameter("Location").isEmpty()) {
@@ -56,16 +56,16 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(!checkParamater(request)){
-			request.getRequestDispatcher("add-restaurant.jsp").forward(request, response);
+			request.getRequestDispatcher("restaurant-register.jsp").forward(request, response);
 		}else{
 			Restaurant res = new Restaurant();
 			res.setName(request.getParameter("Name"));
-			res.setCategory(request.getParameter("Category"));
+			res.setCategory(Integer.parseInt(request.getParameter("Category")));
 			res.setLocation(request.getParameter("Location"));
 			res.setPhone(request.getParameter("Phone"));
 			res.setX(request.getParameter("Cordinate_X"));
 			res.setY(request.getParameter("Cordinate_Y"));
-			res.setAddress(request.getParameter("Adress"));
+			res.setAddress(request.getParameter("Address"));
 			DBQuery db = new DBQuery();
 			try {
 				User user = (User)request.getSession().getAttribute("user");
@@ -76,7 +76,8 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
+			request.getRequestDispatcher("mypage.jsp").forward(request, response);
+
 		}
 		
 	}

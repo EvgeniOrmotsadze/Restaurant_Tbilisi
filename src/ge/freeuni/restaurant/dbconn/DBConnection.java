@@ -39,8 +39,8 @@ public class DBConnection {
 					"category int," + 
 					"phone varchar(255),"+
 					"location varchar(255)," +
-					"cordinate_x  double,"+
-					"cordinate_y double,"+
+					"cordinate_x varchar(255),"+
+					"cordinate_y varchar(255),"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";
@@ -52,7 +52,7 @@ public class DBConnection {
 						 "score int," +
 						 "primary key(id),"+
 						 "foreign key(user_id) references user(user_id),"+
-						 "	foreign key(res_id) references restaurants(res_id));";
+						 "foreign key(res_id) references restaurants(res_id));";
 			System.out.println("create score table");
 			String sql4 = " CREATE table IF NOT EXISTS picture("+
 						 "id int not null auto_increment,"+

@@ -45,7 +45,7 @@ html,body {
 	request.getRequestDispatcher("user-login.jsp").forward(request, response);
    }else{
 %>
-	<div onclick="location.href='/Restaurants/HomePage';" style="float:left; margin-top:40px;" class="btnAdd"><span class="icon"></span><a>დაამატე ობიექტი</a><span></span></div>
+	<div onclick="location.href='/Restaurants/ForwardRestaurantRegister';" style="float:left; margin-top:40px;" class="btnAdd"><span class="icon"></span><a>დაამატე ობიექტი</a><span></span></div>
 
 <%} %>
 </body>

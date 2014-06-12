@@ -56,7 +56,6 @@ html {
 	<script>
 		$(document).ready(
 						function() {
-							// create ComboBox from input HTML element
 							$("#fabric").kendoComboBox({
 								dataTextField : "text",
 								dataValueField : "value",

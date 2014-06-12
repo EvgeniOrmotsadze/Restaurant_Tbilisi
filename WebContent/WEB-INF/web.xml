@@ -60,7 +60,6 @@
     <servlet-name>LoginOutServlet</servlet-name>
     <url-pattern>/LoginOutServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RegistrUser</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.RegistrUser</servlet-class>
@@ -69,14 +68,22 @@
     <servlet-name>RegistrUser</servlet-name>
     <url-pattern>/RegistrUser</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>CheckRestaurantRegistrationParaamters</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.CheckRestaurantRegistrationParaamters</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CheckRestaurantRegistrationParaamters</servlet-name>
     <url-pattern>/CheckRestaurantRegistrationParaamters</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ForwardRestaurantRegister</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.ForwardRestaurantRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForwardRestaurantRegister</servlet-name>
+    <url-pattern>/ForwardRestaurantRegister</url-pattern>
   </servlet-mapping>
   
   

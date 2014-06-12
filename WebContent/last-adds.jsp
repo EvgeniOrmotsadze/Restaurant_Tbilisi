@@ -14,9 +14,6 @@
 	margin-bottom: 2px;
 }
 
-.result > tbody > tr > td {
-	width: 25%;
-}
 
 .object {
 	vertical-align: top;
