@@ -38,6 +38,18 @@ html,body {
     width: 32px;
     height: 32px;
 }
+
+#wrapper {
+  text-align: center;
+  top:120px;
+  width: 760px; 
+  margin: 0 auto;
+  font-size: 24px; 
+  color: #CDCDCD;
+   position: relative;
+   height: 30px
+  }
+
 </style>
 <body>
 <%@include file="menu-top.jsp"%>
@@ -46,7 +58,10 @@ html,body {
    }else{
 %>
 	<div onclick="location.href='/Restaurants/ForwardRestaurantRegister';" style="float:left; margin-top:40px;" class="btnAdd"><span class="icon"></span><a>დაამატე ობიექტი</a><span></span></div>
-
 <%} %>
+	<div id="wrapper">ჩემს მიერ დამატებული ობიექტები:</div>
+	
+	
+	
 </body>
 </html>

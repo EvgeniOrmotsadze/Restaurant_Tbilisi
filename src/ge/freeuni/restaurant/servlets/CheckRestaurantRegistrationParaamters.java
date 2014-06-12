@@ -69,7 +69,7 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			DBQuery db = new DBQuery();
 			try {
 				User user = (User)request.getSession().getAttribute("user");
-				db.getUser(user.getMail(), user.getPassword());
+				//db.getUser(user.getMail(), user.getPassword());
 				db.AddRestauratns(res, user.getID());
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

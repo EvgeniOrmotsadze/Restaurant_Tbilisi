@@ -50,6 +50,7 @@ public class DBConnection {
 						 "user_id int,"+
 						 "res_id int,"+
 						 "score int," +
+						 "createdate datetime,"+
 						 "primary key(id),"+
 						 "foreign key(user_id) references user(user_id),"+
 						 "foreign key(res_id) references restaurants(res_id));";

@@ -1,7 +1,14 @@
 package ge.freeuni.restaurant.servlets;
 
 
+import ge.freeuni.restaurant.controllers.DBQuery;
+import ge.freeuni.restaurant.model.Restaurant;
+import ge.freeuni.restaurant.model.User;
+
+import java.awt.List;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,9 +36,22 @@ public class MyPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		User user = (User)request.getSession().getAttribute("user");
+		DBQuery db = new DBQuery();
+		ArrayList<Restaurant> res = new ArrayList<>();
+		try {
+			 res = db.getMyRestaurants(user.getID());
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("MyRestaurants", res);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
 		dispatcher.forward(request, response);
-	
+		
+		
 	}
 
 	/**
