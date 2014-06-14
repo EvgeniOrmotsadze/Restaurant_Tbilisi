@@ -39,14 +39,14 @@ public class MyPage extends HttpServlet {
 		
 		User user = (User)request.getSession().getAttribute("user");
 		DBQuery db = new DBQuery();
-		ArrayList<Restaurant> res = new ArrayList<>();
+		/*ArrayList<Restaurant> res = new ArrayList<>();
 		try {
 			 res = db.getMyRestaurants(user.getID());
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("MyRestaurants", res);
+		request.setAttribute("MyRestaurants", res);*/
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
 		dispatcher.forward(request, response);

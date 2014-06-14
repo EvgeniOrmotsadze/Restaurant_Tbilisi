@@ -39,8 +39,8 @@ public class DBConnection {
 					"category int," + 
 					"phone varchar(255),"+
 					"location varchar(255)," +
-					"cordinate_x varchar(255),"+
-					"cordinate_y varchar(255),"+
+					"lactitude decimal,"+
+					"longtitude decimal,"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";
