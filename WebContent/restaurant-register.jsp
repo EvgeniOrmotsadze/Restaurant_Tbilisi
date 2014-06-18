@@ -35,26 +35,6 @@ html,body {
 	margin: 10px 0;
 }
 
-.textField input[type=password] {
-	margin: 5px;
-	padding: 0 10px;
-	width: 260px;
-	height: 35px;
-	color: #404040;
-	background: #fff;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	border-radius: 3px; -
-	-webkit-border-radius: 5px;
-	outline: 3px solid rgba(200, 105, 137, 0.09);
-	-moz-outline-radius: 7px;
-	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-	-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-	margin: 10px 0;
-}
-
 .td.Cordinate {
 	width: 145px;
 }
@@ -115,8 +95,6 @@ html,body {
 	display: none;
 }
 </style>
-
-<script src="maps.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 	function ValidateName() {
@@ -139,18 +117,6 @@ html,body {
 		}
 	}
 	
-	$(document).ready(function() {
-		$("#menu_button").click(function(event) {
-			event.preventDefault();
-			$("#menu_table").show();
-			$("#menu_row_button").show();
-		});
-		
-		$("#menu_row_button").click(function(event) {
-			event.preventDefault();
-			$("#menu_table").append('<tr><td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
-		});
-	});
 </script>
 </head>
 
@@ -166,6 +132,16 @@ html,body {
 			<tr>
 				<td class="textField"><input id="address" type="text"
 					name="Address" placeholder="მისამართი" onchange="ValidateAddress()"><font
+					id="LName" color="red" size=2>*</font></td>
+			</tr>
+			<tr>
+				<td class="textField"><input id="address" type="text"
+					name="Address" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()"><font
+					id="LName" color="red" size=2>*</font></td>
+			</tr>
+			<tr>
+				<td class="textField"><input id="zipcode" type="text"
+					name="zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
@@ -203,20 +179,8 @@ html,body {
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<button id="menu_button">მენიუს დამატება</button>
-					<table id="menu_table" cellpadding="3" cellspacing="1" border="0">
-						<tr>
-							<td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td>
-							<td><input type="text" spellcheck="false" placeholder="ფასი" /></td>
-						</tr>
-					</table>
-					<button id="menu_row_button">ახალი ველი</button>
-				</td>
-			</tr>
-			<tr>
 				<td><br> <input class="button" id="registerButton"
-					type="submit" value="დამატება" /></td>
+					type="submit" value="განაგრძეთ რეგისტრაცია" /></td>
 			</tr>
 		</table>
 	</form>
