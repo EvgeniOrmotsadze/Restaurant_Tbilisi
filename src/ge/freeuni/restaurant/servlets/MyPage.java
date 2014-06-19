@@ -38,18 +38,24 @@ public class MyPage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		User user = (User)request.getSession().getAttribute("user");
-		DBQuery db = new DBQuery();
-		/*ArrayList<Restaurant> res = new ArrayList<>();
-		try {
-			 res = db.getMyRestaurants(user.getID());
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(user == null){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("user-login.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			DBQuery db = new DBQuery();
+			ArrayList<Restaurant> res = new ArrayList<Restaurant>();
+			try {
+				res = db.getMyRestaurants(user.getID());
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("MyRestaurants", res);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
+			dispatcher.forward(request, response);
 		}
-		request.setAttribute("MyRestaurants", res);*/
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
-		dispatcher.forward(request, response);
 		
 		
 	}
