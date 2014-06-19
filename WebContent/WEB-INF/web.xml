@@ -92,4 +92,12 @@
     <servlet-name>AddPhotos</servlet-name>
     <url-pattern>/AddPhotos</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>ObjectShow</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.ObjectShow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ObjectShow</servlet-name>
+    <url-pattern>/ObjectShow</url-pattern>
+  </servlet-mapping>
 </web-app>
