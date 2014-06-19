@@ -1,3 +1,5 @@
+<%@page import="ge.freeuni.restaurant.controllers.DBQuery"%>
+<%@page import="ge.freeuni.restaurant.model.Restaurant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -145,6 +147,8 @@ html,body {
 
 <body>
 	<%@include file="menu-top.jsp"%>
+	<%Restaurant res = (Restaurant)request.getAttribute("myobject"); %>
+	
 	<table class="mainFrame" cellpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td class="mainFrame_margin"></td>
@@ -152,13 +156,10 @@ html,body {
 				<div class="objectW">
 					<table class="objectWT" cellpadding="0" cellspacing="0" border="0">
 						<tr>
-							<td class="object_title">დაკარგული სამოთხე</td>
-							<td class="rate"><img class="star"
-								src="assets/IMG/star_5.png" /> <img class="star"
-								src="assets/IMG/star_5.png" /> <img class="star"
-								src="assets/IMG/star_5.png" /> <img class="star"
-								src="assets/IMG/star_5.png" /> <img class="star"
-								src="assets/IMG/star_5.png" /></td>
+							<td class="object_title"><%=res.getName() %></td>
+							<td class="rate" id="stars-div">
+							
+							</td>
 						</tr>
 						<tr>
 							<td class="object_imageW"><img class="object_image"
@@ -169,12 +170,11 @@ html,body {
 									border="0">
 									<tr>
 										<td class="object_info_attr">მისამართი:</td>
-										<td class="object_info_val">თბილისი, ძმები კაკაბაძეების
-											ქ. №2</td>
+										<td class="object_info_val"><%=res.getAddress()%> </td>
 									</tr>
 									<tr>
 										<td class="object_info_attr">ტელეფონი:</td>
-										<td class="object_info_val">995 32 999207</td>
+										<td class="object_info_val"><%=res.getPhone()%></td>
 									</tr>
 									<tr>
 										<td class="object_info_attr">სამზარეულო:</td>
@@ -204,6 +204,72 @@ html,body {
 					</table>
 				</div>
 	</table>
+	
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
 
+var div = document.getElementById('stars-div');
+var stars = [],
+    starsCount = 5,
+    rating = <%= res.getAvgScore() %>;
+reload();
+
+function reload () {
+    stars = [];
+    div.innerHTML = '';
+    for (var i = 1; i <= starsCount; i++) {
+        (function (index) {
+            var img = new Image();
+            if (index <= rating) {
+                img.src = 'star-yellow.jpg';
+            } else {
+                img.src = 'star-white.jpg';
+            }
+            img.style.cursor = 'pointer';
+            stars.push(img);
+            div.appendChild(img);
+            
+            img.addEventListener('mouseover', function () {
+                var currentIndex = stars.indexOf(img);
+                for (var i = 0; i < stars.length; i++) {
+                    if (i <= currentIndex) {
+                        stars[i].src = 'star-yellow.jpg';
+                    } else {
+                        stars[i].src = 'star-white.jpg';
+                    }
+                }
+            });
+            img.addEventListener('mouseout', function () {
+                var currentIndex = stars.indexOf(img);
+                for (var i = 0; i < stars.length; i++) {
+                    if (i <= rating) {
+                        stars[i].src = 'star-yellow.jpg';
+                    } else {
+                        stars[i].src = 'star-white.jpg';
+                    }
+                }
+            });
+            
+            img.addEventListener('click', function () {
+                var currentIndex = stars.indexOf(img);
+                rating = currentIndex; 
+				callAjax(rating);
+                reload();
+            });
+        })(i);
+    }
+}
+	function callAjax(rating){
+		$.ajax({
+		    url: 'MakeAssessments',
+		    data: {star:rating, res_id:<%=res.getID()%>},
+		    dataType: "TEXT",
+		    cache: false,
+		    type: 'POST',
+		    success: function(data){
+		    }
+		 });
+	}
+       </script>
 </body>
 </html>
