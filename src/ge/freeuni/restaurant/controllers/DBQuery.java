@@ -105,18 +105,83 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.cordinate_x,re.cordinate_y,re.counter,"
-				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score"
-				+ "from restaurant.restaurants as re"
-				+"where re.user_id = " + user_id +";"; 
-		
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.cordinate_x,re.cordinate_y,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score "
+				+ "from restaurant.restaurants as re "
+				+ "where re.user_id = "
+				+ user_id + ";";
 		ResultSet rs = stmt.executeQuery(sql);
-		while(rs.next()){
+
+		while (rs.next()) {
 			Restaurant res1 = new Restaurant();
+			res1.setID(rs.getInt("re.res_id"));
 			res1.setName(rs.getString("re.name"));
-			//TODO
+			res1.setAddress(rs.getString("re.address"));
+			res1.setCategory(rs.getInt("re.category"));
+			res1.setLocation(rs.getString("re.location"));
+			res1.setPhone(rs.getString("re.phone"));
+			res1.setX(rs.getString("re.cordinate_x"));
+			res1.setY(rs.getString("re.cordinate_y"));
+			res1.setAvgScore(rs.getInt("score"));
 			res.add(res1);
 		}
+
 		return res;
 	}
+
+	public Restaurant getCurrentRestaurant(int res_id)
+			throws ClassNotFoundException, SQLException {
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		Restaurant res = new Restaurant();
+
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.cordinate_x,re.cordinate_y,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score "
+				+ "from restaurant.restaurants as re "
+				+ "where re.res_id = "
+				+ res_id + ";";
+		ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			res.setID(rs.getInt("re.res_id"));
+			res.setName(rs.getString("re.name"));
+			res.setAddress(rs.getString("re.address"));
+			res.setCategory(rs.getInt("re.category"));
+			res.setLocation(rs.getString("re.location"));
+			res.setPhone(rs.getString("re.phone"));
+			res.setX(rs.getString("re.cordinate_x"));
+			res.setY(rs.getString("re.cordinate_y"));
+			res.setAvgScore(rs.getInt("score"));
+		}
+		return res;
+
+	}
+
+	public boolean ifAlreadyAssessment(int res_id, int user_id)
+			throws SQLException, ClassNotFoundException {
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		String sql = "(select count(score) from restaurant.score where user_id = '"
+				+ user_id + "' and user_id ='" + res_id + "') as uscore ";
+		ResultSet rs = stmt.executeQuery(sql);
+		if (rs.getInt("uscore") == 0)
+			return false;
+		return true;
+	}
+
+	public void makeAssessment(int user_id, int res_id, int score)
+			throws ClassNotFoundException, SQLException {
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+
+		String sql = "insert into restaurant.score (user_id,res_id,score,createdate) "
+				+ "values('"
+				+ user_id
+				+ "','"
+				+ res_id
+				+ "','"
+				+ score
+				+ "',CURDATE())";
+		stmt.executeUpdate(sql);
+	}
+
 }

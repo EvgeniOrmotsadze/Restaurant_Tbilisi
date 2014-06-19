@@ -59,8 +59,6 @@
 
 <body>
 <table class="mainFrame" cellpadding="0" cellspacing="0" border="0">
-			
-				
 <table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
 						<tr>
 							<td class="object">
@@ -249,8 +247,6 @@
 							</td>
 						</tr>
 					</table>
-				
-				
 		</table>
 </body>
 </html>
