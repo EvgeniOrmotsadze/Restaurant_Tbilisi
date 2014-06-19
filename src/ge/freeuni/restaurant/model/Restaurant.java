@@ -9,7 +9,12 @@ public class Restaurant {
 	private String cordinate_x;
 	private String cordinate_y;
 	private int counter;
+	private int avg_score;
+	private int ID;
 	
+	public void setID(int ID){
+		this.ID = ID;
+	}
 	
 	public void setName(String name){
 		this.name = name;
@@ -32,8 +37,13 @@ public class Restaurant {
 	public void setY(String cordinate_y){
 		this.cordinate_y = cordinate_y;
 	}
+	
 	public void setCounter(int counter){
 		this.counter = counter;
+	}
+	
+	public void setAvgScore(int avg_score){
+		this.avg_score = avg_score;
 	}
 	public String getName(){
 		return this.name;
@@ -51,6 +61,10 @@ public class Restaurant {
 		return this.location;
 	}
 	
+	public int getID(){
+		return this.ID;
+	}
+	
 	public String getX(){
 		return this.cordinate_x;
 	}
@@ -59,6 +73,9 @@ public class Restaurant {
 	}
 	public int getCounter(){
 		return this.counter;
+	}
+	public int getAvgScore(){
+		return this.avg_score;
 	}
 
 }
