@@ -100,4 +100,12 @@
     <servlet-name>ObjectShow</servlet-name>
     <url-pattern>/ObjectShow</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>MakeAssessments</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.MakeAssessments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MakeAssessments</servlet-name>
+    <url-pattern>/MakeAssessments</url-pattern>
+  </servlet-mapping>
 </web-app>
