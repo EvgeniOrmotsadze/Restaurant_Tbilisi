@@ -1,5 +1,7 @@
 package ge.freeuni.restaurant.servlets;
 
+import ge.freeuni.restaurant.model.Restaurant;
+
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class AddPhotos extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AddPhotos() {
-		super();
+		super();1;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -45,22 +47,25 @@ public class AddPhotos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Restaurant restaurant = new Restaurant();
 		DiskFileItemFactory factory = new DiskFileItemFactory(200000, new File(
 				"/home/dato/Documents"));
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			Iterator<FileItem> iter = items.iterator();
+			int photoId = 1;
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 				if (!item.isFormField()) {
-					if(!item.getName().isEmpty()&&item.getSize()<=200000){
+					if (!item.getName().isEmpty() && item.getSize() <= 200000) {
 						byte[] byteRepresentation = item.get();
-						// to do yovel jerze byterepresentation unda shevinaxot bazashi suratad
-						// shesabamisi .jsp-shi ramdeni suratic gvaq imdeni byteRepresentation gveqneba
+						// to do byteRepresentation must be saved to disk
+						
 					}
 				}
 			}
