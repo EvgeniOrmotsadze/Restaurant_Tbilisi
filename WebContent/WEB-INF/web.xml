@@ -44,6 +44,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>PhotoGetterServlet</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.PhotoGetterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PhotoGetterServlet</servlet-name>
+    <url-pattern>/PhotoGetterServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>LoginServletForward</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.LoginServletForward</servlet-class>
@@ -84,7 +92,7 @@
     <servlet-name>ForwardRestaurantRegister</servlet-name>
     <url-pattern>/ForwardRestaurantRegister</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>AddPhotos</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.AddPhotos</servlet-class>
   </servlet>
@@ -92,7 +100,7 @@
     <servlet-name>AddPhotos</servlet-name>
     <url-pattern>/AddPhotos</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ObjectShow</servlet-name>
     <servlet-class>ge.freeuni.restaurant.servlets.ObjectShow</servlet-class>
   </servlet>
