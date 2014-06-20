@@ -65,7 +65,26 @@ public class AddPhotos extends HttpServlet {
 					if (!item.getName().isEmpty() && item.getSize() <= 200000) {
 						byte[] byteRepresentation = item.get();
 						// to do byteRepresentation must be saved to disk
-						
+						switch(photoId){
+		            	case 1: restaurant.setPhoto1Address("/home/dato/Documents/"+item.getName());
+		            			photoId++;
+		            		    break;
+		            	case 2: restaurant.setPhoto2Address("/home/dato/Documents/"+item.getName());
+		            			photoId++;
+            		    		break;
+		            	case 3: restaurant.setPhoto3Address("/home/dato/Documents/"+item.getName());
+		            			photoId++;
+		            			break;
+		            	case 4: restaurant.setPhoto4Address("/home/dato/Documents/"+item.getName());
+		            			photoId++;
+		            			break;
+		            	case 5: restaurant.setPhoto5Address("/home/dato/Documents/"+item.getName());
+				            	photoId++;		
+				            	break;
+		            	case 6: restaurant.setPhoto6Address("/home/dato/Documents/"+item.getName());
+			            	photoId++;		
+			            	break;
+		            	}
 					}
 				}
 			}
