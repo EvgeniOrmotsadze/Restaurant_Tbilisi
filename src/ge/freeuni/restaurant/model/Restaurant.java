@@ -130,5 +130,31 @@ public class Restaurant {
 		// TODO Auto-generated method stub
 		this.photo6Address = string;
 	}
+	
+	public String getPhoto1Address() {
+		return photo1Address;
+	}
+
+	public String getPhoto2Address() {
+		return photo2Address;
+	}
+
+	public String getPhoto3Address() {
+		return photo3Address;
+	}
+
+	public String getPhoto4Address() {
+		return photo4Address;
+	}
+
+	public String getPhoto5Address() {
+		return photo5Address;
+	}
+
+	public String getPhoto6Address() {
+		return photo6Address;
+	}
+
+	
 
 }
