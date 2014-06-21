@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-</head>
 <style>
 @import url(http://fonts.googleapis.com/css?family=Lato);
 
@@ -79,7 +78,7 @@ html,body {
 	width: 100%;
 }
 
-.object_map {
+#object_map {
 	height: 200px;
 }
 
@@ -146,6 +145,34 @@ html,body {
 }
 </style>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN64CaFtRHTmz4ALnh3XLvbpldKNjOUuo&amp;sensor=false"></script>
+
+<script type="text/javascript">
+function mapInit() {
+
+	console.log('mapInit fired');
+
+	var point = new google.maps.LatLng(41.541565, 45.013115);//avigot koordinatebi
+
+	var opts = {
+		zoom:	14,
+		scrollwheel: false,
+		center: point
+	};
+
+	window.map = new google.maps.Map(document.getElementById('object_map'), opts);
+
+	window.marker = new google.maps.Marker({
+		position: point,
+		map: window.map,
+		draggable: false,
+		title: 'Portal is here'
+	});
+}
+google.maps.event.addDomListener(window, 'load', mapInit);
+</script>
+</head>
 <body>
 	<%@include file="menu-top.jsp"%>
 	<%Restaurant res = (Restaurant)request.getAttribute("myobject"); %>
@@ -170,43 +197,40 @@ html,body {
 								<table class="object_infoT" cellpadding="0" cellspacing="0"
 									border="0">
 									<tr>
-										<td class="object_info_attr">მისამართი:</td>
+										<td class="object_info_attr">?????????:</td>
 										<td class="object_info_val"><%=res.getAddress()%> </td>
 									</tr>
 									<tr>
-										<td class="object_info_attr">ტელეფონი:</td>
+										<td class="object_info_attr">????????:</td>
 										<td class="object_info_val"><%=res.getPhone()%></td>
 									</tr>
 									<tr>
-										<td class="object_info_attr">სამზარეულო:</td>
-										<td class="object_info_val">ევროპული და ქართული</td>
+										<td class="object_info_attr">??????????:</td>
+										<td class="object_info_val">???????? ?? ???????</td>
 									</tr>
 									<tr>
-										<td class="object_info_attr">გართობა:</td>
-										<td class="object_info_val">ცოცხალი მუსიკა</td>
+										<td class="object_info_attr">???????:</td>
+										<td class="object_info_val">??????? ??????</td>
 									</tr>
 									<tr>
-										<td class="object_info_attr">დამატებითი ინფორმაცია:</td>
-										<td class="object_info_val">ყოველ სტუმარს, რომელიც
-											განახორციელებს 50 ლარის ან მეტი ღირებულების შეკვეთას
-											გადაეცემა ბარათი, რომლის მეშვეობითაც იგი შეძლებს ერთი თვის
-											განმავლობაში ისარგებლოს რესტორანში დამზადებულ კერძებზე 20%
-											-ის ფასდაკლებით.</td>
+										<td class="object_info_attr">?????????? ??????????:</td>
+										<td class="object_info_val">????? ???????, ???????
+											?????????????? 50 ????? ?? ???? ??????????? ????????
+											????????? ??????, ?????? ??????????? ??? ??????? ???? ????
+											???????????? ?????????? ?????????? ?????????? ???????? 20%
+											-?? ???????????.</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="object_map" colspan="2"><iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190556.5817750593!2d44.80709555!3d41.73245925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e64f626b%3A0x61d084ede2576ea3!2sTbilisi!5e0!3m2!1sen!2s!4v1402518438106"
-									width="100%" height="100%" frameborder="0" style="border: 0"></iframe>
+							<td id="object_map" colspan="2">
+								
 							</td>
 						</tr>
 					</table>
 				</div>
 	</table>
-	
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 var div = document.getElementById('stars-div');

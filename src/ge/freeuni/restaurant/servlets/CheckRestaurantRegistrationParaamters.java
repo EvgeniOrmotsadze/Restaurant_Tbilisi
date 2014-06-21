@@ -74,8 +74,8 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			request.getRequestDispatcher("mypage.jsp").forward(request, response);
-
+			
+			request.getRequestDispatcher("restaurant-register.jsp").forward(request, response);
 		}
 		
 	}
