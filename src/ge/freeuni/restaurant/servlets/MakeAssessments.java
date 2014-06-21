@@ -52,19 +52,21 @@ public class MakeAssessments extends HttpServlet {
 			boolean exist = false;
 			try {
 				exist = db.ifAlreadyAssessment(res_id, user_id);
-				System.out.print(exist);
 			} catch (ClassNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			
-			try {
-				db.makeAssessment(user_id, res_id, star);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if(exist){
+				request.setAttribute("alreadyAss", exist);
+			}else{
+				try {
+					db.makeAssessment(user_id, res_id, star);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
