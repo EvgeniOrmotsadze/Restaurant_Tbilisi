@@ -1,3 +1,4 @@
+<%@page import="javax.swing.text.StyledEditorKit.BoldAction"%>
 <%@page import="ge.freeuni.restaurant.controllers.DBQuery"%>
 <%@page import="ge.freeuni.restaurant.model.Restaurant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -211,7 +212,7 @@ html,body {
 var div = document.getElementById('stars-div');
 var stars = [],
     starsCount = 5,
-    rating = <%= res.getAvgScore() %>;
+    rating = <%=res.getAvgScore() %>;
 reload();
 
 function reload () {
@@ -228,8 +229,10 @@ function reload () {
             img.style.cursor = 'pointer';
             stars.push(img);
             div.appendChild(img);
-            
-            img.addEventListener('mouseover', function () {
+
+			<% System.out.print(request.getAttribute("alreadyAss"));
+			if(request.getAttribute("alreadyAss") == null) { %>
+             img.addEventListener('mouseover', function () {
                 var currentIndex = stars.indexOf(img);
                 for (var i = 0; i < stars.length; i++) {
                     if (i <= currentIndex) {
@@ -249,13 +252,13 @@ function reload () {
                     }
                 }
             });
-            
             img.addEventListener('click', function () {
                 var currentIndex = stars.indexOf(img);
-                rating = currentIndex; 
+                rating = currentIndex +1; 
 				callAjax(rating);
                 reload();
             });
+            <%}%>
         })(i);
     }
 }
@@ -270,6 +273,7 @@ function reload () {
 		    }
 		 });
 	}
+	
        </script>
 </body>
 </html>
