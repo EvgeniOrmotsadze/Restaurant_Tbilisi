@@ -36,11 +36,13 @@ public class DBConnection {
 					"user_id  int not null,"+
 					"name varchar(255) not null," +
 					"address varchar(255)," + 
+					"address_eng varchar(255)," + 
 					"category int," + 
 					"phone varchar(255),"+
 					"location varchar(255)," +
 					"lactitude decimal,"+
 					"longtitude decimal,"+
+					"Zip_Code varchar(255),,"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";

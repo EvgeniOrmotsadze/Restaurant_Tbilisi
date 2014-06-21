@@ -60,18 +60,24 @@ html {
 								dataTextField : "text",
 								dataValueField : "value",
 								dataSource : [ {
-									text : "რესტორნები",
+									text : "რესტორანი",
 									value : "1"
 								}, {
-									text : "კაფე–ბარები",
+									text : "ბარი",
 									value : "2"
 								}, {
-									text : "სახინკლეები",
+									text : "კაფე",
 									value : "3"
 								}, {
 									text : "სწრაფი კვება",
 									value : "4"
-								} ],
+								}, {
+									text : "პაბი",
+									value : "5"
+								}, {
+									text : "კლუბი",
+									value : "6"
+								}],
 								filter : "contains",
 								suggest : true,
 								index : 3
