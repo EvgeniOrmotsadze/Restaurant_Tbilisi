@@ -11,7 +11,7 @@ public class DBConnection {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/restaurant";
 	static final String USER = "root";
-	static final String PASS = "12345";
+	static final String PASS = "pass";
 	
 	public static void main(String[] args) {
 		Connection conn = null;

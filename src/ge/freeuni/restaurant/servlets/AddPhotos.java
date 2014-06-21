@@ -29,7 +29,7 @@ public class AddPhotos extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AddPhotos() {
-		super();1;
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

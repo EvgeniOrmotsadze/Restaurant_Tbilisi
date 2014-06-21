@@ -146,26 +146,26 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField">
-					<select>
-						<option>ტიპი</option>
-						<option>რესტორანი</option>
-						<option>ბარი</option>
-						<option>კაფე</option>
-						<option>სწრაფი კვება</option>
-						<option>პაბი</option>
-						<option>კლუბი</option>
+					<select name="Category">
+						<option value="1">ტიპი</option>
+						<option value="1">რესტორანი</option>
+						<option value="1">ბარი</option>
+						<option value="1">კაფე</option>
+						<option value="1">სწრაფი კვება</option>
+						<option value="1">პაბი</option>
+						<option value="1">კლუბი</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td class="textField">
 					<select>
-						<option>მდებარეობა</option>
-						<option>საბურთალო</option>
-						<option>ვაკე</option>
-						<option>მთაწმინდა</option>
-						<option>დიდუბე</option>
-						<option>ვარკეთილი</option>
+						<option value="1">მდებარეობა</option>
+						<option value="1">საბურთალო</option>
+						<option value="1">ვაკე</option>
+						<option value="1">მთაწმინდა</option>
+						<option value="1">დიდუბე</option>
+						<option value="1">ვარკეთილი</option>
 					</select>
 				</td>
 			</tr>

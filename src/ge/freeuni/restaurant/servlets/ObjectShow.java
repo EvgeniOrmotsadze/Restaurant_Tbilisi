@@ -2,6 +2,7 @@ package ge.freeuni.restaurant.servlets;
 
 import ge.freeuni.restaurant.controllers.DBQuery;
 import ge.freeuni.restaurant.model.Restaurant;
+import ge.freeuni.restaurant.model.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,14 +43,33 @@ public class ObjectShow extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		DBQuery query = new DBQuery();
 		Restaurant res = new Restaurant();
+		
 		try {
+		
 		res = query.getCurrentRestaurant(id);
+		
+		System.out.print(res.getID());
+		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		User user = (User) request.getSession().getAttribute("user");
+		int user_id = user.getID();
+	
+		DBQuery db = new DBQuery();
+		boolean exist = false;
+		try {
+			exist = db.ifAlreadyAssessment(id, user_id);
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println(exist);
 		request.setAttribute("myobject", res);
+		if(exist) request.setAttribute("alreadyAss", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("object-page.jsp");
 		dispatcher.forward(request, response);
 	}

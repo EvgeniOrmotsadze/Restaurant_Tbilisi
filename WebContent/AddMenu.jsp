@@ -61,10 +61,14 @@ html,body {
 	opacity: 0.4;
 }
 
-.table {
-	position: relative;
-	left: 450px;
-	top: 100px;
+.menu-table {
+	position: absolute;
+	top: calc(40% - 40px);
+	left: calc(30% - 40px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
 }
 
 .table>tr#cordinate {
@@ -114,8 +118,8 @@ html,body {
 </script>
 </head>
 <body>
-	<table class="table">
-		<%@include file="menu-top.jsp"%>
+<%@include file="menu-top.jsp"%>
+	<table class="menu-table">
 		<tr>
 			<td>
 				<button id="menu_button">მენიუს დამატება</button>
@@ -131,7 +135,7 @@ html,body {
 		</tr>
 		<tr>
 			<td><br> <input class="button" id="registerButton"
-				type="submit" value="განაგრძეთ რეგისტრაცია" /></td>
+				type="submit" value="დაასრულეთ  რეგისტრაცია" /></td>
 		</tr>
 	</table>
 </body>

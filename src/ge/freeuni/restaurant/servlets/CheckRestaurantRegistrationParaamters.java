@@ -55,7 +55,7 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(!checkParamater(request)){
+		if(false){
 			request.getRequestDispatcher("restaurant-register.jsp").forward(request, response);
 		}else{
 			Restaurant res = new Restaurant();
@@ -63,8 +63,6 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			res.setCategory(Integer.parseInt(request.getParameter("Category")));
 			res.setLocation(request.getParameter("Location"));
 			res.setPhone(request.getParameter("Phone"));
-			res.setX(request.getParameter("Cordinate_X"));
-			res.setY(request.getParameter("Cordinate_Y"));
 			res.setAddress(request.getParameter("Address"));
 			DBQuery db = new DBQuery();
 			try {
