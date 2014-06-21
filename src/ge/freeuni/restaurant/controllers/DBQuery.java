@@ -160,12 +160,17 @@ public class DBQuery {
 			throws SQLException, ClassNotFoundException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "(select count(score) from restaurant.score where user_id = '"
-				+ user_id + "' and user_id ='" + res_id + "') as uscore ";
+		
+		String sql = "select count(score) as uscore from restaurant.score where "
+					 +"user_id = '"+ user_id+"' and res_id = '"+res_id+"';";
+		
 		ResultSet rs = stmt.executeQuery(sql);
-		if (rs.getInt("uscore") == 0)
-			return false;
-		return true;
+		while(rs.next()){
+			if(rs.getInt("uscore") > 0){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void makeAssessment(int user_id, int res_id, int score)
