@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import org.apache.catalina.util.Base64;
 
+@SuppressWarnings("deprecation")
 public class Restaurant {
 	private String name;
 	private String address;
@@ -20,19 +21,28 @@ public class Restaurant {
 	private String photo4Address;
 	private String photo5Address;
 	private String photo6Address;
-	private String zipcode;
-	private String GoogleAddress;
-
+	private String zip_code;
+	private String address_eng;
+	private String lactitude;
+	private String longtitude;
+	
 	public void setID(int ID) {
 		this.ID = ID;
 	}
 	
-	public void setZip(String zipcode){
-		this.zipcode = zipcode;
+	public void setLac(String lactitude){
+		this.lactitude=lactitude;
 	}
 	
-	public void setGoogle(String GoogleAddress){
-		this.GoogleAddress =  GoogleAddress;
+	public void setLng(String longtitude){
+		this.longtitude=longtitude;
+	}
+	public void setZip(String zip_code){
+		this.zip_code = zip_code;
+	}
+	
+	public void setGoogle(String address_eng){
+		this.address_eng =  address_eng;
 	}
 	
 	public void setName(String name) {
@@ -73,7 +83,7 @@ public class Restaurant {
 	}
 	
 	public String getGoogle(){
-		return this.GoogleAddress;
+		return this.address_eng;
 	}
 	
 	public int getCategory() {
@@ -102,7 +112,14 @@ public class Restaurant {
 	}
 	
 	public String getZip(){
-		return this.zipcode;
+		return this.zip_code;
+	}
+	
+	public String getLac(){
+		return this.lactitude;
+	}
+	public String getLng(){
+		return this.longtitude;
 	}
 
 	public void setPhoto1Address(Blob string) throws SQLException {

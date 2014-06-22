@@ -19,10 +19,9 @@ public class AddressToCoordinates {
 	 * "address,city,state,zipcode". Here address means "street number + route"
 	 * .
 	 */ 
-	public String fullAddress="45 Shota Rustaveli Street Tbilisi 0108, Georgia";
+	public static String fullAddress="45 Shota Rustaveli Street Tbilisi 0108, Georgia";
 	public GoogleResponse convertToLatLong(String fullAddress)
 			throws IOException {
-		fullAddress=this.fullAddress;
 		URL url = new URL(URL + "?address="
 				+ URLEncoder.encode(fullAddress, "UTF-8") + "&sensor=false");
 		URLConnection conn = url.openConnection();
@@ -51,11 +50,44 @@ public class AddressToCoordinates {
 		return response;
 
 	}
+	
+	public String returnLat(String fullAddress) throws IOException{
+		String lat="";
+		GoogleResponse res = new AddressToCoordinates()
+		.convertToLatLong(fullAddress);
+		if (res.getStatus().equals("OK")) {
+			for (Result result : res.getResults()) {
+				
+				lat= result.getGeometry().getLocation().getLat();
+			}
+		} else {
+			System.out.println(res.getStatus());
+		}
+		return lat;
 
-	public static void main(String[] args) throws IOException {
+}
+	public String returnLng(String fullAddress) throws IOException{
+		String lng="";
+		GoogleResponse res = new AddressToCoordinates()
+		.convertToLatLong(fullAddress);
+		if (res.getStatus().equals("OK")) {
+			for (Result result : res.getResults()) {
+				
+				lng= result.getGeometry().getLocation().getLng();
+			}
+		} else {
+			System.out.println(res.getStatus());
+		}
+		return lng;
+
+}
+	
+	
+
+/**	public static void main(String[] args) throws IOException {
 
 		GoogleResponse res = new AddressToCoordinates()
-				.convertToLatLong("Apollo Bunder,Mumbai ,Maharashtra, India");
+				.convertToLatLong(fullAddress);
 		if (res.getStatus().equals("OK")) {
 			for (Result result : res.getResults()) {
 				System.out.println("Lattitude of address is :"
@@ -67,6 +99,6 @@ public class AddressToCoordinates {
 			System.out.println(res.getStatus());
 		}
 
-	}
+	}*/
 
 }

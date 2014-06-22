@@ -42,7 +42,7 @@ public class DBConnection {
 					"location varchar(255)," +
 					"lactitude decimal,"+
 					"longtitude decimal,"+
-					"Zip_Code varchar(255),"+
+					"zip_Code varchar(255),"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";
