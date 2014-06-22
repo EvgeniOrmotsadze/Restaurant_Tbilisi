@@ -50,52 +50,7 @@ public class AddPhotos extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Restaurant restaurant = new Restaurant();
-		DiskFileItemFactory factory = new DiskFileItemFactory(200000, new File(
-				"/home/dato/Documents"));
-		ServletFileUpload upload = new ServletFileUpload(factory);
-		try {
-			List<FileItem> items = upload.parseRequest(request);
-			Iterator<FileItem> iter = items.iterator();
-			int photoId = 1;
-			while (iter.hasNext()) {
-				FileItem item = (FileItem) iter.next();
-				if (!item.isFormField()) {
-					if (!item.getName().isEmpty() && item.getSize() <= 200000) {
-						byte[] byteRepresentation = item.get();
-						// to do byteRepresentation must be saved to disk
-						switch(photoId){
-		            	case 1: restaurant.setPhoto1Address("/home/dato/Documents/"+item.getName());
-		            			photoId++;
-		            		    break;
-		            	case 2: restaurant.setPhoto2Address("/home/dato/Documents/"+item.getName());
-		            			photoId++;
-            		    		break;
-		            	case 3: restaurant.setPhoto3Address("/home/dato/Documents/"+item.getName());
-		            			photoId++;
-		            			break;
-		            	case 4: restaurant.setPhoto4Address("/home/dato/Documents/"+item.getName());
-		            			photoId++;
-		            			break;
-		            	case 5: restaurant.setPhoto5Address("/home/dato/Documents/"+item.getName());
-				            	photoId++;		
-				            	break;
-		            	case 6: restaurant.setPhoto6Address("/home/dato/Documents/"+item.getName());
-			            	photoId++;		
-			            	break;
-		            	}
-					}
-				}
-			}
-
-		} catch (FileUploadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 }
