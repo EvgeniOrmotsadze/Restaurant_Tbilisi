@@ -5,13 +5,17 @@ import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  * Servlet implementation class CheckRestaurantRegistrationParaamters
@@ -45,9 +49,11 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 	private boolean checkParamater(HttpServletRequest request) {
 		if (request.getParameter("Name").isEmpty()
 				|| request.getParameter("Address").isEmpty()
+				|| request.getParameter("GoogleAddress").isEmpty()
+				||request.getParameter("Zipcode").isEmpty()
 				|| request.getParameter("Category").isEmpty()
 				|| request.getParameter("Phone").isEmpty()
-				|| request.getParameter("Location").isEmpty()) {
+				|| request.getParameter("Location").isEmpty()){
 			return false;
 		}
 		return true;
@@ -60,23 +66,26 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 		}else{
 			Restaurant res = new Restaurant();
 			res.setName(request.getParameter("Name"));
+			res.setGoogle(request.getParameter("GoogleAddress"));
+			res.setZip(request.getParameter("Zipcode"));
 			res.setCategory(Integer.parseInt(request.getParameter("Category")));
 			res.setLocation(request.getParameter("Location"));
 			res.setPhone(request.getParameter("Phone"));
 			res.setAddress(request.getParameter("Address"));
 			DBQuery db = new DBQuery();
+			int lastid = 0;
 			try {
 				User user = (User)request.getSession().getAttribute("user");
 				//db.getUser(user.getMail(), user.getPassword());
-				db.AddRestauratns(res, user.getID());
+				lastid = db.AddRestauratns(res, user.getID());
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			request.getRequestDispatcher("restaurant-register.jsp").forward(request, response);
+			request.setAttribute("lastid", lastid);
+			System.out.println(lastid);
+			request.getRequestDispatcher("AddMenu.jsp").forward(request, response);
 		}
-		
 	}
 }

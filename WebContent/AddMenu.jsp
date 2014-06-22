@@ -112,13 +112,14 @@ html,body {
 						});
 						$("#menu_row_button").click(function(event) {
 							event.preventDefault();
-							$("#menu_table").append('<tr><td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
+							$("#menu_table").append('<tr><td><input name="dish[]" type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input name="menu[]" type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
 							});
 					});
 </script>
 </head>
 <body>
 <%@include file="menu-top.jsp"%>
+	<form action="AddMenuServlet" method="post" enctype="multipart/form-data">
 	<table class="menu-table">
 		<tr>
 			<td>
@@ -134,9 +135,13 @@ html,body {
 			</td>
 		</tr>
 		<tr>
-			<td><br> <input class="button" id="registerButton"
+			<td><br> 
+			<input type="file" name="images[]" multiple />
+			<input type="hidden" name="lastid" value='<%=request.getAttribute("lastid") %>' />
+			<input class="button" id="registerButton"
 				type="submit" value="დაასრულეთ  რეგისტრაცია" /></td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>

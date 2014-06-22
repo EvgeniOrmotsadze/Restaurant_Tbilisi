@@ -1,13 +1,16 @@
 package ge.freeuni.restaurant.model;
 
+import java.sql.Blob;
+import java.sql.SQLException;
+
+import org.apache.catalina.util.Base64;
+
 public class Restaurant {
 	private String name;
 	private String address;
 	private int category;
 	private String phone;
 	private String location;
-	private String cordinate_x;
-	private String cordinate_y;
 	private int counter;
 	private int avg_score;
 	private int ID;
@@ -17,11 +20,21 @@ public class Restaurant {
 	private String photo4Address;
 	private String photo5Address;
 	private String photo6Address;
+	private String zipcode;
+	private String GoogleAddress;
 
 	public void setID(int ID) {
 		this.ID = ID;
 	}
-
+	
+	public void setZip(String zipcode){
+		this.zipcode = zipcode;
+	}
+	
+	public void setGoogle(String GoogleAddress){
+		this.GoogleAddress =  GoogleAddress;
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -42,13 +55,6 @@ public class Restaurant {
 		this.location = location;
 	}
 
-	public void setX(String cordinate_x) {
-		this.cordinate_x = cordinate_x;
-	}
-
-	public void setY(String cordinate_y) {
-		this.cordinate_y = cordinate_y;
-	}
 
 	public void setCounter(int counter) {
 		this.counter = counter;
@@ -65,7 +71,11 @@ public class Restaurant {
 	public String getAddress() {
 		return this.address;
 	}
-
+	
+	public String getGoogle(){
+		return this.GoogleAddress;
+	}
+	
 	public int getCategory() {
 		return this.category;
 	}
@@ -82,13 +92,6 @@ public class Restaurant {
 		return this.ID;
 	}
 
-	public String getX() {
-		return this.cordinate_x;
-	}
-
-	public String getY() {
-		return this.cordinate_y;
-	}
 
 	public int getCounter() {
 		return this.counter;
@@ -97,10 +100,19 @@ public class Restaurant {
 	public int getAvgScore() {
 		return this.avg_score;
 	}
+	
+	public String getZip(){
+		return this.zipcode;
+	}
 
-	public void setPhoto1Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo1Address = string;
+	public void setPhoto1Address(Blob string) throws SQLException {
+		if (string == null) {
+			this.photo1Address = "";
+			return;
+		}
+		byte[] pict = string.getBytes(1, (int)string.length());
+		String stringToStore = new String(Base64.encode(pict));
+		this.photo1Address = stringToStore;
 
 	}
 
