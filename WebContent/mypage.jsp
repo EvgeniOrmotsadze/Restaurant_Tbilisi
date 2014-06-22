@@ -85,7 +85,7 @@ html,body {
 
 .object_image {
 	display: block;
-	width: 100%;
+	width: 330px;
 	height: 120px;
 }
 
@@ -123,7 +123,7 @@ html,body {
 					<div class="object_title"> <%=arr.get(i).getName()%> </div>
 					<div class="object_imageW">
 						<img class="object_image"
-							src="data:image/gif;base64,<%=arr.get(i).getPhoto1Address() %>" />
+							src="data:image/gif;base64,<%=arr.get(i).getPhoto1Address()%>" />
 					</div>
 					<div class="rate">
 					 <%for(int m = 0; m < 5 - arr.get(i).getAvgScore(); m ++){ %>
@@ -136,6 +136,7 @@ html,body {
 				</td>
 			</tr>
 			<% }%>
+			<tr> </tr>
 		</table>
 	<%
 		}

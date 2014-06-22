@@ -12,8 +12,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/user/Downloads/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Downloads/jackson-core-asl-1.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Downloads/jackson-mapper-asl-1.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jackson-core-asl-1.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jackson-mapper-asl-1.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

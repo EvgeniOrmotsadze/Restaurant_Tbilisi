@@ -150,19 +150,14 @@ html,body {
 
 <script type="text/javascript">
 function mapInit() {
-
 	console.log('mapInit fired');
-
 	var point = new google.maps.LatLng(41.541565, 45.013115);//avigot koordinatebi
-
 	var opts = {
 		zoom:	14,
 		scrollwheel: false,
 		center: point
 	};
-
 	window.map = new google.maps.Map(document.getElementById('object_map'), opts);
-
 	window.marker = new google.maps.Marker({
 		position: point,
 		map: window.map,
@@ -191,7 +186,7 @@ google.maps.event.addDomListener(window, 'load', mapInit);
 						</tr>
 						<tr>
 							<td class="object_imageW"><img class="object_image"
-								src="http://intbilisi.info/uploads/posts/2014-01/1388850917_paradiselost_photo2.jpg" />
+								src="data:image/gif;base64,<%=res.getPhoto1Address()%>" />
 							</td>
 							<td class="object_info">
 								<table class="object_infoT" cellpadding="0" cellspacing="0"
@@ -267,7 +262,7 @@ function reload () {
                 }
             });
             img.addEventListener('mouseout', function () {
-                var currentIndex = stars.indexOf(img);
+              //  var currentIndex = stars.indexOf(img);
                 for (var i = 0; i < stars.length; i++) {
                     if (i <= rating) {
                         stars[i].src = 'star-yellow.jpg';
@@ -297,7 +292,6 @@ function reload () {
 		    }
 		 });
 	}
-	
        </script>
 </body>
 </html>
