@@ -5,7 +5,6 @@ import ge.freeuni.restaurant.controllers.DBQuery;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
