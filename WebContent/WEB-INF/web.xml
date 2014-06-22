@@ -116,4 +116,13 @@
     <servlet-name>MakeAssessments</servlet-name>
     <url-pattern>/MakeAssessments</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AddMenuServlet</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.AddMenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMenuServlet</servlet-name>
+    <url-pattern>/AddMenuServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
