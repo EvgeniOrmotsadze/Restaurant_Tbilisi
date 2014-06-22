@@ -136,36 +136,36 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField"><input id="address" type="text"
-					name="Address" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()"><font
+					name="GoogleAddress" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="zipcode" type="text"
-					name="zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()"><font
+					name="Zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField">
 					<select name="Category">
-						<option value="1">ტიპი</option>
+						<option >ტიპი</option>
 						<option value="1">რესტორანი</option>
-						<option value="1">ბარი</option>
-						<option value="1">კაფე</option>
-						<option value="1">სწრაფი კვება</option>
-						<option value="1">პაბი</option>
-						<option value="1">კლუბი</option>
+						<option value="2">ბარი</option>
+						<option value="3">კაფე</option>
+						<option value="4">სწრაფი კვება</option>
+						<option value="5">პაბი</option>
+						<option value="6">კლუბი</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td class="textField">
-					<select>
-						<option value="1">მდებარეობა</option>
+				<td class="textField" >
+					<select name = "Location">
+						<option>მდებარეობა</option>
 						<option value="1">საბურთალო</option>
-						<option value="1">ვაკე</option>
-						<option value="1">მთაწმინდა</option>
-						<option value="1">დიდუბე</option>
-						<option value="1">ვარკეთილი</option>
+						<option value="2">ვაკე</option>
+						<option value="3">მთაწმინდა</option>
+						<option value="4">დიდუბე</option>
+						<option value="5">ვარკეთილი</option>
 					</select>
 				</td>
 			</tr>
@@ -175,7 +175,7 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField">
-					<input type="file" multiple="true" />
+					<input type="file" name="Images" multiple />
 				</td>
 			</tr>
 			<tr>
