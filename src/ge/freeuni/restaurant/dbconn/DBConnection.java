@@ -11,7 +11,7 @@ public class DBConnection {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost/restaurant";
 	static final String USER = "root";
-	static final String PASS = "pass";
+	static final String PASS = "12345";
 	
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -42,7 +42,7 @@ public class DBConnection {
 					"location varchar(255)," +
 					"lactitude decimal,"+
 					"longtitude decimal,"+
-					"Zip_Code varchar(255),,"+
+					"Zip_Code varchar(255),"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";
@@ -60,7 +60,7 @@ public class DBConnection {
 			String sql4 = " CREATE table IF NOT EXISTS picture("+
 						 "id int not null auto_increment,"+
 						 "res_id int,"+
-						 "name varchar(255),"+
+						 "name mediumblob,"+
 						 "primary key(id),"+
 						 "foreign key(res_id) references restaurants(res_id));";
 			System.out.println("create picture table");
