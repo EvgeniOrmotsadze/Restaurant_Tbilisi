@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -148,7 +149,7 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		Restaurant res = new Restaurant();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.counter, "
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.lactitude,re.longtitude,re.counter, "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
 				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
@@ -163,6 +164,8 @@ public class DBQuery {
 			res.setLocation(rs.getString("re.location"));
 			res.setPhone(rs.getString("re.phone"));
 			res.setAvgScore(rs.getInt("score"));
+			res.setLac(rs.getString("re.lactitude"));
+			res.setLng(rs.getString("re.longtitude"));
 			res.setPhoto1Address(rs.getBlob("picture"));
 		}
 		return res;
