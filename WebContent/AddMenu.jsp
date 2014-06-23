@@ -148,7 +148,7 @@ html,body {
 						});
 						$("#menu_row_button").click(function(event) {
 							event.preventDefault();
-							$("#menu_table").append('<tr><td><input name="dish[]" type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input name="menu[]" type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
+							$("#menu_table").append('<tr><td><input name="dish[]" type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input name="price[]" type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
 							});
 					});
 </script>
@@ -162,8 +162,7 @@ html,body {
 				<button id="menu_button">მენიუს დამატება</button>
 				<table id="menu_table" cellpadding="3" cellspacing="1" border="0">
 					<tr>
-						<td><input type="text" spellcheck="false"
-							placeholder="კერძის დასახელება" /></td>
+						<td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td>
 						<td><input type="text" spellcheck="false" placeholder="ფასი" /></td>
 					</tr>
 				</table>
