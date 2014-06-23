@@ -2,6 +2,7 @@ package ge.freeuni.restaurant.controllers;
 
 import ge.freeuni.restaurant.dbconn.DBprovider;
 
+import ge.freeuni.restaurant.model.Menu;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
@@ -227,5 +228,24 @@ public class DBQuery {
 		return res;	
 	}
 	
+	public ArrayList<Menu> takeMenuByRestaurant(int res_id) throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Menu> menu = new ArrayList<Menu>();
+		
+		String query = "select id,res_id,foodname,foodprice "
+					   + "from restaurant.menu "
+					   +"where res_id = '"+res_id+"';";
+		ResultSet rs=stmt.executeQuery(query);
+		while (rs.next()) {
+			Menu mm=new Menu();
+			mm.setID(rs.getInt("id"));
+			mm.setResId(rs.getInt("res_id"));
+			mm.setDish(rs.getString("foodname"));
+			mm.setPrice(rs.getString("foodprice"));
+			menu.add(mm);
+		}
+		return menu;
+	}
 	
 }

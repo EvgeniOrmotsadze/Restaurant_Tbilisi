@@ -1,8 +1,9 @@
-
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.swing.text.StyledEditorKit.BoldAction"%>
 <%@page import="ge.freeuni.restaurant.controllers.DBQuery"%>
 <%@page import="ge.freeuni.restaurant.model.Restaurant"%>
+<%@page import="ge.freeuni.restaurant.model.Menu"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -317,9 +318,14 @@ function reload () {
        </script>
        
 <script type="text/javascript">
+<%
+@SuppressWarnings("unchecked")
+ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");
+	
+%>
        function callExtJsMenu(){
+    	 <%  if(menu.size() > 0){ %>
     	   Ext.onReady(function(){
-
     		   Ext.define('MyApp.model.Dish', {
     		        extend: 'Ext.data.Model',
     		        fields: [{
@@ -344,21 +350,23 @@ function reload () {
     		        storeId: 'markStore',
     		        data: {
     		            items: [
-    	    		     <% for(int k = 1; k  < 3; k++){ %>       
+    	    		     <%
+    	    		     int ms = menu.size() -1;
+    	    		     for(int k = 1; k  < ms ; k++){
+    	    		     %>       
     	    		     {
     		                id: <%=k%>,
-    		                dish: "ხაჭაპური",
-    		                priceG: "10 GEL",
+    		                dish: "<%=menu.get(k).getDish()%>",
+    		                priceG: "<%=menu.get(k).getPrice()%>",
     		                priceS: "6.73 $"
     		           	 },
     		           	 <%}%>
     		             {
-     		                id: 3,
-     		                dish: "ხაჭაპური",
-     		                priceG: "10 GEL",
+     		                id: <%=ms%>,
+     		                dish: "<%=menu.get(ms).getDish()%>",
+     		                priceG: "<%=menu.get(ms).getPrice()%>",
      		                priceS: "6.73 $"
      		           	 }
-    		           	 
     		            ]
     		        },
     		        proxy: {
@@ -403,7 +411,11 @@ function reload () {
     	        });
    	        	win.show();
     		  });
+    	   <%}else{ %>
+    	    alert("მენიუ ცარიელია");
+    	    <%}%>
        }
+      
    </script>
 </body>
 </html>

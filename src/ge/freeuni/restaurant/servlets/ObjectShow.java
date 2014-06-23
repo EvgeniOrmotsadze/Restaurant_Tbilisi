@@ -1,11 +1,13 @@
 package ge.freeuni.restaurant.servlets;
 
 import ge.freeuni.restaurant.controllers.DBQuery;
+import ge.freeuni.restaurant.model.Menu;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -63,10 +65,17 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		ArrayList<Menu> menu = new ArrayList<Menu>();
+		try {
+			menu = query.takeMenuByRestaurant(res.getID());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		
-		 
-		
+		System.out.println(menu.size());
+			request.setAttribute("menu", menu);
 		request.setAttribute("myobject", res);
 		if(exist) request.setAttribute("alreadyAss", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("object-page.jsp");
