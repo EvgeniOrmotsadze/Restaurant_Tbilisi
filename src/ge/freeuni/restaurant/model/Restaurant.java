@@ -16,11 +16,6 @@ public class Restaurant {
 	private int avg_score;
 	private int ID;
 	private String photo1Address;
-	private String photo2Address;
-	private String photo3Address;
-	private String photo4Address;
-	private String photo5Address;
-	private String photo6Address;
 	private String zip_code;
 	private String address_eng;
 	private String lactitude;
@@ -150,57 +145,10 @@ public class Restaurant {
 		this.photo1Address = stringToStore;
 	}
 
-	public void setPhoto2Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo2Address = string;
-
-	}
-
-	public void setPhoto3Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo3Address = string;
-
-	}
-
-	public void setPhoto4Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo4Address = string;
-	}
-
-	public void setPhoto5Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo5Address = string;
-	}
-
-	public void setPhoto6Address(String string) {
-		// TODO Auto-generated method stub
-		this.photo6Address = string;
-	}
 	
 	public String getPhoto1Address() {
 		return photo1Address;
 	}
 
-	public String getPhoto2Address() {
-		return photo2Address;
-	}
-
-	public String getPhoto3Address() {
-		return photo3Address;
-	}
-
-	public String getPhoto4Address() {
-		return photo4Address;
-	}
-
-	public String getPhoto5Address() {
-		return photo5Address;
-	}
-
-	public String getPhoto6Address() {
-		return photo6Address;
-	}
-
-	
 
 }

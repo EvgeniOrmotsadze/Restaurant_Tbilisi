@@ -82,7 +82,7 @@ public class DBQuery {
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,category,phone,location,lactitude,longtitude,Zip_code)"
+		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,category,phone,location,lactitude,longtitude,zip_Code,additional_info,cuisine)"
 				+ "values (null,'"
 				+ user_id
 				+ "','"
@@ -101,6 +101,10 @@ public class DBQuery {
 				+ res.getLng()
 				+ "','"
 				+ res.getZip()
+				+ "','"
+				+ res.getAdditionalInfo()
+				+ "','"
+				+res.getCuisine()
 				+ "');";
 		
 		stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
@@ -297,7 +301,9 @@ public class DBQuery {
 			Picture picture = new Picture();
 			picture.setID(rs.getInt("id"));
 			picture.setResId(rs.getInt("res_id"));
+			System.out.println("1");
 			picture.setBlob(rs.getBlob("name"));
+			
 		}
 		DBprovider.CloseConnection();
 		return pic;

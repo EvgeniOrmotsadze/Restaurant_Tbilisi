@@ -1,3 +1,4 @@
+<%@page import="ge.freeuni.restaurant.model.Picture"%>
 <%@ page import="java.util.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -160,11 +161,29 @@ html,body {
 <script src="ext-js/ext-all.js" type="text/javascript"></script>
 <link href="ext-js/ext-theme-gray-all.css" rel="stylesheet" type="text/css" />       
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.gallery').click(function() {
+			if ($(this).hasClass('pop')) {
+				$(this).animate({height: '100px'}, function	() {$('.gallery').not($(this)).show();});
+				$(this).removeClass('pop');
+			} else {
+				$(this).animate({height: '300px'});
+				$('.gallery').not($(this)).hide();
+				$(this).addClass('pop');
+			}
+		});
+	});
+</script>
+<style>
+.gallery {height: 100px;}
+</style>
 </head>
 <body>
 	<%@include file="menu-top.jsp"%>
 	<%Restaurant res = (Restaurant)request.getAttribute("myobject"); %>
-
+	
 
 	<table class="mainFrame" cel lpadding="0" cellspacing="0" border="0">
 		<tr>
@@ -214,6 +233,17 @@ html,body {
 											-ის ფასდაკლებით.</td>
 									</tr>
 									<tr>
+										<td>
+											<%
+												@SuppressWarnings("unchecked")
+												ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
+												%>
+												<%if(pic.size() > 0){ %>
+													<%for(int i = 0; i <pic.size(); i++){ %>
+														<img class="gallery" src="data:image/gif;base64,<%=pic.get(i).getBlob()%> " alt="" /> 
+													<%} %>
+												<%}%>
+										</td>
 									 </tr>
 								</table>
 							</td>
@@ -318,7 +348,6 @@ function reload () {
 <%
 @SuppressWarnings("unchecked")
 ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");
-
 %>
        function callExtJsMenu(){
     	 <%  if(menu.size() > 0){ %>

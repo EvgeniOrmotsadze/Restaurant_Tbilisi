@@ -146,7 +146,7 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField">
-					<select name="category">
+					<select name="Category">
 						<option >ტიპი</option>
 						<option value="1">რესტორანი</option>
 						<option value="2">ბარი</option>
@@ -159,7 +159,7 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField" >
-					<select name = "location">
+					<select name = "Location">
 						<option>მდებარეობა</option>
 						<option value="1">საბურთალო</option>
 						<option value="2">ვაკე</option>
@@ -171,7 +171,7 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField" >
-					<select name = "cuisine">
+					<select name = "Cuisine">
 						<option>სამზარეულო</option>
 						<option value="1">ქართული</option>
 						<option value="2">იტალიური</option>
@@ -188,8 +188,8 @@ html,body {
 					name="Phone" placeholder="ტელეფონი"></td>
 			</tr>
 			<tr>
-				<td class="textField"><input id="additional_info" type="text"
-					name="additional_info" placeholder="დამატებითი ინფორმაცია"></td>
+				<td class="textField"><textarea id="Additional_info" 
+					name="Additional_info" placeholder="დამატებითი ინფორმაცია"></textarea></td>
 			</tr>
 			<tr>
 				<td><br> <input class="button" id="registerButton"

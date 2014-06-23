@@ -73,10 +73,13 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			res.setLocation(Integer.parseInt(request.getParameter("Location")));
 			res.setPhone(request.getParameter("Phone"));
 			res.setAddress(request.getParameter("Address"));
+			
 			String google = request.getParameter("GoogleAddress")+ request.getParameter("Zipcode")+", Georgia";  
 			AddressToCoordinates gg = new AddressToCoordinates();
 			res.setLac(gg.returnLat(google));
 			res.setLng(gg.returnLng(google));
+			res.setAdditionalInfo(request.getParameter("Additional_info"));
+			res.setCuisine(Integer.parseInt(request.getParameter("Cuisine")));
 			
 			DBQuery db = new DBQuery();
 			int lastid = 0;

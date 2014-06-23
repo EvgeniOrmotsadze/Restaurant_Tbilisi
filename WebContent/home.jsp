@@ -44,7 +44,7 @@ html {
 <body>
 	<%@include file="menu-top.jsp"%>
 
-	<div class="lastnews">
+	<div class="lastnews" style="padding-left: 10px;">
 		<%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
 		<div id="options">
 			<h4>აირჩიეთ კატეგორია</h4>
