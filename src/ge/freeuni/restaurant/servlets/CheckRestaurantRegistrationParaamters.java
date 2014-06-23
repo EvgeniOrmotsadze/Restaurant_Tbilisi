@@ -91,7 +91,6 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			}
 			request.setAttribute("lastid", lastid);
 			request.getRequestDispatcher("AddMenu.jsp").forward(request, response);
-			
 		}
 	}
 }

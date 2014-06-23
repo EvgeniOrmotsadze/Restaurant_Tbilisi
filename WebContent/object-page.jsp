@@ -1,3 +1,4 @@
+ <%@ page import="java.util.*" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.swing.text.StyledEditorKit.BoldAction"%>
@@ -12,7 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style>
 @import url(http://fonts.googleapis.com/css?family=Lato);
-
 html,body {
 	height: 100%;
 	margin: 0px;
@@ -53,11 +53,9 @@ html,body {
 .navigation td:last-child {
 	border: none;
 }
-
 .navigation_item:hover {
 	box-shadow: inset 0px 0px 20px #AAA;
 }
-
 .objectW {
 	width: 80%;
 	margin: 0 auto;
@@ -66,15 +64,12 @@ html,body {
 	background-color: #FFF;
 	box-shadow: inset 0px 0px 20px #000;
 }
-
 .objectWT {
 	width: 100%;
 }
-
 #object_map {
 	height: 200px;
 }
-
 .object_title {
 	width: 40%;
 	padding: 10px;
@@ -218,6 +213,8 @@ html,body {
 											განმავლობაში ისარგებლოს რესტორანში დამზადებულ კერძებზე 20%
 											-ის ფასდაკლებით.</td>
 									</tr>
+									<tr>
+									 </tr>
 								</table>
 							</td>
 						</tr>
@@ -411,11 +408,11 @@ ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");
     	        });
    	        	win.show();
     		  });
+ 		  
     	   <%}else{ %>
     	    alert("მენიუ ცარიელია");
     	    <%}%>
        }
-      
    </script>
 </body>
 </html>

@@ -2,13 +2,13 @@ package ge.freeuni.restaurant.servlets;
 
 import ge.freeuni.restaurant.controllers.DBQuery;
 import ge.freeuni.restaurant.model.Menu;
+import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,10 +56,9 @@ public class ObjectShow extends HttpServlet {
 		User user = (User) request.getSession().getAttribute("user");
 		int user_id = user.getID();
 	
-		DBQuery db = new DBQuery();
 		boolean exist = false;
 		try {
-			exist = db.ifAlreadyAssessment(id, user_id);
+			exist = query.ifAlreadyAssessment(id, user_id);
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SQLException e1) {
@@ -73,9 +72,16 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(menu.size());
-			request.setAttribute("menu", menu);
+		ArrayList<Picture> pic = new ArrayList<Picture>();
+		try {
+			pic = query.takePictureByRestaurant(res.getID());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("pictures", pic);
+		request.setAttribute("menu", menu);
 		request.setAttribute("myobject", res);
 		if(exist) request.setAttribute("alreadyAss", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("object-page.jsp");

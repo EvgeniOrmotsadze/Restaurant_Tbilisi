@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.apache.catalina.util.Base64;
 
-@SuppressWarnings("deprecation")
+
 public class Restaurant {
 	private String name;
 	private String address;

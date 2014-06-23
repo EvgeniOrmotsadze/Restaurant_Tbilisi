@@ -3,6 +3,7 @@ package ge.freeuni.restaurant.controllers;
 import ge.freeuni.restaurant.dbconn.DBprovider;
 
 import ge.freeuni.restaurant.model.Menu;
+import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
@@ -245,7 +246,27 @@ public class DBQuery {
 			mm.setPrice(rs.getString("foodprice"));
 			menu.add(mm);
 		}
+		DBprovider.CloseConnection();
 		return menu;
+	}
+	
+	public ArrayList<Picture> takePictureByRestaurant(int res_id) throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Picture> pic = new ArrayList<Picture>();
+		String query = "select id,res_id,name "
+				   + "from restaurant.picture "
+				   +"where res_id = '"+res_id+"';";
+		ResultSet rs=stmt.executeQuery(query);
+	
+		while (rs.next()) {
+			Picture picture = new Picture();
+			picture.setID(rs.getInt("id"));
+			picture.setResId(rs.getInt("res_id"));
+			picture.setBlob(rs.getBlob("name"));
+		}
+		DBprovider.CloseConnection();
+		return pic;
 	}
 	
 }
