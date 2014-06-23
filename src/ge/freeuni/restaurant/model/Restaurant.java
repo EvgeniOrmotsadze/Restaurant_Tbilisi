@@ -31,7 +31,7 @@ public class Restaurant {
 	}
 	
 	public void setLac(String lactitude){
-		this.lactitude=lactitude;
+		this.lactitude= lactitude;
 	}
 	
 	public void setLng(String longtitude){
@@ -130,7 +130,6 @@ public class Restaurant {
 		byte[] pict = string.getBytes(1, (int)string.length());
 		String stringToStore = new String(Base64.encode(pict));
 		this.photo1Address = stringToStore;
-
 	}
 
 	public void setPhoto2Address(String string) {
