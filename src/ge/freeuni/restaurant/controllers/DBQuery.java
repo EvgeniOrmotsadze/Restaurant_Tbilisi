@@ -235,7 +235,7 @@ public class DBQuery {
 		return res;	
 	}
 	
-<<<<<<< HEAD
+
 	public ArrayList<Restaurant> SearchRestaurantsByCategory(int ctg)throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
@@ -262,7 +262,7 @@ public class DBQuery {
 			res.add(r);
 		}
 		return res;	
-=======
+	}
 	public ArrayList<Menu> takeMenuByRestaurant(int res_id) throws ClassNotFoundException, SQLException{
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
@@ -301,7 +301,6 @@ public class DBQuery {
 		}
 		DBprovider.CloseConnection();
 		return pic;
->>>>>>> e3a5d08490b876fc5e9aef1457ecaed624931d77
 	}
 	
 }

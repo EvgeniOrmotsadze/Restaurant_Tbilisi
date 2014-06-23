@@ -70,7 +70,7 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			res.setGoogle(request.getParameter("GoogleAddress"));
 			res.setZip(request.getParameter("Zipcode"));
 			res.setCategory(Integer.parseInt(request.getParameter("Category")));
-			res.setLocation(request.getParameter("Location"));
+			res.setLocation(Integer.parseInt(request.getParameter("Location")));
 			res.setPhone(request.getParameter("Phone"));
 			res.setAddress(request.getParameter("Address"));
 			String google = request.getParameter("GoogleAddress")+ request.getParameter("Zipcode")+", Georgia";  
