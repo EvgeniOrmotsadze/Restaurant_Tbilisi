@@ -15,21 +15,11 @@
 html,body {
 	height: 100%;
 	margin: 0px;
-	background: #471016 url("../IMG/bg.jpg?1363646640") no-repeat top center
-		fixed;
+	background: #471016 url("bg.jpg") no-repeat top center fixed;
 	background-size: cover;
 }
+	
 
-.logo {
-	width: 50px;
-	height: 50px;
-	background-image: url("../IMG/logow.png");
-	background-size: 50px;
-	position: fixed;
-	top: 20px;
-	left: 20px;
-	cursor: pointer;
-}
 
 .mainFrame {
 	width: 100%;
@@ -170,6 +160,10 @@ html,body {
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN64CaFtRHTmz4ALnh3XLvbpldKNjOUuo&amp;sensor=false"></script>
 
+  
+<script src="ext-js/ext-all.js" type="text/javascript"></script>
+<link href="ext-js/ext-theme-gray-all.css" rel="stylesheet" type="text/css" />       
+
 </head>
 <body>
 	<%@include file="menu-top.jsp"%>
@@ -185,7 +179,8 @@ html,body {
 						<tr>
 							<td class="object_title"><%=res.getName() %></td>
 							<td class="rate" id="stars-div"></td>
-							<td> <div onclick="location.href='/Restaurants/ForwardRestaurantRegister';"
+							
+							<td> <div onclick="callExtJsMenu()"
 								style="float: left; " class="btnAdd">
 								<span class="icon"></span><a>მენიუს ნახვა</a><span></span>
 								</div>
@@ -320,5 +315,95 @@ function reload () {
 		 });
 	}
        </script>
+       
+<script type="text/javascript">
+       function callExtJsMenu(){
+    	   Ext.onReady(function(){
+
+    		   Ext.define('MyApp.model.Dish', {
+    		        extend: 'Ext.data.Model',
+    		        fields: [{
+    		            name: 'id',
+    		            type: 'int'
+    		        }, {
+    		            name: 'dish',
+    		            type: 'string'
+    		        }, {
+    		            name: 'priceG',
+    		            type: 'string'
+    		        }, {
+    		            name: 'priceS',
+    		            type: 'string'
+    		        }]
+    		    });
+
+    		    Ext.define('MyApp.store.Dish', {
+    		        extend: 'Ext.data.Store',
+    		        requires: ['MyApp.model.Dish'],
+    		        model: 'MyApp.model.Dish',
+    		        storeId: 'markStore',
+    		        data: {
+    		            items: [
+    	    		     <% for(int k = 1; k  < 3; k++){ %>       
+    	    		     {
+    		                id: <%=k%>,
+    		                dish: "ხაჭაპური",
+    		                priceG: "10 GEL",
+    		                priceS: "6.73 $"
+    		           	 },
+    		           	 <%}%>
+    		             {
+     		                id: 3,
+     		                dish: "ხაჭაპური",
+     		                priceG: "10 GEL",
+     		                priceS: "6.73 $"
+     		           	 }
+    		           	 
+    		            ]
+    		        },
+    		        proxy: {
+    		            type: 'memory',
+    		            reader: {
+    		                type: 'json',
+    		                root: 'items'
+    		            }
+    		        }
+    		    });
+				
+    		   var grid = Ext.create('Ext.grid.Panel', {
+    		        itemId: 'markGrid',
+    		        store: Ext.create('MyApp.store.Dish'),
+    		        loadMask: true,
+    		        width: 500,
+    		        columns: [{
+    		            header: 'კერძის დასახელება',
+    		            dataIndex: 'dish',
+    		            width: 230,
+    		            flex: 1
+    		        }, {
+    		            header: 'ფასი(GEL)',
+    		            dataIndex: 'priceG',
+    		            width: 30,
+    		            flex: 1
+    		        }, {
+    		            header: 'ფასი($)',
+    		            dataIndex: 'priceS',
+    		            width: 30,
+    		            flex: 1
+    		        }]
+    		    });	 
+				
+    		   var win =  Ext.create("Ext.window.Window", {
+    	            title: "რესტორანი  <%=res.getName()%>-ს  მენიუ ",
+    	            layout: 'fit',
+    	            width: 500,
+    	            height: 550,
+    	            modal:true,
+    	            items: [grid]
+    	        });
+   	        	win.show();
+    		  });
+       }
+   </script>
 </body>
 </html>
