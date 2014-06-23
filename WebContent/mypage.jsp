@@ -93,7 +93,6 @@ html,body {
 	padding: 5px;
 	overflow: auto;
 }
-
 .star {
 	float: right;
 	margin-right: 2px;
@@ -114,6 +113,7 @@ html,body {
 	</div>
 	 <div id="wrapper">ჩემს მიერ დამატებული ობიექტები:</div>
 	<% 
+		@SuppressWarnings("unchecked")
 		ArrayList<Restaurant> arr = (ArrayList<Restaurant>)request.getAttribute("MyRestaurants");
 	%>
 		<table class="result"  align ="center" >

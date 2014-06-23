@@ -145,6 +145,26 @@ html,body {
 .object_infoT tr:last-child td {
 	border-bottom: none;
 }
+.btnAdd {
+	width: 210px;
+	height: 25px;
+	background: #634918;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 12px;
+	color: #EDEBE6;
+	font-family: 'Exo', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 30px;
+}
+.btnAdd span.icon {
+	background: url('menus.png') no-repeat;
+	float: left;
+	width: 32px;
+	height: 32px;
+}
 </style>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -155,6 +175,7 @@ html,body {
 	<%@include file="menu-top.jsp"%>
 	<%Restaurant res = (Restaurant)request.getAttribute("myobject"); %>
 	
+	
 	<table class="mainFrame" cel lpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td class="mainFrame_margin"></td>
@@ -163,9 +184,12 @@ html,body {
 					<table class="objectWT" cellpadding="0" cellspacing="0" border="0">
 						<tr>
 							<td class="object_title"><%=res.getName() %></td>
-							<td class="rate" id="stars-div">
-
-							</td>
+							<td class="rate" id="stars-div"></td>
+							<td> <div onclick="location.href='/Restaurants/ForwardRestaurantRegister';"
+								style="float: left; " class="btnAdd">
+								<span class="icon"></span><a>მენიუს ნახვა</a><span></span>
+								</div>
+							 </td>
 						</tr>
 						<tr>
 							<td class="object_imageW"><img class="object_image"
