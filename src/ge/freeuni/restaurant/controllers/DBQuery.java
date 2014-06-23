@@ -301,9 +301,8 @@ public class DBQuery {
 			Picture picture = new Picture();
 			picture.setID(rs.getInt("id"));
 			picture.setResId(rs.getInt("res_id"));
-			System.out.println("1");
 			picture.setBlob(rs.getBlob("name"));
-			
+			pic.add(picture);
 		}
 		DBprovider.CloseConnection();
 		return pic;

@@ -24,7 +24,7 @@ public class Picture {
 			this.name = "";
 			return;
 		}
-		byte[] pict = blob.getBytes(1, (int)name.length());
+		byte[] pict = blob.getBytes(1, (int)blob.length());
 		String stringToStore = new String(Base64.encode(pict));
 		this.name = stringToStore;
 	}

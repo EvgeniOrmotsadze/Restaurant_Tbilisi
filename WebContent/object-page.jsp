@@ -237,6 +237,7 @@ html,body {
 											<%
 												@SuppressWarnings("unchecked")
 												ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
+												System.out.print(pic.size());
 												%>
 												<%if(pic.size() > 0){ %>
 													<%for(int i = 0; i <pic.size(); i++){ %>

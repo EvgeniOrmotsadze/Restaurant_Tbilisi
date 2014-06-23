@@ -80,6 +80,8 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
 		request.setAttribute("pictures", pic);
 		request.setAttribute("menu", menu);
 		request.setAttribute("myobject", res);
