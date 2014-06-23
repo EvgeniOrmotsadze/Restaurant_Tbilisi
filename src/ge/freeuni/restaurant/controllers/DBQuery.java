@@ -2,6 +2,8 @@ package ge.freeuni.restaurant.controllers;
 
 import ge.freeuni.restaurant.dbconn.DBprovider;
 
+import ge.freeuni.restaurant.model.Menu;
+import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
@@ -233,6 +235,7 @@ public class DBQuery {
 		return res;	
 	}
 	
+<<<<<<< HEAD
 	public ArrayList<Restaurant> SearchRestaurantsByCategory(int ctg)throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
@@ -259,6 +262,46 @@ public class DBQuery {
 			res.add(r);
 		}
 		return res;	
+=======
+	public ArrayList<Menu> takeMenuByRestaurant(int res_id) throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Menu> menu = new ArrayList<Menu>();
+		
+		String query = "select id,res_id,foodname,foodprice "
+					   + "from restaurant.menu "
+					   +"where res_id = '"+res_id+"';";
+		ResultSet rs=stmt.executeQuery(query);
+		while (rs.next()) {
+			Menu mm=new Menu();
+			mm.setID(rs.getInt("id"));
+			mm.setResId(rs.getInt("res_id"));
+			mm.setDish(rs.getString("foodname"));
+			mm.setPrice(rs.getString("foodprice"));
+			menu.add(mm);
+		}
+		DBprovider.CloseConnection();
+		return menu;
+	}
+	
+	public ArrayList<Picture> takePictureByRestaurant(int res_id) throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Picture> pic = new ArrayList<Picture>();
+		String query = "select id,res_id,name "
+				   + "from restaurant.picture "
+				   +"where res_id = '"+res_id+"';";
+		ResultSet rs=stmt.executeQuery(query);
+	
+		while (rs.next()) {
+			Picture picture = new Picture();
+			picture.setID(rs.getInt("id"));
+			picture.setResId(rs.getInt("res_id"));
+			picture.setBlob(rs.getBlob("name"));
+		}
+		DBprovider.CloseConnection();
+		return pic;
+>>>>>>> e3a5d08490b876fc5e9aef1457ecaed624931d77
 	}
 	
 }

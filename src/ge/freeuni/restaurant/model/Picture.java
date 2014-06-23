@@ -1,11 +1,12 @@
 package ge.freeuni.restaurant.model;
 
-public class Menu {
-	
+import java.sql.Blob;
+
+public class Picture {
+
 	private int id;
-	private String dish;
-	private String price;
 	private int res_id;
+	private Blob blob;
 	
 	public void setID(int id){
 		this.id = id;
@@ -13,25 +14,20 @@ public class Menu {
 	public void setResId(int res_id){
 		this.res_id = res_id;
 	}
-	public void setDish(String dish){
-		this.dish = dish;
+	public void setBlob(Blob blob){
+		this.blob = blob;
 	}
 	
-	public void setPrice(String price){
-		this.price = price;
-	}
-
 	public int getID(){
 		return this.id;
 	}
+	
 	public int getResId(){
 		return this.res_id;
 	}
-	public String getDish(){
-		return this.dish;
-	}
-	public String getPrice(){
-		return this.price;
+	
+	public Blob getBlob(){
+		return this.blob;
 	}
 	
 }
