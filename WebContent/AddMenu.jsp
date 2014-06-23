@@ -14,7 +14,6 @@ html,body {
 	background: #471016 url("bg.jpg") no-repeat top center fixed;
 	background-size: cover;
 }
-
 .textField input[type=text]{
 	margin: 5px;
 	padding: 0 10px;
@@ -95,8 +94,45 @@ html,body {
 	font-family: "Lato", sans-serif;
 }
 
+#menu_button{
+    width: 180px;
+	height: 35px;
+	background: #C1D6D9;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+}
+
 #menu_row_button {
-	display: none;
+	width: 180px;
+	height: 35px;
+	background: #C1D6D9;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+}
+#images{
+    width: 180px;
+	height: 35px;
+	background: #EDECEB;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
 }
 </style>
 <script type="text/javascript"
@@ -112,7 +148,7 @@ html,body {
 						});
 						$("#menu_row_button").click(function(event) {
 							event.preventDefault();
-							$("#menu_table").append('<tr><td><input name="dish[]" type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input name="menu[]" type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
+							$("#menu_table").append('<tr><td><input name="dish[]" type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td><td><input name="price[]" type="text" spellcheck="false" placeholder="ფასი" /></td></tr>');
 							});
 					});
 </script>
@@ -126,20 +162,23 @@ html,body {
 				<button id="menu_button">მენიუს დამატება</button>
 				<table id="menu_table" cellpadding="3" cellspacing="1" border="0">
 					<tr>
-						<td><input type="text" spellcheck="false"
-							placeholder="კერძის დასახელება" /></td>
+						<td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td>
 						<td><input type="text" spellcheck="false" placeholder="ფასი" /></td>
 					</tr>
 				</table>
 				<button id="menu_row_button">ახალი ველი</button>
 			</td>
 		</tr>
+		
 		<tr>
 			<td><br> 
-			<input type="file" name="images[]" multiple />
+			<input style="width:265px; height:22px;" type="file" id="images" value="აირჩიეთ სურათი " name="images[]" multiple />
+			</td>
+		</tr>
+		<tr>
+			<td>
 			<input type="hidden" name="lastid" value='<%=request.getAttribute("lastid") %>' />
-			<input class="button" id="registerButton"
-				type="submit" value="დაასრულეთ  რეგისტრაცია" /></td>
+			<input class="button" id="registerButton" type="submit" value="დაასრულეთ  რეგისტრაცია" /></td>
 		</tr>
 	</table>
 	</form>

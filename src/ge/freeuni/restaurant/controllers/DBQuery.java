@@ -5,18 +5,16 @@ import ge.freeuni.restaurant.dbconn.DBprovider;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
+
+
 
 public class DBQuery {
 
@@ -82,7 +80,7 @@ public class DBQuery {
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,category,phone,location)"
+		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,category,phone,location,lactitude,longtitude,Zip_code)"
 				+ "values (null,'"
 				+ user_id
 				+ "','"
@@ -95,6 +93,12 @@ public class DBQuery {
 				+ res.getPhone()
 				+ "','"
 				+ res.getLocation()
+				+ "','"
+				+ res.getLac()
+				+ "','"
+				+ res.getLng()
+				+ "','"
+				+ res.getZip()
 				+ "');";
 		
 		stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
@@ -142,8 +146,9 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		Restaurant res = new Restaurant();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.counter, "
-				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score "
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.lactitude,re.longtitude,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
+				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
 				+ "where re.res_id = "
 				+ res_id + ";";
@@ -156,6 +161,9 @@ public class DBQuery {
 			res.setLocation(rs.getString("re.location"));
 			res.setPhone(rs.getString("re.phone"));
 			res.setAvgScore(rs.getInt("score"));
+			res.setLac(rs.getString("re.lactitude"));
+			res.setLng(rs.getString("re.longtitude"));
+			res.setPhoto1Address(rs.getBlob("picture"));
 		}
 		return res;
 
@@ -168,7 +176,6 @@ public class DBQuery {
 		
 		String sql = "select count(score) as uscore from restaurant.score where "
 					 +"user_id = '"+ user_id+"' and res_id = '"+res_id+"';";
-		
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()){
 			if(rs.getInt("uscore") > 0){

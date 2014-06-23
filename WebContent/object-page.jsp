@@ -1,3 +1,5 @@
+
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.swing.text.StyledEditorKit.BoldAction"%>
 <%@page import="ge.freeuni.restaurant.controllers.DBQuery"%>
 <%@page import="ge.freeuni.restaurant.model.Restaurant"%>
@@ -143,41 +145,38 @@ html,body {
 .object_infoT tr:last-child td {
 	border-bottom: none;
 }
+.btnAdd {
+	width: 210px;
+	height: 25px;
+	background: #634918;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 12px;
+	color: #EDEBE6;
+	font-family: 'Exo', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 30px;
+}
+.btnAdd span.icon {
+	background: url('menus.png') no-repeat;
+	float: left;
+	width: 32px;
+	height: 32px;
+}
 </style>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN64CaFtRHTmz4ALnh3XLvbpldKNjOUuo&amp;sensor=false"></script>
 
-<script type="text/javascript">
-function mapInit() {
-
-	console.log('mapInit fired');
-
-	var point = new google.maps.LatLng(41.541565, 45.013115);//avigot koordinatebi
-
-	var opts = {
-		zoom:	14,
-		scrollwheel: false,
-		center: point
-	};
-
-	window.map = new google.maps.Map(document.getElementById('object_map'), opts);
-
-	window.marker = new google.maps.Marker({
-		position: point,
-		map: window.map,
-		draggable: false,
-		title: 'Portal is here'
-	});
-}
-google.maps.event.addDomListener(window, 'load', mapInit);
-</script>
 </head>
 <body>
 	<%@include file="menu-top.jsp"%>
 	<%Restaurant res = (Restaurant)request.getAttribute("myobject"); %>
 	
-	<table class="mainFrame" cellpadding="0" cellspacing="0" border="0">
+	
+	<table class="mainFrame" cel lpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td class="mainFrame_margin"></td>
 			<td class="content">
@@ -185,13 +184,16 @@ google.maps.event.addDomListener(window, 'load', mapInit);
 					<table class="objectWT" cellpadding="0" cellspacing="0" border="0">
 						<tr>
 							<td class="object_title"><%=res.getName() %></td>
-							<td class="rate" id="stars-div">
-							
-							</td>
+							<td class="rate" id="stars-div"></td>
+							<td> <div onclick="location.href='/Restaurants/ForwardRestaurantRegister';"
+								style="float: left; " class="btnAdd">
+								<span class="icon"></span><a>მენიუს ნახვა</a><span></span>
+								</div>
+							 </td>
 						</tr>
 						<tr>
 							<td class="object_imageW"><img class="object_image"
-								src="http://intbilisi.info/uploads/posts/2014-01/1388850917_paradiselost_photo2.jpg" />
+								src="data:image/gif;base64,<%=res.getPhoto1Address()%>" />
 							</td>
 							<td class="object_info">
 								<table class="object_infoT" cellpadding="0" cellspacing="0"
@@ -225,14 +227,34 @@ google.maps.event.addDomListener(window, 'load', mapInit);
 						</tr>
 						<tr>
 							<td id="object_map" colspan="2">
-								
+
 							</td>
 						</tr>
 					</table>
 				</div>
 	</table>
+		
+		
 <script type="text/javascript">
-
+function mapInit() {
+	console.log('mapInit fired');
+	var point = new google.maps.LatLng(<%=res.getLac()%>,<%=res.getLng()%>);//avigot koordinatebi
+	var opts = {
+		zoom:	14,
+		scrollwheel: false,
+		center: point
+	};
+	window.map = new google.maps.Map(document.getElementById('object_map'), opts);
+	window.marker = new google.maps.Marker({
+		position: point,
+		map: window.map,
+		draggable: false,
+		title: 'Portal is here'
+	});
+}
+google.maps.event.addDomListener(window, 'load', mapInit);
+</script>	
+<script type="text/javascript">
 var div = document.getElementById('stars-div');
 var stars = [],
     starsCount = 5,
@@ -267,7 +289,7 @@ function reload () {
                 }
             });
             img.addEventListener('mouseout', function () {
-                var currentIndex = stars.indexOf(img);
+              //  var currentIndex = stars.indexOf(img);
                 for (var i = 0; i < stars.length; i++) {
                     if (i <= rating) {
                         stars[i].src = 'star-yellow.jpg';
@@ -297,7 +319,6 @@ function reload () {
 		    }
 		 });
 	}
-	
        </script>
 </body>
 </html>

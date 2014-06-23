@@ -3,6 +3,7 @@ package ge.freeuni.restaurant.servlets;
 import ge.freeuni.restaurant.controllers.DBQuery;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
+import ge.freeuni.restaurant.service.AddressToCoordinates;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -72,6 +73,11 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 			res.setLocation(request.getParameter("Location"));
 			res.setPhone(request.getParameter("Phone"));
 			res.setAddress(request.getParameter("Address"));
+			String google = request.getParameter("GoogleAddress")+ request.getParameter("Zipcode")+", Georgia";  
+			AddressToCoordinates gg = new AddressToCoordinates();
+			res.setLac(gg.returnLat(google));
+			res.setLng(gg.returnLng(google));
+			
 			DBQuery db = new DBQuery();
 			int lastid = 0;
 			try {
@@ -84,8 +90,8 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("lastid", lastid);
-			System.out.println(lastid);
 			request.getRequestDispatcher("AddMenu.jsp").forward(request, response);
+			
 		}
 	}
 }

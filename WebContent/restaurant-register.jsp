@@ -174,11 +174,6 @@ html,body {
 					name="Phone" placeholder="ტელეფონი"></td>
 			</tr>
 			<tr>
-				<td class="textField">
-					<input type="file" name="Images" multiple />
-				</td>
-			</tr>
-			<tr>
 				<td><br> <input class="button" id="registerButton"
 					type="submit" value="განაგრძეთ რეგისტრაცია" /></td>
 			</tr>

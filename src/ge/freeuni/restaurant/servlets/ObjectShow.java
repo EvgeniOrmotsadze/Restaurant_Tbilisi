@@ -6,6 +6,7 @@ import ge.freeuni.restaurant.model.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,13 +44,8 @@ public class ObjectShow extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		DBQuery query = new DBQuery();
 		Restaurant res = new Restaurant();
-		
 		try {
-		
 		res = query.getCurrentRestaurant(id);
-		
-		System.out.print(res.getID());
-		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -67,7 +63,10 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(exist);
+		
+		
+		 
+		
 		request.setAttribute("myobject", res);
 		if(exist) request.setAttribute("alreadyAss", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("object-page.jsp");

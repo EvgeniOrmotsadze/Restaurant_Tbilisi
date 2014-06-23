@@ -40,8 +40,8 @@ public class DBConnection {
 					"category int," + 
 					"phone varchar(255),"+
 					"location varchar(255)," +
-					"lactitude decimal,"+
-					"longtitude decimal,"+
+					"lactitude varchar(255),"+
+					"longtitude varchar(255),"+
 					"zip_Code varchar(255),"+
 					"counter int,"+
 					"primary key(res_id),"+
