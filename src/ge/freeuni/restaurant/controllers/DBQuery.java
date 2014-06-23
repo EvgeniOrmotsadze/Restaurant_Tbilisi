@@ -193,4 +193,32 @@ public class DBQuery {
 				+ "',CURDATE())";
 		stmt.executeUpdate(sql);
 	}
+	
+	
+	public ArrayList<Restaurant> SearchRestaurantsByName(String SearchedName)throws ClassNotFoundException, SQLException {
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
+		String query = "select re.res_id,re.name,re.address,re.location,re.category,re.phone,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
+				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
+				+ "from restaurant.restaurants as re "
+				+ " where re.name like '" + SearchedName + "%'";
+		ResultSet rs=stmt.executeQuery(query);
+		while (rs.next()) {
+			Restaurant r=new Restaurant();
+			r.setID(rs.getInt("re.res_id"));
+			r.setName(rs.getString("re.name"));
+			r.setAddress(rs.getString("re.address"));
+			r.setCategory(rs.getInt("re.category"));
+			r.setLocation(rs.getString("re.location"));
+			r.setPhone(rs.getString("re.phone"));
+			r.setAvgScore(rs.getInt("score"));
+			r.setPhoto1Address(rs.getBlob("picture"));
+			res.add(r);
+		}
+		return res;	
+	}
+	
+	
 }
