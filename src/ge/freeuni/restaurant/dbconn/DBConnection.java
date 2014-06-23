@@ -39,10 +39,12 @@ public class DBConnection {
 					"address_eng varchar(255)," + 
 					"category int," + 
 					"phone varchar(255),"+
-					"location varchar(255)," +
+					"location int," +
 					"lactitude varchar(255),"+
 					"longtitude varchar(255),"+
 					"zip_Code varchar(255),"+
+					"additional_info varchar(255),"+
+					"cuisine varchar(255),"+
 					"counter int,"+
 					"primary key(res_id),"+
 					"foreign key(user_id) References user(user_id));";

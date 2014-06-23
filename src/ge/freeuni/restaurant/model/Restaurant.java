@@ -11,7 +11,7 @@ public class Restaurant {
 	private String address;
 	private int category;
 	private String phone;
-	private String location;
+	private int location;
 	private int counter;
 	private int avg_score;
 	private int ID;
@@ -25,6 +25,8 @@ public class Restaurant {
 	private String address_eng;
 	private String lactitude;
 	private String longtitude;
+	private String additional_info;
+	private int cuisine;
 	
 	public void setID(int ID) {
 		this.ID = ID;
@@ -61,7 +63,7 @@ public class Restaurant {
 		this.phone = phone;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(int location) {
 		this.location = location;
 	}
 
@@ -72,6 +74,14 @@ public class Restaurant {
 
 	public void setAvgScore(int avg_score) {
 		this.avg_score = avg_score;
+	}
+	
+	public void setAdditionalInfo(String additional_info){
+		this.additional_info=additional_info;
+	}
+	
+	public void setCuisine(int cuisine){
+		this.cuisine=cuisine;
 	}
 
 	public String getName() {
@@ -94,7 +104,7 @@ public class Restaurant {
 		return this.phone;
 	}
 
-	public String getLocation() {
+	public int getLocation() {
 		return this.location;
 	}
 
@@ -120,6 +130,14 @@ public class Restaurant {
 	}
 	public String getLng(){
 		return this.longtitude;
+	}
+	
+	public String getAdditionalInfo(){
+		return this.additional_info;
+	}
+	
+	public int getCuisine(){
+		return this.cuisine;
 	}
 
 	public void setPhoto1Address(Blob string) throws SQLException {

@@ -116,7 +116,7 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.counter, "
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.counter,re.cuisine,re.additional_info,  "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
 				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
@@ -130,9 +130,11 @@ public class DBQuery {
 			res1.setName(rs.getString("re.name"));
 			res1.setAddress(rs.getString("re.address"));
 			res1.setCategory(rs.getInt("re.category"));
-			res1.setLocation(rs.getString("re.location"));
+			res1.setLocation(rs.getInt("re.location"));
 			res1.setPhone(rs.getString("re.phone"));
 			res1.setAvgScore(rs.getInt("score"));
+			res1.setAdditionalInfo(rs.getString("additional_info"));
+			res1.setCuisine(rs.getInt("cuisine"));
 			res1.setPhoto1Address(rs.getBlob("picture"));
 			res.add(res1);
 		}
@@ -146,7 +148,7 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		Restaurant res = new Restaurant();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.lactitude,re.longtitude,re.counter, "
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.location,re.category,re.phone,re.lactitude,re.longtitude,re.counter,re.cuisine,re.additional_info,  "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
 				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
@@ -158,11 +160,13 @@ public class DBQuery {
 			res.setName(rs.getString("re.name"));
 			res.setAddress(rs.getString("re.address"));
 			res.setCategory(rs.getInt("re.category"));
-			res.setLocation(rs.getString("re.location"));
+			res.setLocation(rs.getInt("re.location"));
 			res.setPhone(rs.getString("re.phone"));
 			res.setAvgScore(rs.getInt("score"));
 			res.setLac(rs.getString("re.lactitude"));
 			res.setLng(rs.getString("re.longtitude"));
+			res.setAdditionalInfo(rs.getString("additional_info"));
+			res.setCuisine(rs.getInt("cuisine"));
 			res.setPhoto1Address(rs.getBlob("picture"));
 		}
 		return res;
@@ -206,7 +210,7 @@ public class DBQuery {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
 		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
-		String query = "select re.res_id,re.name,re.address,re.location,re.category,re.phone,re.counter, "
+		String query = "select re.res_id,re.name,re.address,re.location,re.category,re.phone,re.counter,re.cuisine,re.additional_info,  "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
 				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
@@ -218,14 +222,43 @@ public class DBQuery {
 			r.setName(rs.getString("re.name"));
 			r.setAddress(rs.getString("re.address"));
 			r.setCategory(rs.getInt("re.category"));
-			r.setLocation(rs.getString("re.location"));
+			r.setLocation(rs.getInt("re.location"));
 			r.setPhone(rs.getString("re.phone"));
 			r.setAvgScore(rs.getInt("score"));
+			r.setAdditionalInfo(rs.getString("additional_info"));
+			r.setCuisine(rs.getInt("cuisine"));
 			r.setPhoto1Address(rs.getBlob("picture"));
 			res.add(r);
 		}
 		return res;	
 	}
 	
+	public ArrayList<Restaurant> SearchRestaurantsByCategory(int ctg)throws ClassNotFoundException, SQLException {
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
+		String query = "select re.res_id,re.name,re.address,re.location,re.category,re.phone,re.counter,re.cuisine,re.additional_info, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
+				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
+				+ "from restaurant.restaurants as re "
+				+ " where re.category=" 
+				+ ctg + "';";
+		ResultSet rs=stmt.executeQuery(query);
+		while (rs.next()) {
+			Restaurant r=new Restaurant();
+			r.setID(rs.getInt("re.res_id"));
+			r.setName(rs.getString("re.name"));
+			r.setAddress(rs.getString("re.address"));
+			r.setCategory(rs.getInt("re.category"));
+			r.setLocation(rs.getInt("re.location"));
+			r.setPhone(rs.getString("re.phone"));
+			r.setAvgScore(rs.getInt("score"));
+			r.setAdditionalInfo(rs.getString("additional_info"));
+			r.setCuisine(rs.getInt("cuisine"));
+			r.setPhoto1Address(rs.getBlob("picture"));
+			res.add(r);
+		}
+		return res;	
+	}
 	
 }

@@ -208,20 +208,20 @@ html,body {
 									</tr>
 									<tr>
 										<td class="object_info_attr">სამზარეულო:</td>
-										<td class="object_info_val">ევროპული და ქართული</td>
+										<td class="object_info_val"><%=res.getCuisine() %>></td>
 									</tr>
 									<tr>
-										<td class="object_info_attr">გართობა:</td>
-										<td class="object_info_val">ცოცხალი მუსიკა</td>
+										<td class="object_info_attr">მდებარეობა:</td>
+										<td class="object_info_val"><%=res.getLocation()%></td>
 									</tr>
 									<tr>
 										<td class="object_info_attr">დამატებითი ინფორმაცია:</td>
-										<td class="object_info_val">ყოველ სტუმარს, რომელიც
-											განახორციელებს 50 ლარის ან მეტი ღირებულების შეკვეთას
-											გადაეცემა ბარათი, რომლის მეშვეობითაც იგი შეძლებს ერთი თვის
-											განმავლობაში ისარგებლოს რესტორანში დამზადებულ კერძებზე 20%
-											-ის ფასდაკლებით.</td>
+										<td class="object_info_val"><%=res.getAdditionalInfo()%>></td>
 									</tr>
+									<tr>
+										<td> <%@include file="gallery.jsp"%>	</td>	
+									</tr>
+									
 								</table>
 							</td>
 						</tr>
