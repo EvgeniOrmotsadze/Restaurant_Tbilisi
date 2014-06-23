@@ -14,7 +14,6 @@ html,body {
 	background: #471016 url("bg.jpg") no-repeat top center fixed;
 	background-size: cover;
 }
-
 .textField input[type=text]{
 	margin: 5px;
 	padding: 0 10px;
