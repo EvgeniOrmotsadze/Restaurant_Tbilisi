@@ -1,7 +1,6 @@
 package ge.freeuni.restaurant.model;
 
 public class Menu {
-	
 	private int id;
 	private String dish;
 	private String price;

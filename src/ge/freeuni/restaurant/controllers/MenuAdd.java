@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MenuAdd {
+	
 	public void AddMenusToRestaurant(int last_id, ArrayList<Menu> menu) throws SQLException{
 		Connection conn = null;
 		try {
