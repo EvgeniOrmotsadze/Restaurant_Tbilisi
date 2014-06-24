@@ -72,7 +72,7 @@ public class CurrencyProvider {
 		}
 		int indexOfCourse = result.indexOf("<td>", indexOfLastTag) + 4;
 		return Double.parseDouble(result
-				.substring(indexOfCourse, indexOfCourse) + 6);
+				.substring(indexOfCourse, indexOfCourse + 6));
 
 	}
 }

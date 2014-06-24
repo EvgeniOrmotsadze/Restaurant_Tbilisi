@@ -135,6 +135,16 @@
     <url-pattern>/SearcheServlet</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>DeleteRestaurant</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.DeleteRestaurant</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRestaurant</servlet-name>
+    <url-pattern>/DeleteRestaurant</url-pattern>
+  </servlet-mapping>
+  
+  
    <listener>
 	    <listener-class>
           ge.freeuni.restaurant.controllers.ContextListener

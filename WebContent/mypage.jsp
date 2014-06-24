@@ -12,18 +12,14 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
+	
 	$(document).ready(function() {
 		$(".delete").click(function(event) {
 			event.stopPropagation();
-			var r = confirm("ნამდივლად ქსურთ წაშლა ? ");
-			if (r == true) {
-			    x = "You pressed OK!";
-			} else {
-			    x = "You pressed Cancel!";
-			}
+			$(this).parent().children('form').submit();
 		});
 	});
-
+	
 </script>
 </head>
 
@@ -175,7 +171,10 @@ html,body {
 				<td  onclick="location.href='/Restaurants/ObjectShow?id=<%=arr.get(i).getID()%>'" class="object">
 					<div class="object_title"> 
 						<%=arr.get(i).getName()%> 
-						<button class="edit" style="float:right;"><span class="icon"></span> </button>
+						<form action="DeleteRestaurant" method="POST">
+						<input type="hidden" name="value" value="<%=arr.get(i).getID()%>" />
+						<button type="submit" class="edit" style="float:right;"><span class="icon"></span> </button>
+						</form>
 						<button class="delete" style="float:right;"><span class="icon"></span></button>
 					</div>
 					<div class="object_imageW">

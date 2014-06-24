@@ -1,3 +1,4 @@
+<%@page import="ge.freeuni.restaurant.service.CurrencyProvider"%>
 <%@page import="ge.freeuni.restaurant.model.Picture"%>
 <%@ page import="java.util.*" %>
 <%@page import="java.util.ArrayList"%>
@@ -342,15 +343,18 @@ function reload () {
 @SuppressWarnings("unchecked")
 ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");
 %>
+
+<%
+	CurrencyProvider currProvider = new CurrencyProvider();
+	DecimalFormat df = new DecimalFormat();
+	df.setMaximumFractionDigits(3);
+%>
        function callExtJsMenu(){
     	 <%  if(menu.size() > 0){ %>
     	   Ext.onReady(function(){
     		   Ext.define('MyApp.model.Dish', {
     		        extend: 'Ext.data.Model',
     		        fields: [{
-    		            name: 'id',
-    		            type: 'int'
-    		        }, {
     		            name: 'dish',
     		            type: 'string'
     		        }, {
@@ -370,21 +374,19 @@ ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");
     		        data: {
     		            items: [
     	    		     <%
-    	    		     int ms = menu.size() -1;
-    	    		     for(int k = 1; k  < ms ; k++){
+    	    		     int ms = menu.size()-1;
+    	    		     for(int k = 0; k  < ms ; k++){
     	    		     %>       
     	    		     {
-    		                id: <%=k%>,
     		                dish: "<%=menu.get(k).getDish()%>",
     		                priceG: "<%=menu.get(k).getPrice()%>",
-    		                priceS: "6.73 $"
+    		                priceS: "<%=""+df.format((Double.parseDouble(menu.get(k).getPrice())/currProvider.getUsdToGel()))%>"
     		           	 },
     		           	 <%}%>
     		             {
-     		                id: <%=ms%>,
      		                dish: "<%=menu.get(ms).getDish()%>",
      		                priceG: "<%=menu.get(ms).getPrice()%>",
-     		                priceS: "6.73 $"
+     		                priceS: "<%=""+df.format((Double.parseDouble(menu.get(ms).getPrice())/currProvider.getUsdToGel()))%>"
      		           	 }
     		            ]
     		        },
