@@ -114,7 +114,7 @@ public class DBQuery {
 		return lastid;
 	}
 
-	public ArrayList<Restaurant> getMyRestaurants(int user_id)
+	public ArrayList<Restaurant> getMyRestaurants(int user_id,int pageNumber)
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
