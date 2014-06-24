@@ -9,6 +9,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".delete").click(function(event) {
+			event.stopPropagation();
+			var r = confirm("ნამდივლად ქსურთ წაშლა ? ");
+			if (r == true) {
+			    x = "You pressed OK!";
+			} else {
+			    x = "You pressed Cancel!";
+			}
+		});
+	});
+
+</script>
 </head>
 
 <style>
@@ -135,6 +151,7 @@ html,body {
 	margin-right: 2px;
 }
 </style>
+
 
 <body>
 	<%@include file="menu-top.jsp"%>
