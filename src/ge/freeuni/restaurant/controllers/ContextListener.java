@@ -55,23 +55,7 @@ public class ContextListener implements ServletContextListener, ServletRequestAt
      */
     public void contextInitialized(ServletContextEvent arg0) {
     	HashMap<Integer, String> typeMap = new HashMap<Integer, String>();
-		HashMap<Integer, String> locationMap = new HashMap<Integer, String>();
-		
-		typeMap.put(1, "რესტორანი");
-		typeMap.put(2, "ბარი");
-		typeMap.put(3, "კაფე");
-		typeMap.put(4, "სწრაფი კვება");
-		typeMap.put(5, "პაბი");
-		typeMap.put(6, "კლუბი");
-		
-		locationMap.put(1, "საბურთალო");
-		locationMap.put(2, "ვაკე");
-		locationMap.put(3, "მთაწმინდა");
-		locationMap.put(4, "დიდუბე");
-		locationMap.put(5, "ვარკეთილი");
-		locationMap.put(6, "ზაჰესი");
-		
-		
+		HashMap<Integer, String> locationMap = new HashMap<Integer, String>();	
 		
 		arg0.getServletContext().setAttribute("TypeMap", typeMap);
 		arg0.getServletContext().setAttribute("LocationMap", locationMap);
