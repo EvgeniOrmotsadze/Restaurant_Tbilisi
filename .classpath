@@ -14,8 +14,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/dato/Desktop/jsoup-1.7.3-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/dato/Desktop/jsoup-1.7.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/dato/Desktop/jsoup-1.7.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jsoup-1.7.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jsoup-1.7.3-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

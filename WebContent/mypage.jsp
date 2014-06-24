@@ -171,11 +171,14 @@ html,body {
 				<td  onclick="location.href='/Restaurants/ObjectShow?id=<%=arr.get(i).getID()%>'" class="object">
 					<div class="object_title"> 
 						<%=arr.get(i).getName()%> 
+						<form>
+						<input type="hidden" name="value" value="<%=arr.get(i).getID()%>" />
+						<button class="edit" style="float:right;"><span class="icon"></span> </button>
+						</form>
 						<form action="DeleteRestaurant" method="POST">
 						<input type="hidden" name="value" value="<%=arr.get(i).getID()%>" />
-						<button type="submit" class="edit" style="float:right;"><span class="icon"></span> </button>
-						</form>
 						<button class="delete" style="float:right;"><span class="icon"></span></button>
+						</form>
 					</div>
 					<div class="object_imageW">
 						<img class="object_image"

@@ -39,7 +39,6 @@ public class DeleteRestaurant extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("value"));
-		System.out.println(id);
 		UpdateDeleteQuery query = new UpdateDeleteQuery();
 		try {
 			query.deleteRestaurant(id);
@@ -48,8 +47,6 @@ public class DeleteRestaurant extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }
