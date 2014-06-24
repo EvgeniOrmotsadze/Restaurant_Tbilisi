@@ -38,7 +38,7 @@ public class CurrencyProvider {
 	}
 
 	// currency updater method
-	// is called in every 1000 seconds
+	// is called periodically
 	public static void updateCurrencies() throws MalformedURLException {
 		StringBuilder builder = new StringBuilder();
 		try {
