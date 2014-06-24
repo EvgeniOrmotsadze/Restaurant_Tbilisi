@@ -40,7 +40,7 @@ public class SearcheServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//restoranis dzebna names mixedvit
 		String SearchedName = request.getParameter("name");
 		DBQuery db = new DBQuery();
 		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
