@@ -40,6 +40,53 @@ html {
    position: relative;
    height: 30px
   }
+  
+  .result {
+	width: 100%;
+	margin-top: 1px;
+	margin-bottom: 2px;
+}
+
+
+.object {
+	vertical-align: top;
+	background-color: #FFF;
+	opacity: 0.8;
+}
+
+.object:hover {
+	opacity: 1;
+}
+
+.object_title {
+	padding: 7px;
+	font-family: "Lato", sans-serif;
+	font-size: 14px;
+	color: #222;
+	cursor: pointer;
+}
+
+.object_title:hover {
+	text-decoration: underline;
+}
+
+.object_imageW {}
+
+.object_image {
+	display: block;
+	width: 100%;
+	height: 120px;
+}
+
+.rate {
+	padding: 5px;
+	overflow: auto;
+}
+
+.star {
+	float: right;
+	margin-right: 2px;
+}
 </style>
 <body>
 	<%@include file="menu-top.jsp"%>
@@ -95,7 +142,31 @@ html {
 		<marquee direction="up" scrolldelay="90" scrollamount="4"
 			behavior="alternate" loop="0" style="height: 400px; width:1100px; top: 250px; left: 200px; z-index:0;border: 8px solid #291D06; position: relative;"
 			id="Marquee1" onmouseover="this.stop()" onmouseout="this.start()">
-			<%@include file="last-adds.jsp"%>
+			<table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
+				<% for (int i = 1; i <= 9; i++) { %>
+					<%if (i % 4 == 1) {
+							if (i != 1) {%>
+								</tr>
+							<%}%>
+							<tr>
+					<%}%>
+					<td class="object">
+						<div class="object_title">
+							Rome
+						</div>
+						<div class="object_imageW">
+							<img class="object_image" src="http://www.info-tbilisi.com/rome/gallery/rome14.jpg" />
+						</div>
+						<div class="rate">
+							<img class="star" src="star-yellow.jpg" />
+							<img class="star" src="star-yellow.jpg" />
+							<img class="star" src="star-yellow.jpg" />
+							<img class="star" src="star-yellow.jpg" />
+							<img class="star" src="star-yellow.jpg" />
+						</div>
+					</td>
+				<% } %>
+			</table>
 		</marquee>
 	
 </body>
