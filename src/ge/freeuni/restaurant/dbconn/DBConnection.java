@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class DBConnection {
@@ -88,6 +89,63 @@ public class DBConnection {
 			stmt.executeUpdate(sql4);
 			stmt.executeUpdate(sql5);
 			stmt.executeUpdate(sql6);
+			
+			/* prepare enum for restaurant fields */
+			
+			String Location = "create table IF NOT EXISTS location( id int, name varchar(255),primary key(id)); ";
+			stmt.executeUpdate(Location);
+			System.out.println("create location");
+			ArrayList<String> loc = new ArrayList<String>();
+			loc.add("საბურთალო");
+			loc.add("ვაკე");
+			loc.add("მთაწმინდა");
+			loc.add("დიდიუბე");
+			loc.add("ვარკეთილი");
+			
+			for(int i = 0; i < loc.size(); i++){
+				String enumLocation = "insert into restaurant.location (id,name)"
+									  + "values('"+ (i+1) +"','"+ loc.get(i)+"')";
+				stmt.executeUpdate(enumLocation);
+			}
+			
+			String Category = "create table IF NOT EXISTS category( id int, name varchar(255),primary key(id)); ";
+			stmt.executeUpdate(Category);
+			System.out.println("create category");
+			
+			ArrayList<String> cat = new ArrayList<String>();
+			cat.add("რესტორანი");
+			cat.add("ბარი");
+			cat.add("კაფე");
+			cat.add("სწრაფი კვება");
+			cat.add("პაბი");
+			cat.add("კლუბი");
+			
+			for(int i = 0; i < cat.size(); i++){
+				String enumCategry = "insert into restaurant.category (id,name)"
+									  +"values('"+ (i+1) +"','"+ cat.get(i)+"')";
+				stmt.executeUpdate(enumCategry);
+			}
+			
+			
+			
+			String Cusine = "create table IF NOT EXISTS cusine( id int, name varchar(255),primary key(id)); ";
+			stmt.executeUpdate(Cusine);
+			System.out.println("create cusine");
+			
+			ArrayList<String> cus = new ArrayList<String>();
+			cus.add("ქართული");
+			cus.add("იტალიური");
+			cus.add("იაპონური");
+			cus.add("ფრანგული");
+			cus.add("ჩინური");
+			cus.add("რუსული");
+			cus.add("სხვა");
+			
+			for(int i = 0; i < cus.size(); i++){
+				String enumCategry = "insert into restaurant.cusine (id,name)"
+									  +"values('"+ (i+1) +"','"+ cus.get(i)+"')";
+				stmt.executeUpdate(enumCategry);
+			}
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} catch (Exception e) {
