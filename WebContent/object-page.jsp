@@ -98,7 +98,9 @@ html,body {
 
 .object_image {
 	display: block;
+	margin: 0 auto;
 	width: 100%;
+	height: 300px;
 }
 
 .object_info {
@@ -165,19 +167,12 @@ html,body {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.gallery').click(function() {
-			if ($(this).hasClass('pop')) {
-				$(this).animate({height: '100px'}, function	() {$('.gallery').not($(this)).show();});
-				$(this).removeClass('pop');
-			} else {
-				$(this).animate({height: '300px'});
-				$('.gallery').not($(this)).hide();
-				$(this).addClass('pop');
-			}
+			$(".object_image").attr("src", $(this).attr("src"));
 		});
 	});
 </script>
 <style>
-.gallery {height: 100px;}
+.gallery {height: 50px;}
 </style>
 </head>
 <body>
@@ -202,8 +197,20 @@ html,body {
 							 </td>
 						</tr>
 						<tr>
-							<td class="object_imageW"><img class="object_image"
-								src="data:image/gif;base64,<%=res.getPhoto1Address()%>" />
+							<td class="object_imageW">
+								<img class="object_image" src="data:image/gif;base64,<%=res.getPhoto1Address()%>" />
+								<div>
+									<%
+										@SuppressWarnings("unchecked")
+										ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
+										System.out.print(pic.size());
+										%>
+										<%if(pic.size() > 0){ %>
+											<%for(int i = 0; i <pic.size(); i++){ %>
+												<img class="gallery" src="data:image/gif;base64,<%=pic.get(i).getBlob()%> " alt="" /> 
+											<%} %>
+										<%}%>
+								</div>
 							</td>
 							<td class="object_info">
 								<table class="object_infoT" cellpadding="0" cellspacing="0"
@@ -232,20 +239,6 @@ html,body {
 											განმავლობაში ისარგებლოს რესტორანში დამზადებულ კერძებზე 20%
 											-ის ფასდაკლებით.</td>
 									</tr>
-									<tr>
-										<td>
-											<%
-												@SuppressWarnings("unchecked")
-												ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
-												System.out.print(pic.size());
-												%>
-												<%if(pic.size() > 0){ %>
-													<%for(int i = 0; i <pic.size(); i++){ %>
-														<img class="gallery" src="data:image/gif;base64,<%=pic.get(i).getBlob()%> " alt="" /> 
-													<%} %>
-												<%}%>
-										</td>
-									 </tr>
 								</table>
 							</td>
 						</tr>
