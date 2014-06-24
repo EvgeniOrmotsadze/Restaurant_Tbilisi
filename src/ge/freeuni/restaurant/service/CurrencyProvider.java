@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 public class CurrencyProvider {
 	private static double usd, eur, rub = 1;
 	private static String usdName = "აშშ დოლარი";
@@ -40,24 +43,16 @@ public class CurrencyProvider {
 	// currency updater method
 	// is called periodically
 	public static void updateCurrencies() throws MalformedURLException {
-		StringBuilder builder = new StringBuilder();
+		Document document = null;
 		try {
-			InputStream inputStream = new URL("http://www.nbg.ge/rss.php")
-					.openStream();
-			BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(inputStream));
-			String line = bufferedReader.readLine();
-			while (line != null) {
-				builder.append(line);
-				line = bufferedReader.readLine();
-			}
+			document = Jsoup.connect("http://www.nbg.ge/rss.php").get();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		usd = ParseCurrency(builder.toString(), usdName);
-		eur = ParseCurrency(builder.toString(), eurName);
-		rub = ParseCurrency(builder.toString(), rubName);
+		usd = ParseCurrency(document.toString(), usdName);
+		eur = ParseCurrency(document.toString(), eurName);
+		rub = ParseCurrency(document.toString(), rubName);
 		System.out.println("usd: " + usd);
 
 	}
