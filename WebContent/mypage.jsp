@@ -127,6 +127,10 @@ html,body {
 	text-decoration: underline;
 }
 
+.object_title form {
+	float: right;
+}
+
 .object_imageW {
 	
 }

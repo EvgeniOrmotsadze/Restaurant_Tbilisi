@@ -75,7 +75,6 @@ html,body {
 }
 
 #menu_table {
-	display: none;
 	margin-top: 10px;
 	width: 280px;
 }
@@ -143,8 +142,8 @@ html,body {
 					function() {
 						$("#menu_button").click(function(event) {
 							event.preventDefault();
-							$("#menu_table").show();
-							$("#menu_row_button").show();
+							$("#menu_row_button").click();
+							$(this).hide();
 						});
 						$("#menu_row_button").click(function(event) {
 							event.preventDefault();
@@ -161,10 +160,7 @@ html,body {
 			<td>
 				<button id="menu_button">მენიუს დამატება</button>
 				<table id="menu_table" cellpadding="3" cellspacing="1" border="0">
-					<tr>
-						<td><input type="text" name="dish[]" spellcheck="false" placeholder="კერძის დასახელება" /></td>
-						<td><input type="text" name="price[]" spellcheck="false" placeholder="ფასი" /></td>
-					</tr>
+					
 				</table>
 				<button id="menu_row_button">ახალი ველი</button>
 			</td>

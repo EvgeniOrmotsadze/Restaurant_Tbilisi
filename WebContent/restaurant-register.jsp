@@ -176,7 +176,7 @@ html,body {
 					name="Phone" placeholder="ტელეფონი"></td>
 			</tr>
 			<tr>
-				<td class="textField"><textarea id="Additional_info" 
+				<td class="textField"><textarea style="width: 100%" id="Additional_info" 
 					name="Additional_info" placeholder="დამატებითი ინფორმაცია"></textarea></td>
 			</tr>
 			<tr>

@@ -47,6 +47,8 @@ public class DeleteRestaurant extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("MyPage");
+		dispatcher.forward(request, response);
 	}
 
 }
