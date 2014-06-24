@@ -175,7 +175,7 @@ html,body {
 				<td  onclick="location.href='/Restaurants/ObjectShow?id=<%=arr.get(i).getID()%>'" class="object">
 					<div class="object_title"> 
 						<%=arr.get(i).getName()%> 
-						<form>
+						<form action="EditRestaurants" method="POST" >
 						<input type="hidden" name="value" value="<%=arr.get(i).getID()%>" />
 						<button class="edit" style="float:right;"><span class="icon"></span> </button>
 						</form>

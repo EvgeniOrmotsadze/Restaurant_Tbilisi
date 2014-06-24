@@ -144,6 +144,16 @@
     <url-pattern>/DeleteRestaurant</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>EditRestaurants</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.EditRestaurants</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditRestaurants</servlet-name>
+    <url-pattern>/EditRestaurants</url-pattern>
+  </servlet-mapping>
+  
+  
   
    <listener>
 	    <listener-class>
