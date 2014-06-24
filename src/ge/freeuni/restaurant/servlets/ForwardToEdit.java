@@ -1,10 +1,12 @@
 package ge.freeuni.restaurant.servlets;
 
 import ge.freeuni.restaurant.controllers.DBQuery;
+import ge.freeuni.restaurant.model.Restaurant;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditRestaurants
+ * Servlet implementation class ForwardToEdit
  */
-@WebServlet("/EditRestaurants")
-public class EditRestaurants extends HttpServlet {
+@WebServlet("/ForwardToEdit")
+public class ForwardToEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditRestaurants() {
+    public ForwardToEdit() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,17 +40,18 @@ public class EditRestaurants extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("value"));
-		
+		Restaurant res = new Restaurant();
 		DBQuery query = new DBQuery();
 		try {
-			query.getCurrentRestaurant(id);
+			res = query.getCurrentRestaurant(id);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+		request.setAttribute("editRes", res);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("EditRestaurant.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
