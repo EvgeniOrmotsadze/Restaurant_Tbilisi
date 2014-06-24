@@ -9,9 +9,9 @@ import org.apache.catalina.util.Base64;
 public class Restaurant {
 	private String name;
 	private String address;
-	private int category;
+	private String category;
 	private String phone;
-	private int location;
+
 	private int counter;
 	private int avg_score;
 	private int ID;
@@ -21,7 +21,9 @@ public class Restaurant {
 	private String lactitude;
 	private String longtitude;
 	private String additional_info;
-	private int cuisine;
+	private String cuisine;
+	private int cuisineID;
+	private int categoryID;
 	
 	public void setID(int ID) {
 		this.ID = ID;
@@ -29,6 +31,14 @@ public class Restaurant {
 	
 	public void setLac(String lactitude){
 		this.lactitude= lactitude;
+	}
+	
+	public void setCuisineID(int cuisineID){
+		this.cuisineID = cuisineID;
+	}
+	
+	public void setCategoryID(int catgeoryID){
+		this.categoryID = catgeoryID;
 	}
 	
 	public void setLng(String longtitude){
@@ -50,16 +60,12 @@ public class Restaurant {
 		this.address = address;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public void setLocation(int location) {
-		this.location = location;
 	}
 
 
@@ -75,8 +81,8 @@ public class Restaurant {
 		this.additional_info=additional_info;
 	}
 	
-	public void setCuisine(int cuisine){
-		this.cuisine=cuisine;
+	public void setCuisine(String cuisine){
+		this.cuisine = cuisine;
 	}
 
 	public String getName() {
@@ -87,11 +93,18 @@ public class Restaurant {
 		return this.address;
 	}
 	
+	public int getCuisineID(){
+		return this.cuisineID;
+	}
+	
+	public int getCategoryID(){
+		return this.categoryID;
+	}
 	public String getGoogle(){
 		return this.address_eng;
 	}
 	
-	public int getCategory() {
+	public String getCategory() {
 		return this.category;
 	}
 
@@ -99,9 +112,6 @@ public class Restaurant {
 		return this.phone;
 	}
 
-	public int getLocation() {
-		return this.location;
-	}
 
 	public int getID() {
 		return this.ID;
@@ -131,7 +141,7 @@ public class Restaurant {
 		return this.additional_info;
 	}
 	
-	public int getCuisine(){
+	public String getCuisine(){
 		return this.cuisine;
 	}
 

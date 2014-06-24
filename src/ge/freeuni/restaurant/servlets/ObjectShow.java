@@ -55,7 +55,6 @@ public class ObjectShow extends HttpServlet {
 		}
 		User user = (User) request.getSession().getAttribute("user");
 		int user_id = user.getID();
-	
 		boolean exist = false;
 		try {
 			exist = query.ifAlreadyAssessment(id, user_id);
@@ -72,6 +71,8 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
 		ArrayList<Picture> pic = new ArrayList<Picture>();
 		try {
 			pic = query.takePictureByRestaurant(res.getID());

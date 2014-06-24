@@ -220,24 +220,21 @@ html,body {
 										<td class="object_info_val"><%=res.getAddress()%> </td>
 									</tr>
 									<tr>
+										<td class="object_info_attr">კატეგორია:</td>
+										<td class="object_info_val"><%=res.getCategory()%></td>
+									</tr>
+									<tr>
 										<td class="object_info_attr">ტელეფონი:</td>
 										<td class="object_info_val"><%=res.getPhone()%></td>
 									</tr>
 									<tr>
 										<td class="object_info_attr">სამზარეულო:</td>
-										<td class="object_info_val">ევროპული და ქართული</td>
+										<td class="object_info_val"> <%=res.getCuisine()%></td>
 									</tr>
-									<tr>
-										<td class="object_info_attr">გართობა:</td>
-										<td class="object_info_val">ცოცხალი მუსიკა</td>
-									</tr>
+									
 									<tr>
 										<td class="object_info_attr">დამატებითი ინფორმაცია:</td>
-										<td class="object_info_val">ყოველ სტუმარს, რომელიც
-											განახორციელებს 50 ლარის ან მეტი ღირებულების შეკვეთას
-											გადაეცემა ბარათი, რომლის მეშვეობითაც იგი შეძლებს ერთი თვის
-											განმავლობაში ისარგებლოს რესტორანში დამზადებულ კერძებზე 20%
-											-ის ფასდაკლებით.</td>
+										<td class="object_info_val"> <%=res.getAdditionalInfo() %></td>
 									</tr>
 								</table>
 							</td>
@@ -281,7 +278,7 @@ reload();
 function reload () {
     stars = [];
     div.innerHTML = '';
-    for (var i = 1; i <= starsCount; i++) {
+    for (var i = 0; i < starsCount; i++) {
         (function (index) {
             var img = new Image();
             if (index <= rating) {
@@ -297,7 +294,7 @@ function reload () {
 			if(request.getAttribute("alreadyAss") == null) { %>
              img.addEventListener('mouseover', function () {
                 var currentIndex = stars.indexOf(img);
-                for (var i = 0; i < stars.length; i++) {
+                for (var i = 1; i <=stars.length; i++) {
                     if (i <= currentIndex) {
                         stars[i].src = 'star-yellow.jpg';
                     } else {
@@ -317,7 +314,7 @@ function reload () {
             });
             img.addEventListener('click', function () {
                 var currentIndex = stars.indexOf(img);
-                rating = currentIndex +1; 
+                rating = currentIndex; 
 				callAjax(rating);
                 reload();
             });
@@ -328,7 +325,7 @@ function reload () {
 	function callAjax(rating){
 		$.ajax({
 		    url: 'MakeAssessments',
-		    data: {star:rating, res_id:<%=res.getID()%>},
+		    data: {star:rating+1, res_id:<%=res.getID()%>},
 		    dataType: "TEXT",
 		    cache: false,
 		    type: 'POST',

@@ -159,18 +159,6 @@ html,body {
 			</tr>
 			<tr>
 				<td class="textField" >
-					<select name = "Location">
-						<option>მდებარეობა</option>
-						<option value="1">საბურთალო</option>
-						<option value="2">ვაკე</option>
-						<option value="3">მთაწმინდა</option>
-						<option value="4">დიდუბე</option>
-						<option value="5">ვარკეთილი</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class="textField" >
 					<select name = "Cuisine">
 						<option>სამზარეულო</option>
 						<option value="1">ქართული</option>
