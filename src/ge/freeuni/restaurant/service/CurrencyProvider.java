@@ -4,11 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 
 public class CurrencyProvider {
 	private static double usd, eur, rub = 1;
@@ -43,17 +52,43 @@ public class CurrencyProvider {
 	// currency updater method
 	// is called periodically
 	public static void updateCurrencies() throws MalformedURLException {
-		Document document = null;
+		URL url = new URL("http://www.nbg.ge/rss.php");
+		HttpURLConnection httpcon = null;
 		try {
-			document = Jsoup.connect("http://www.nbg.ge/rss.php").get();
+			httpcon = (HttpURLConnection) url.openConnection();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		usd = ParseCurrency(document.toString(), usdName);
-		eur = ParseCurrency(document.toString(), eurName);
-		rub = ParseCurrency(document.toString(), rubName);
-		System.out.println("usd: " + usd);
+		// Reading the feed
+		SyndFeedInput input = new SyndFeedInput();
+		SyndFeed feed = null;
+		try {
+			feed = input.build(new XmlReader(httpcon));
+		} catch (IllegalArgumentException | FeedException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<SyndEntry> entries = feed.getEntries();
+		Iterator<SyndEntry> itEntries = entries.iterator();
+
+		while (itEntries.hasNext()) {
+			SyndEntry entry = itEntries.next();
+			// System.out.println("Title: " + entry.getTitle());
+			// System.out.println("Link: " + entry.getLink());
+			// System.out.println("Author: " + entry.getAuthor());
+			// System.out.println("Publish Date: " + entry.getPublishedDate());
+			// System.out.println("Description: "
+			// + entry.getDescription().getValue());
+			// System.out.println();
+
+			usd = ParseCurrency(entry.getDescription().getValue(), usdName);
+			eur = ParseCurrency(entry.getDescription().getValue().toString(),
+					eurName);
+			rub = ParseCurrency(entry.getDescription().getValue().toString(),
+					rubName);
+		}
+		System.out.println("usd: " + usd + " euro: " + eur + " rub: " + rub);
 
 	}
 
@@ -66,8 +101,9 @@ public class CurrencyProvider {
 			return 1;
 		}
 		int indexOfCourse = result.indexOf("<td>", indexOfLastTag) + 4;
-		return Double.parseDouble(result
-				.substring(indexOfCourse, indexOfCourse + 6));
+		// System.out.println("result: "+result);
+		return Double.parseDouble(result.substring(indexOfCourse,
+				indexOfCourse + 6));
 
 	}
 }
