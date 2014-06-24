@@ -58,14 +58,18 @@ public class DBConnection {
 						 "createdate datetime,"+
 						 "primary key(id),"+
 						 "foreign key(user_id) references user(user_id),"+
-						 "foreign key(res_id) references restaurants(res_id));";
+						 "foreign key(res_id) references restaurants(res_id)),"+
+						 "ON UPDATE CASCADE,"+
+						 "ON DELETE CASCADE;";
 			System.out.println("create score table");
 			String sql4 = " CREATE table IF NOT EXISTS picture("+
 						 "id int not null auto_increment,"+
 						 "res_id int,"+
 						 "name mediumblob,"+
 						 "primary key(id),"+
-						 "foreign key(res_id) references restaurants(res_id));";
+						 "foreign key(res_id) references restaurants(res_id)),"+
+						 "ON UPDATE CASCADE,"+
+						 "ON DELETE CASCADE;";
 			System.out.println("create picture table");
 			String sql5 = "CREATE table IF NOT EXISTS menu("+
 						 "id int not null auto_increment,"+
@@ -73,7 +77,9 @@ public class DBConnection {
 						 "foodname varchar(255),"+
 						 "foodprice double,"+
 						 "primary key(id),"+
-						 "foreign key(res_id) references restaurants(res_id));";
+						 "foreign key(res_id) references restaurants(res_id)),"+
+						 "ON UPDATE CASCADE,"+
+						 "ON DELETE CASCADE;";
 			System.out.println("create menu table");
 			String sql6 = "CREATE table IF NOT EXISTS favorite("+
 					 "id int auto_increment,"+
@@ -81,7 +87,9 @@ public class DBConnection {
 					 "res_id int,"+
 					 "primary key(id),"+
 					 "foreign key(user_id) references user(user_id),"+
-					 "foreign key(res_id) references restaurants(res_id));";
+					 "foreign key(res_id) references restaurants(res_id)),"+
+					 "ON UPDATE CASCADE,"+
+					 "ON DELETE CASCADE;";
 		System.out.println("create favorite table");
 			stmt.executeUpdate(sql1);
 			stmt.executeUpdate(sql2);
@@ -98,12 +106,12 @@ public class DBConnection {
 			System.out.println("create category");
 			
 			ArrayList<String> cat = new ArrayList<String>();
-			cat.add("რესტორანი");
-			cat.add("ბარი");
-			cat.add("კაფე");
-			cat.add("სწრაფი კვება");
-			cat.add("პაბი");
-			cat.add("კლუბი");
+			cat.add("áƒ áƒ”áƒ¡áƒ¢áƒ�áƒ áƒ�áƒœáƒ˜");
+			cat.add("áƒ‘áƒ�áƒ áƒ˜");
+			cat.add("áƒ™áƒ�áƒ¤áƒ”");
+			cat.add("áƒ¡áƒ¬áƒ áƒ�áƒ¤áƒ˜ áƒ™áƒ•áƒ”áƒ‘áƒ�");
+			cat.add("áƒžáƒ�áƒ‘áƒ˜");
+			cat.add("áƒ™áƒšáƒ£áƒ‘áƒ˜");
 			
 			
 			for(int i = 0; i < cat.size(); i++){
@@ -116,13 +124,13 @@ public class DBConnection {
 			stmt.executeUpdate(Cusine);
 			System.out.println("create cusine");
 			ArrayList<String> cus = new ArrayList<String>();
-			cus.add("ქართული");
-			cus.add("იტალიური");
-			cus.add("იაპონური");
-			cus.add("ფრანგული");
-			cus.add("ჩინური");
-			cus.add("რუსული");
-			cus.add("სხვა");
+			cus.add("áƒ¥áƒ�áƒ áƒ—áƒ£áƒšáƒ˜");
+			cus.add("áƒ˜áƒ¢áƒ�áƒšáƒ˜áƒ£áƒ áƒ˜");
+			cus.add("áƒ˜áƒ�áƒžáƒ�áƒœáƒ£áƒ áƒ˜");
+			cus.add("áƒ¤áƒ áƒ�áƒœáƒ’áƒ£áƒšáƒ˜");
+			cus.add("áƒ©áƒ˜áƒœáƒ£áƒ áƒ˜");
+			cus.add("áƒ áƒ£áƒ¡áƒ£áƒšáƒ˜");
+			cus.add("áƒ¡áƒ®áƒ•áƒ�");
 			
 			for(int i = 0; i < cus.size(); i++){
 				String enumCategry = "insert into restaurant.cuisine (id,name)"
