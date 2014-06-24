@@ -54,14 +54,18 @@ public class ObjectShow extends HttpServlet {
 			e.printStackTrace();
 		}
 		User user = (User) request.getSession().getAttribute("user");
-		int user_id = user.getID();
+		int user_id = 0;
+		if(user != null) user_id = user.getID();
+		
 		boolean exist = false;
-		try {
-			exist = query.ifAlreadyAssessment(id, user_id);
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		if(user_id != 0){
+			try {
+				exist = query.ifAlreadyAssessment(id, user_id);
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}
 		ArrayList<Menu> menu = new ArrayList<Menu>();
 		try {
@@ -81,7 +85,6 @@ public class ObjectShow extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		
 		request.setAttribute("pictures", pic);
 		request.setAttribute("menu", menu);

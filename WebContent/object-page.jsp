@@ -163,7 +163,6 @@ html,body {
 <script src="ext-js/ext-all.js" type="text/javascript"></script>
 <link href="ext-js/ext-theme-gray-all.css" rel="stylesheet" type="text/css" />       
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.gallery').click(function() {
@@ -281,7 +280,7 @@ function reload () {
     for (var i = 0; i < starsCount; i++) {
         (function (index) {
             var img = new Image();
-            if (index <= rating) {
+            if (index < rating) {
                 img.src = 'star-yellow.jpg';
             } else {
                 img.src = 'star-white.jpg';
@@ -290,38 +289,41 @@ function reload () {
             stars.push(img);
             div.appendChild(img);
 
-			<% System.out.print(request.getAttribute("alreadyAss"));
-			if(request.getAttribute("alreadyAss") == null) { %>
-             img.addEventListener('mouseover', function () {
-                var currentIndex = stars.indexOf(img);
-                for (var i = 1; i <=stars.length; i++) {
-                    if (i <= currentIndex) {
-                        stars[i].src = 'star-yellow.jpg';
-                    } else {
-                        stars[i].src = 'star-white.jpg';
-                    }
-                }
-            });
-            img.addEventListener('mouseout', function () {
-              //  var currentIndex = stars.indexOf(img);
-                for (var i = 0; i < stars.length; i++) {
-                    if (i <= rating) {
-                        stars[i].src = 'star-yellow.jpg';
-                    } else {
-                        stars[i].src = 'star-white.jpg';
-                    }
-                }
-            });
-            img.addEventListener('click', function () {
-                var currentIndex = stars.indexOf(img);
-                rating = currentIndex; 
-				callAjax(rating);
-                reload();
-            });
-            <%}%>
-        })(i);
-    }
-}
+			<% 
+			User user = (User) request.getSession().getAttribute("user");
+			if(user != null) {
+				if(request.getAttribute("alreadyAss") == null ) { %>
+           		  img.addEventListener('mouseover', function () {
+	                var currentIndex = stars.indexOf(img);
+	                for (var i = 0; i <stars.length; i++) {
+	                    if (i <= currentIndex) {
+	                        stars[i].src = 'star-yellow.jpg';
+	                    } else {
+	                        stars[i].src = 'star-white.jpg';
+	                    }
+	                }
+	            });
+	            img.addEventListener('mouseout', function () {
+	              //  var currentIndex = stars.indexOf(img);
+	                for (var i = 0; i < stars.length; i++) {
+	                    if (i <= rating) {
+	                        stars[i].src = 'star-yellow.jpg';
+	                    } else {
+	                        stars[i].src = 'star-white.jpg';
+	                    }
+	                }
+	            });
+	            img.addEventListener('click', function () {
+	                var currentIndex = stars.indexOf(img);
+	                rating = currentIndex; 
+					callAjax(rating);
+	                reload();
+	            });
+	            <%}%>
+	            <%}%>
+	        })(i);
+	    }
+	}
 	function callAjax(rating){
 		$.ajax({
 		    url: 'MakeAssessments',

@@ -61,7 +61,6 @@ public class CheckRestaurantRegistrationParaamters extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		if(false){
 			request.getRequestDispatcher("restaurant-register.jsp").forward(request, response);
 		}else{

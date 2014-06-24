@@ -125,6 +125,16 @@
     <servlet-name>AddMenuServlet</servlet-name>
     <url-pattern>/AddMenuServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearcheServlet</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.SearcheServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearcheServlet</servlet-name>
+    <url-pattern>/SearcheServlet</url-pattern>
+  </servlet-mapping>
+  
    <listener>
 	    <listener-class>
           ge.freeuni.restaurant.controllers.ContextListener

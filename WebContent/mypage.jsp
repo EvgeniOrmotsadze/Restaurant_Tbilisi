@@ -59,7 +59,6 @@ html,body {
 
 .edit {
 	width: 40px;
-	background: #634918;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 12px;
@@ -77,7 +76,7 @@ html,body {
 
 .delete {
 	width: 40px;
-	background: #634918;
+	
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 12px;

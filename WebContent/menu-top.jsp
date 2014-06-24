@@ -142,6 +142,7 @@ height: 25px;
 	cursor: pointer;
 }
 </style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -168,9 +169,9 @@ height: 25px;
 							
 							<%} %>
 							<td>
-							<form id="searchbox" action="">
-    							<input id="search" type="text" placeholder="ძებნა...">
-  								  <input id="submit" type="submit" value="" >
+							<form id="searchbox" action="SearcheServlet" method="POST">
+    							<input id="search" name ="name" type="text" placeholder="ძებნა...">
+  								<input id="submit" type="submit" value="" >
 							</form>
 							</td>
 						</tr>

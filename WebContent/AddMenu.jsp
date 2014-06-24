@@ -162,8 +162,8 @@ html,body {
 				<button id="menu_button">მენიუს დამატება</button>
 				<table id="menu_table" cellpadding="3" cellspacing="1" border="0">
 					<tr>
-						<td><input type="text" spellcheck="false" placeholder="კერძის დასახელება" /></td>
-						<td><input type="text" spellcheck="false" placeholder="ფასი" /></td>
+						<td><input type="text" name="dish[]" spellcheck="false" placeholder="კერძის დასახელება" /></td>
+						<td><input type="text" name="price[]" spellcheck="false" placeholder="ფასი" /></td>
 					</tr>
 				</table>
 				<button id="menu_row_button">ახალი ველი</button>

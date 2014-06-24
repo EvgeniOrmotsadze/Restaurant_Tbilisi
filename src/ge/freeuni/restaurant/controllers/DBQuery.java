@@ -223,7 +223,6 @@ public class DBQuery {
 			r.setName(rs.getString("re.name"));
 			r.setAddress(rs.getString("re.address"));
 			r.setCategory(rs.getString("re.category"));
-			
 			r.setPhone(rs.getString("re.phone"));
 			r.setAvgScore(rs.getInt("score"));
 			r.setAdditionalInfo(rs.getString("additional_info"));
