@@ -37,16 +37,7 @@ public class EditRestaurants extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("value"));
 		
-		DBQuery query = new DBQuery();
-		try {
-			query.getCurrentRestaurant(id);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		
 	}

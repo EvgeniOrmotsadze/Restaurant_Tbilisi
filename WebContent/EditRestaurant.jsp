@@ -1,3 +1,4 @@
+<%@page import="ge.freeuni.restaurant.model.Restaurant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -123,65 +124,73 @@ html,body {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<form action="CheckRestaurantRegistrationParaamters" method="post">
+		<% 
+		@SuppressWarnings("unchecked")
+		Restaurant res =  (Restaurant)request.getAttribute("editRes");
+		%>
 		<table class="table">
 			<tr>
 				<td class="textField"><input id="name" type="text" name="Name"
-					placeholder="დასახელება" onchange="ValidateName()"><font
+					placeholder="დასახელება" onchange="ValidateName()" value="<%=res.getName()%>"><font
 					id="FName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="address" type="text"
-					name="Address" placeholder="მისამართი" onchange="ValidateAddress()"><font
+					name="Address" placeholder="მისამართი" onchange="ValidateAddress()" value="<%=res.getAddress() %>"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="address" type="text"
-					name="GoogleAddress" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()"><font
+					name="GoogleAddress" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()" value="<%=res.getGoogle()%>"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="zipcode" type="text"
-					name="Zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()"><font
+					name="Zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()" value="<%=res.getZip() %>"><font
 					id="LName" color="red" size=2>*</font></td>
 			</tr>
 			<tr>
+			<% 
+			int category = res.getCategoryID();
+			%>
 				<td class="textField">
 					<select name="Category">
 						<option >ტიპი</option>
-						<option value="1">რესტორანი</option>
-						<option value="2">ბარი</option>
-						<option value="3">კაფე</option>
-						<option value="4">სწრაფი კვება</option>
-						<option value="5">პაბი</option>
-						<option value="6">კლუბი</option>
+						<option <% if(category == 1) {%> selected  <% } %> value="1">რესტორანი</option>
+						<option <% if(category == 2) {%> selected <%} %> value="2">ბარი</option>
+						<option <% if(category == 3) {%>selected <% } %> value="3">კაფე</option>
+						<option <% if(category == 4) {%> selected <%} %>value="4">სწრაფი კვება</option>
+						<option <% if(category == 5){ %>selected <%} %>value="5">პაბი</option>
+						<option <% if(category == 6){ %>selected <%} %> value="6">კლუბი</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
+			<% int cusine = res.getCuisineID(); %>
 				<td class="textField" >
 					<select name = "Cuisine">
 						<option>სამზარეულო</option>
-						<option value="1">ქართული</option>
-						<option value="2">იტალიური</option>
-						<option value="3">იაპონური</option>
-						<option value="4">ფრანგული</option>
-						<option value="5">ჩინური</option>
-						<option value="6">რუსული</option>
-						<option value="7">სხვა</option>
+						<option <% if(cusine == 1) {%>selected<%} %> value="1">ქართული</option>
+						<option <% if(cusine == 2) {%> selected <%} %> value="2">იტალიური</option>
+						<option <% if(cusine == 3) {%> selected <%} %> value="3">იაპონური</option>
+						<option <% if(cusine == 4) {%> selected <%} %> value="4">ფრანგული</option>
+						<option <% if(cusine == 5) {%> selected <%} %> value="5">ჩინური</option>
+						<option <% if(cusine == 6) {%> selected <%} %> value="6">რუსული</option>
+						<option <% if(cusine == 7) {%> selected <% } %> value="7">სხვა</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="phone" type="text"
-					name="Phone" placeholder="ტელეფონი"></td>
+					name="Phone" placeholder="ტელეფონი" value="<%=res.getPhone()%>"></td>
 			</tr>
 			<tr>
 				<td class="textField"><textarea style="width: 100%" id="Additional_info" 
-					name="Additional_info" placeholder="დამატებითი ინფორმაცია"></textarea></td>
+					name="Additional_info" placeholder="დამატებითი ინფორმაცია" ><%=res.getAdditionalInfo()%></textarea></td>
 			</tr>
 			<tr>
 				<td><br> <input class="button" id="registerButton"
-					type="submit" value="განაგრძეთ რეგისტრაცია" /></td>
+					type="submit" value="შეინახეთ დარედაქტირებული" /></td>
 			</tr>
 		</table>
 	</form>
