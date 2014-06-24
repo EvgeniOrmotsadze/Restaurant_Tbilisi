@@ -12,14 +12,14 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-	
+
 	$(document).ready(function() {
 		$(".delete").click(function(event) {
 			event.stopPropagation();
 			$(this).parent().children('form').submit();
 		});
 	});
-	
+
 </script>
 </head>
 
@@ -72,13 +72,13 @@ html,body {
 
 .delete {
 	width: 40px;
-	
+
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 12px;
 	color: #EDEBE6;
 	font-family: 'Exo', sans-serif;
-	
+
 }
 
 .delete span.icon {
@@ -132,7 +132,7 @@ html,body {
 }
 
 .object_imageW {
-	
+
 }
 
 .object_image {
@@ -201,6 +201,46 @@ html,body {
 			<% }%>
 			<tr> </tr>
 		</table>
+		<table style="margin-top: 20px; margin-left: 215px;">
+		<tr class="table">
+			<%
+				@SuppressWarnings("unchecked")
+					ArrayList<Restaurant> list = (ArrayList<Restaurant>) request
+							.getAttribute("MyRestaurants");
+					String Page = request.getParameter("pageNumber");
+					Integer previousPage = Integer.parseInt(Page) - 1;
+					Integer nextPage = Integer.parseInt(Page) + 1;
+					if (list.size() != 0) {
+						if (previousPage <= 0 && 11 > list.size()) {
+			%>
+			<td><a>&lt; უკან</a></td>
+			<td><a>წინ &gt;</a></td>
+			<%
+				} else if (previousPage <= 0) {
+			%>
+			<td><a>&lt; უკან</a></td>
+			<td><a href="Mypage?pageNumber=<%=nextPage%>">წინ &gt;</a></td>
+			<%
+				} else if (11 > list.size()) {
+			%>
+			<td><a href="Mypage?pageNumber=<%=previousPage%>"></a>&lt; უკან</td>
+			<td><a>წინ &gt;</a></td>
+			<%
+				} else {
+			%>
+			<td><a id="prew" href="MyPage?pageNumber=<%=previousPage%>">&lt;
+					უკან</a></td>
+			<td><a id="next" href="MyPage?pageNumber=<%=nextPage%>">წინ
+					&gt;</a></td>
+			<%
+				}
+			%>
+			<%
+				}
+			%>
+		</tr>
+	</table>
+		
 	<%
 		}
 	%>
