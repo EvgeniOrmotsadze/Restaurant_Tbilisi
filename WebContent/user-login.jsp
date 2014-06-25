@@ -154,7 +154,36 @@
 
 </style>
 
-   
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : 'YOUR_APP_ID', // App ID
+	      channelUrl : 'YOUR_WEBSITE_CHANNEL_URL',
+	      status     : true, // check login status
+	      cookie     : true, // enable cookies to allow the server to access the session
+	      xfbml      : true  // parse XFBML
+	    });
+	    };
+	 
+	  (function(d){
+	     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement('script'); js.id = id; js.async = true;
+	     js.src = "//connect.facebook.net/en_US/all.js";
+	     ref.parentNode.insertBefore(js, ref);
+	   }(document));
+	 
+	</script>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".btnFb").click(function() {
+				FB.login();
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -166,7 +195,7 @@
 						<input type="password" placeholder="password" name="password"><br>
 						<input type="submit" value="Login" class="btnLogin">
 					</form>
-					<input type="button" value="" class="btnFb">
+					<input type="button" value="" class="btnFb" onclick="FB.init()" />
 			</div>
 	
 </body>
