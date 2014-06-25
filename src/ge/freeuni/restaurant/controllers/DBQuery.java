@@ -274,8 +274,8 @@ public class DBQuery {
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
 				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re join restaurant.category as cat on cat.id = re.category "
-				+" join restaurant.cusine as cus on cus.id = re.cusine"
-				+ " where re.category=" 
+				+" join restaurant.cuisine as cus on cus.id = re.cuisine"
+				+ " where re.category = '" 
 				+ ctg + "';";
 		ResultSet rs=stmt.executeQuery(query);
 		while (rs.next()) {

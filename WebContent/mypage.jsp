@@ -42,7 +42,8 @@ html,body {
 	font-size: 20px;
 	font-weight: 400;
 	padding: 6px;
-	margin-top: 30px;
+	margin: 0 auto;
+	margin-top: 50px;
 }
 
 .btnAdd span.icon {
@@ -156,7 +157,7 @@ html,body {
 		} else {
 	%>
 	<div onclick="location.href='/Restaurants/ForwardRestaurantRegister';"
-		style="float: left; margin-top: 40px;" class="btnAdd">
+		 class="btnAdd">
 		<span class="icon"></span><a>დაამატე ობიექტი</a><span></span>
 	</div>
 	<div id="wrapper">ჩემს მიერ დამატებული ობიექტები:</div>

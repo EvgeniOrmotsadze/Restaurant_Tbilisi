@@ -8,6 +8,7 @@ import ge.freeuni.restaurant.service.AddressToCoordinates;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,6 +64,8 @@ public class EditRestaurants extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("MyPage");
+		dispatcher.forward(request, response);
 		
 		
 	}

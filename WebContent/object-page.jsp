@@ -189,12 +189,12 @@ html,body {
 						<tr>
 							<td class="object_title"><%=res.getName() %></td>
 							<td class="rate" id="stars-div"></td>
-
-							<td> <div onclick="callExtJsMenu()"
-								style="float: left; " class="btnAdd">
+							<td>
+								<div onclick="callExtJsMenu()"
+								style="float: right; " class="btnAdd">
 								<span class="icon"></span><a>მენიუს ნახვა</a><span></span>
 								</div>
-							 </td>
+							</td>
 						</tr>
 						<tr>
 							<td class="object_imageW">
@@ -212,7 +212,7 @@ html,body {
 										<%}%>
 								</div>
 							</td>
-							<td class="object_info">
+							<td class="object_info" colspan="2">
 								<table class="object_infoT" cellpadding="0" cellspacing="0"
 									border="0">
 									<tr>
@@ -240,7 +240,7 @@ html,body {
 							</td>
 						</tr>
 						<tr>
-							<td id="object_map" colspan="2">
+							<td id="object_map" colspan="3">
 
 							</td>
 						</tr>

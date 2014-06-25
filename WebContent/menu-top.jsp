@@ -14,7 +14,7 @@ border-radius: 50px 3px 3px 50px;
 height: 25px;
 	padding: 0px 15px;
 	font-family: "Lato", sans-serif;
-	font-size: 15px;
+	font-size: 13px;
 	background-color: #FFF;
 	color: #222;
 	border-right: 1px solid #CCC;
@@ -28,7 +28,7 @@ border-radius: 3px 50px 50px 0px;
  height: 25px;
 	padding: 0px 15px;
 	font-family: "Lato", sans-serif;
-	font-size: 15px;
+	font-size: 13px;
 	background-color: #FFF;
 	color: #222;
 	border-right: 1px solid #CCC;
@@ -55,7 +55,7 @@ height: 25px;
 	height: 25px;
 	padding: 0px 15px;
 	font-family: "Lato", sans-serif;
-	font-size: 15px;
+	font-size: 13px;
 	background-color: #FFF;
 	color: #222;
 	border-right: 1px solid #CCC;
@@ -137,7 +137,7 @@ height: 25px;
 	background-image: url("res1.png");
 	background-size: 60px;
 	position: fixed;
-	top: 15px;
+	top: 70px;
 	left: 15px;
 	cursor: pointer;
 }
@@ -166,7 +166,6 @@ height: 25px;
 							
 							<td onclick="location.href='/Restaurants/LoginOutServlet';" class="navigation_item">გამოსვლა</td>
 							<td class="text_navigation"><%=name %> </td>
-							
 							<%} %>
 							<td>
 							<form id="searchbox" action="SearcheServlet" method="POST">

@@ -62,9 +62,7 @@ html,body {
 }
 
 .table {
-	position: relative;
-	left: 450px;
-	top: 100px;
+	margin-top: 50px;
 }
 
 .table>tr#cordinate {
@@ -123,7 +121,7 @@ html,body {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<form action="CheckRestaurantRegistrationParaamters" method="post">
-		<table class="table">
+		<table class="table" align="center">
 			<tr>
 				<td class="textField"><input id="name" type="text" name="Name"
 					placeholder="დასახელება" onchange="ValidateName()"><font

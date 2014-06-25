@@ -44,9 +44,7 @@ html {
   }
   
   .result {
-	width: 100%;
-	margin-top: 1px;
-	margin-bottom: 2px;
+	width: 1000px;
 }
 
 
@@ -91,6 +89,7 @@ html {
 }
 
 .widgets {
+	text-align: center;
 	width: 1000px;
 	margin: 0 auto;
 	margin-top: 30px;
@@ -104,51 +103,24 @@ html {
 			<%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
 			<div id="options">
 				<h4>აირჩიეთ კატეგორია</h4>
-				<input id="fabric" placeholder="კატეგორია..." /> <br> <br>
-				&nbsp; &nbsp;
+			
+				<form id="saerch" action="SearchByCategory" method="POST">
+					<select name = "category">
+						<option>კატეგორია</option>
+						<option value="1">რესტორანი</option>
+						<option value="2">ბარი</option>
+						<option value="3">კაფე</option>
+						<option value="4">სწრაფი კვება</option>
+						<option value="5">პაბი</option>
+						<option value="6">კლუბი</option>
+					</select>
+					<br/><br/>
 				<button class="k-button" id="get">ძებნა</button>
+			</form>
 			</div>
 		</div>
 	</div>
 	
-	<script>
-		$(document).ready(
-						function() {
-							$("#fabric").kendoComboBox({
-								dataTextField : "text",
-								dataValueField : "value",
-								dataSource : [ {
-									text : "რესტორანი",
-									value : "1"
-								}, {
-									text : "ბარი",
-									value : "2"
-								}, {
-									text : "კაფე",
-									value : "3"
-								}, {
-									text : "სწრაფი კვება",
-									value : "4"
-								}, {
-									text : "პაბი",
-									value : "5"
-								}, {
-									text : "კლუბი",
-									value : "6"
-								}],
-								filter : "contains",
-								suggest : true,
-								index : 3
-							});
-							// create ComboBox from select HTML element
-							var fabric = $("#fabric").data("kendoComboBox");
-							$("#get").click(
-											function() {
-												alert('Thank you! Your Choice is:\n\nFabric ID: '+ fabric.value());
-											});
-						});
-	</script>
-
 	<% 
 	@SuppressWarnings("unchecked")
 	ArrayList<Restaurant> res = (ArrayList<Restaurant>)request.getAttribute("lastAdd");
@@ -156,7 +128,7 @@ html {
 	%>
 		<div id="wrapper">ბოლოს დამატებული ობიექტები:</div>
 		<marquee direction="up" scrolldelay="90" scrollamount="4"
-			behavior="alternate" loop="0" style="height: 400px; width:1100px; left: 200px; z-index:0;border: 8px solid #291D06; position: relative;"
+			behavior="alternate" loop="0" "
 			id="Marquee1" onmouseover="this.stop()" onmouseout="this.start()">
 			<table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
 				<% for (int i = 1; i <= res.size(); i++) { %>

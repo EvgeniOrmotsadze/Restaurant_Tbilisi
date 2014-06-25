@@ -82,9 +82,7 @@ html,body {
 }
 
 .table {
-	position: relative;
-	left: 450px;
-	top: 100px;
+	
 }
 
 .table>tr#cordinate {
@@ -114,6 +112,10 @@ html,body {
 #menu_row_button {
 	display: none;
 }
+
+.main_table {
+	margin-top: 30px;
+}
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -142,106 +144,118 @@ html,body {
 
 <body>
 	<%@include file="menu-top.jsp"%>
-	<form action="EditRestaurants" method="post">
-		<% 
-		@SuppressWarnings("unchecked")
-		Restaurant res =  (Restaurant)request.getAttribute("editRes");
-		%>
-		<table class="table">
-			<tr>
-			<td>
-				<input type="hidden" name="resID" value="<%=res.getID()%>" />
-			</td>
-			</tr>
-			<tr>
-				<td class="textField"><input id="name" type="text" name="Name"
-					placeholder="დასახელება" onchange="ValidateName()" value="<%=res.getName()%>"><font
-					id="FName" color="red" size=2>*</font>
-					
-				</td>
-			</tr>
-			<tr>
-				<td class="textField"><input id="address" type="text"
-					name="Address" placeholder="მისამართი" onchange="ValidateAddress()" value="<%=res.getAddress() %>"><font
-					id="LName" color="red" size=2>*</font></td>
-			</tr>
-			<tr>
-				<td class="textField"><input id="address" type="text"
-					name="GoogleAddress" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()" value="<%=res.getGoogle()%>"><font
-					id="LName" color="red" size=2>*</font></td>
-			</tr>
-			<tr>
-				<td class="textField"><input id="zipcode" type="text"
-					name="Zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()" value="<%=res.getZip() %>"><font
-					id="LName" color="red" size=2>*</font></td>
-			</tr>
-			<tr>
-			<% 
-			int category = res.getCategoryID();
-			%>
-				<td class="textField">
-					<select name="Category">
-						<option >ტიპი</option>
-						<option <% if(category == 1) {%> selected  <% } %> value="1">რესტორანი</option>
-						<option <% if(category == 2) {%> selected <%} %> value="2">ბარი</option>
-						<option <% if(category == 3) {%>selected <% } %> value="3">კაფე</option>
-						<option <% if(category == 4) {%> selected <%} %>value="4">სწრაფი კვება</option>
-						<option <% if(category == 5){ %>selected <%} %>value="5">პაბი</option>
-						<option <% if(category == 6){ %>selected <%} %> value="6">კლუბი</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-			<% int cusine = res.getCuisineID(); %>
-				<td class="textField" >
-					<select name = "Cuisine">
-						<option>სამზარეულო</option>
-						<option <% if(cusine == 1) {%>selected<%} %> value="1">ქართული</option>
-						<option <% if(cusine == 2) {%> selected <%} %> value="2">იტალიური</option>
-						<option <% if(cusine == 3) {%> selected <%} %> value="3">იაპონური</option>
-						<option <% if(cusine == 4) {%> selected <%} %> value="4">ფრანგული</option>
-						<option <% if(cusine == 5) {%> selected <%} %> value="5">ჩინური</option>
-						<option <% if(cusine == 6) {%> selected <%} %> value="6">რუსული</option>
-						<option <% if(cusine == 7) {%> selected <% } %> value="7">სხვა</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class="textField"><input id="phone" type="text"
-					name="Phone" placeholder="ტელეფონი" value="<%=res.getPhone()%>"></td>
-			</tr>
-			<tr>
-				<td class="textField"><textarea style="width: 100%" id="Additional_info" 
-					name="Additional_info" placeholder="დამატებითი ინფორმაცია" ><%=res.getAdditionalInfo()%></textarea></td>
-			</tr>
-			<tr>
-				<td><br> <input class="button" id="registerButton"
-					type="submit" value="შეინახეთ დარედაქტირებული" /></td>
-			</tr>
-		</table>
-	</form>
-	<table style="position: absolute; top: 200px; right: 300px;">
-	<%
-	@SuppressWarnings("unchecked")
-	ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
-	
-	%>
-	<% for(int k = 0; k < pic.size(); k++){ %>
+	<table class="main_table" align="center">
 		<tr>
-			
 			<td>
-				<img style="max-width: 70px; max-height: 70px;" src="data:image/gif;base64,<%=pic.get(k).getBlob() %>" />
-			</td>
-			<td>
-				<form action="DeletePhotos" method="POST">
-					<input type="hidden" name="value" value="<%=pic.get(k).getID()%>" />
-					<input type="image" src="delete.png" />
+				<form action="EditRestaurants" method="post">
+					<% 
+					@SuppressWarnings("unchecked")
+					Restaurant res =  (Restaurant)request.getAttribute("editRes");
+					%>
+					<table class="table">
+						<tr>
+						<td>
+							<input type="hidden" name="resID" value="<%=res.getID()%>" />
+						</td>
+						</tr>
+						<tr>
+							<td class="textField"><input id="name" type="text" name="Name"
+								placeholder="დასახელება" onchange="ValidateName()" value="<%=res.getName()%>"><font
+								id="FName" color="red" size=2>*</font>
+								
+							</td>
+						</tr>
+						<tr>
+							<td class="textField"><input id="address" type="text"
+								name="Address" placeholder="მისამართი" onchange="ValidateAddress()" value="<%=res.getAddress() %>"><font
+								id="LName" color="red" size=2>*</font></td>
+						</tr>
+						<tr>
+							<td class="textField"><input id="address" type="text"
+								name="GoogleAddress" placeholder="მისამართი ინგლისურად " onchange="ValidateAddress()" value="<%=res.getGoogle()%>"><font
+								id="LName" color="red" size=2>*</font></td>
+						</tr>
+						<tr>
+							<td class="textField"><input id="zipcode" type="text"
+								name="Zipcode" placeholder="საფოსტო ინდექსი" onchange="ValidateAddress()" value="<%=res.getZip() %>"><font
+								id="LName" color="red" size=2>*</font></td>
+						</tr>
+						<tr>
+						<% 
+						int category = res.getCategoryID();
+						%>
+							<td class="textField">
+								<select name="Category">
+									<option >ტიპი</option>
+									<option <% if(category == 1) {%> selected  <% } %> value="1">რესტორანი</option>
+									<option <% if(category == 2) {%> selected <%} %> value="2">ბარი</option>
+									<option <% if(category == 3) {%>selected <% } %> value="3">კაფე</option>
+									<option <% if(category == 4) {%> selected <%} %>value="4">სწრაფი კვება</option>
+									<option <% if(category == 5){ %>selected <%} %>value="5">პაბი</option>
+									<option <% if(category == 6){ %>selected <%} %> value="6">კლუბი</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+						<% int cusine = res.getCuisineID(); %>
+							<td class="textField" >
+								<select name = "Cuisine">
+									<option>სამზარეულო</option>
+									<option <% if(cusine == 1) {%>selected<%} %> value="1">ქართული</option>
+									<option <% if(cusine == 2) {%> selected <%} %> value="2">იტალიური</option>
+									<option <% if(cusine == 3) {%> selected <%} %> value="3">იაპონური</option>
+									<option <% if(cusine == 4) {%> selected <%} %> value="4">ფრანგული</option>
+									<option <% if(cusine == 5) {%> selected <%} %> value="5">ჩინური</option>
+									<option <% if(cusine == 6) {%> selected <%} %> value="6">რუსული</option>
+									<option <% if(cusine == 7) {%> selected <% } %> value="7">სხვა</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="textField"><input id="phone" type="text"
+								name="Phone" placeholder="ტელეფონი" value="<%=res.getPhone()%>"></td>
+						</tr>
+						<tr>
+							<td class="textField"><textarea style="width: 100%" id="Additional_info" 
+								name="Additional_info" placeholder="დამატებითი ინფორმაცია" ><%=res.getAdditionalInfo()%></textarea></td>
+						</tr>
+						<tr>
+							<td>
+								<input style="padding: 10px; background-color: #FFF;" type="file" />
+							</td>
+						</tr>
+						<tr>
+							<td><br> <input class="button" id="registerButton"
+								type="submit" value="შეინახეთ დარედაქტირებული" /></td>
+						</tr>
+					</table>
 				</form>
 			</td>
-			
+			<td valign="top" style="padding: 30px;">
+				<table>
+					<%
+					@SuppressWarnings("unchecked")
+					ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
+					%>
+					<% for(int k = 0; k < pic.size(); k++){ %>
+						<tr>
+							
+							<td>
+								<img style="max-width: 70px; max-height: 70px;" src="data:image/gif;base64,<%=pic.get(k).getBlob() %>" />
+							</td>
+							<td>
+								<form action="DeletePhotos" method="POST">
+									<input type="hidden" name="value" value="<%=pic.get(k).getID()%>" />
+									<input type="image" src="delete.png" />
+								</form>
+							</td>
+							
+						</tr>
+						<%} %>
+					
+				</table>
+			</td>
 		</tr>
-		<%} %>
-	
 	</table>
 </body>
 </html>

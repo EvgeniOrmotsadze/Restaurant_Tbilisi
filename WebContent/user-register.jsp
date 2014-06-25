@@ -76,6 +76,10 @@ html,body {
 .button:active {
 	opacity: 0.4;
 }
+
+.registrationT {
+	margin-top: 40px;
+}
 </style>
 
 <script type="text/javascript">
@@ -138,7 +142,7 @@ html,body {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<form action="CheckRegistrationParameters" method="post">
-		<table style="position: absolute; left: 750px; top: 100px;">
+		<table class="registrationT" align="center">
 			<tr>
 				<td class="textField"><input id="firstName" type="text"
 					name="firstName" placeholder="სახელი" onchange="namevalidates()"><font

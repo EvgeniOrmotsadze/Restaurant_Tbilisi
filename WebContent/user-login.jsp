@@ -52,13 +52,11 @@
 }
 
 .login{
-	position: absolute;
-	top: calc(50% - 40px);
-	left: calc(50% - 40px);
-	height: 150px;
 	width: 350px;
+	height: 150px;
 	padding: 10px;
-	z-index: 2;
+	margin: 0 auto;
+	margin-top: 200px;
 }
 .login input[type=text]{
 	width: 250px;
@@ -162,9 +160,6 @@
 <body>
 	
   <%@include file="menu-top.jsp"%>
-  <div class="body"></div>
-		<br>
-		
 			<div class="login">
 					<form action="LoginServlet" method="post">
 						<input type="text" placeholder="e-mail" name="email"><br>
