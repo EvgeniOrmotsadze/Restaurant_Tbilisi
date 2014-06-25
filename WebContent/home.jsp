@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="ge.freeuni.restaurant.model.Restaurant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -147,12 +149,17 @@ html {
 						});
 	</script>
 
+	<% 
+	@SuppressWarnings("unchecked")
+	ArrayList<Restaurant> res = (ArrayList<Restaurant>)request.getAttribute("lastAdd");
+	if(res.size() != 0){
+	%>
 		<div id="wrapper">ბოლოს დამატებული ობიექტები:</div>
 		<marquee direction="up" scrolldelay="90" scrollamount="4"
 			behavior="alternate" loop="0" style="height: 400px; width:1100px; left: 200px; z-index:0;border: 8px solid #291D06; position: relative;"
 			id="Marquee1" onmouseover="this.stop()" onmouseout="this.start()">
 			<table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
-				<% for (int i = 1; i <= 9; i++) { %>
+				<% for (int i = 1; i <= res.size(); i++) { %>
 					<%if (i % 4 == 1) {
 							if (i != 1) {%>
 								</tr>
@@ -161,22 +168,23 @@ html {
 					<%}%>
 					<td class="object">
 						<div class="object_title">
-							Rome
+							<%= res.get(i-1).getName() %>
 						</div>
 						<div class="object_imageW">
-							<img class="object_image" src="http://www.info-tbilisi.com/rome/gallery/rome14.jpg" />
+							<img class="object_image" src="data:image/gif;base64,<%=res.get(i-1).getPhoto1Address()%>" />
 						</div>
 						<div class="rate">
-							<img class="star" src="star-yellow.jpg" />
-							<img class="star" src="star-yellow.jpg" />
-							<img class="star" src="star-yellow.jpg" />
-							<img class="star" src="star-yellow.jpg" />
-							<img class="star" src="star-yellow.jpg" />
+						<%for(int m = 0; m < 5 - res.get(i-1).getAvgScore(); m ++){ %>
+							<img class="star" src="star-white.jpg" />
+						<%} %>
+						<% for(int m = 0; m < res.get(i-1).getAvgScore(); m ++){ %>
+							<img class="star"src="star-yellow.jpg" />
+						<% } %>
 						</div>
 					</td>
 				<% } %>
 			</table>
 		</marquee>
-	
+		<%} %>
 </body>
 </html>

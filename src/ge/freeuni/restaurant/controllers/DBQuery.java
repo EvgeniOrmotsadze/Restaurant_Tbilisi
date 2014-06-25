@@ -1,15 +1,12 @@
 package ge.freeuni.restaurant.controllers;
 
 import ge.freeuni.restaurant.dbconn.DBprovider;
-
 import ge.freeuni.restaurant.model.Menu;
 import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
-
 import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,7 +79,7 @@ public class DBQuery {
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
-		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,category,phone,lactitude,longtitude,zip_Code,additional_info,cuisine)"
+		String sql = "insert into restaurant.restaurants (res_id,user_id,name,address,address_eng,category,phone,lactitude,longtitude,zip_Code,additional_info,cuisine)"
 				+ "values (null,'"
 				+ user_id
 				+ "','"
@@ -90,6 +87,8 @@ public class DBQuery {
 				+ "','"
 				+ res.getAddress()
 				+ "','"
+				+ res.getGoogle()
+				+"','"
 				+ res.getCategoryID()
 				+ "','"
 				+ res.getPhone()
@@ -114,13 +113,13 @@ public class DBQuery {
 		return lastid;
 	}
 
-	public ArrayList<Restaurant> getMyRestaurants(int user_id,int pageNumber)
+	public ArrayList<Restaurant> getMyRestaurants(int user_id)
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
 		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,re.category,re.phone,re.counter,re.cuisine,re.additional_info,  "
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.category,re.phone,re.counter,re.cuisine,re.zip_Code,re.additional_info,  "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, " 
 				+"(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re "
@@ -136,8 +135,9 @@ public class DBQuery {
 			res1.setCategory(rs.getString("re.category"));
 			res1.setPhone(rs.getString("re.phone"));
 			res1.setAvgScore(rs.getInt("score"));
-			res1.setAdditionalInfo(rs.getString("additional_info"));
-			res1.setCuisine(rs.getString("cuisine"));
+			res1.setAdditionalInfo(rs.getString("re.additional_info"));
+			res1.setZip(rs.getString("re.zip_Code"));
+			res1.setCuisine(rs.getString("re.cuisine"));
 			res1.setPhoto1Address(rs.getBlob("picture"));
 			res.add(res1);
 		}
@@ -150,7 +150,7 @@ public class DBQuery {
 		Statement stmt = conn.createStatement();
 		Restaurant res = new Restaurant();
 
-		String sql = "select re.res_id,re.user_id,re.name,re.address,cat.name,re.phone,re.lactitude,re.longtitude,re.counter,cus.name,re.additional_info,  "
+		String sql = "select re.res_id,re.user_id,re.name,re.category,re.cuisine,re.address,cat.name,re.phone,re.lactitude,re.longtitude,re.counter,cus.name,re.zip_Code,re.address_eng,re.additional_info,  "
 				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
 				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
 				+ "from restaurant.restaurants as re join restaurant.category as cat on cat.id = re.category "
@@ -165,15 +165,20 @@ public class DBQuery {
 			res.setCategory(rs.getString("cat.name"));
 			res.setPhone(rs.getString("re.phone"));
 			res.setAvgScore(rs.getInt("score"));
+			res.setZip(rs.getString("re.zip_Code"));
 			res.setLac(rs.getString("re.lactitude"));
 			res.setLng(rs.getString("re.longtitude"));
+			res.setGoogle(rs.getString("re.address_eng"));
 			res.setAdditionalInfo(rs.getString("additional_info"));
 			res.setCuisine(rs.getString("cus.name"));
 			res.setPhoto1Address(rs.getBlob("picture"));
+			res.setCuisineID(rs.getInt("re.cuisine"));
+			res.setCategoryID(rs.getInt("re.category"));
 		}
 		return res;
 	}
 
+	
 	public boolean ifAlreadyAssessment(int res_id, int user_id)
 			throws SQLException, ClassNotFoundException {
 		Connection conn = DBprovider.CreateConnection();
@@ -190,6 +195,33 @@ public class DBQuery {
 		return false;
 	}
 
+	
+	public ArrayList<Restaurant> getLastAdds() throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Restaurant> arr = new ArrayList<Restaurant>();
+		
+
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
+				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
+				+ "from restaurant.restaurants as re  order by re.res_id limit 8 ";
+		ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			Restaurant res = new Restaurant();
+			res.setID(rs.getInt("re.res_id"));
+			res.setName(rs.getString("re.name"));
+			res.setAddress(rs.getString("re.address"));
+			res.setAvgScore(rs.getInt("score"));
+			res.setPhoto1Address(rs.getBlob("picture"));
+			arr.add(res);
+		}
+		return arr;
+	}
+
+		
+		
+	
 	public void makeAssessment(int user_id, int res_id, int score)
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();

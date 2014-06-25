@@ -36,7 +36,7 @@ public class MyPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String pageNumber = getPageNumber(request);
+		
 
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
@@ -47,17 +47,14 @@ public class MyPage extends HttpServlet {
 			DBQuery db = new DBQuery();
 			ArrayList<Restaurant> res = new ArrayList<Restaurant>();
 			try {
-				res = db.getMyRestaurants(user.getID(),
-						Integer.parseInt(pageNumber));
+				res = db.getMyRestaurants(user.getID());
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 			request.setAttribute("MyRestaurants", res);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("mypage.jsp?pageNumber=" + pageNumber);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.jsp");
 			dispatcher.forward(request, response);
 		}
 
