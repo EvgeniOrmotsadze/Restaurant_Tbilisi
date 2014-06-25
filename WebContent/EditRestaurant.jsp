@@ -147,7 +147,7 @@ html,body {
 	<table class="main_table" align="center">
 		<tr>
 			<td>
-				<form action="EditRestaurants" method="post">
+				<form action="EditRestaurants" method="post" enctype="multipart/form-data">
 					<% 
 					@SuppressWarnings("unchecked")
 					Restaurant res =  (Restaurant)request.getAttribute("editRes");
@@ -221,7 +221,7 @@ html,body {
 						</tr>
 						<tr>
 							<td>
-								<input style="padding: 10px; background-color: #FFF;" type="file" />
+								<input style="padding: 10px; background-color: #FFF;" type="file" id="images" value="აირჩიეთ სურათი " name="images[]" multiple />
 							</td>
 						</tr>
 						<tr>

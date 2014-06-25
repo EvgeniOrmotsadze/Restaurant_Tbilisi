@@ -27,6 +27,15 @@ public class UpdateDeleteQuery {
 					+"additional_info='"+r.getAdditionalInfo()+"', "+"cuisine='"+r.getCuisineID()+"'" 
 					+" where res_id = '"+r.getID()+"';";
 			stmt.executeUpdate(sql);
+			DBprovider.CloseConnection();
+	 }
+	 
+	 public void deletePhotoByRestaurant(int id) throws SQLException, ClassNotFoundException{
+		 Connection conn = DBprovider.CreateConnection();
+			Statement stmt = conn.createStatement();
+			String sql= "delete from restaurant.picture where id = '" + id + "';";
+			stmt.executeUpdate(sql);
+			DBprovider.CloseConnection();
 	 }
 
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -59,6 +60,8 @@ public class AddPhotos extends HttpServlet {
 					e.printStackTrace();
 				}
 	        }
+		RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage");
+		dispatcher.forward(request, response);
 	}
 
 }
