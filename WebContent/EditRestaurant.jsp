@@ -245,6 +245,7 @@ html,body {
 							</td>
 							<td>
 								<form action="DeletePhotos" method="POST">
+									<input type="hidden" name="resID" value="<%=res.getID()%>" />
 									<input type="hidden" name="value" value="<%=pic.get(k).getID()%>" />
 									<input type="image" src="delete.png" />
 								</form>

@@ -46,7 +46,8 @@ public class DeletePhotos extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("id", id);
+		
+		request.setAttribute("id", request.getParameter("resID"));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ForwardToEdit");
 		dispatcher.forward(request, response);
 		
