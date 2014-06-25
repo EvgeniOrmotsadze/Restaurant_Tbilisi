@@ -18,7 +18,7 @@ public class CurrencyProvider {
 	private static double usd, eur, rub = 1;
 	private static String usdName = "აშშ დოლარი";
 	private static String eurName = "ევრო";
-	private static String rubName = "რუსული რუბლი";
+	private static String rubName = " რუსული რუბლი";
 
 	public static double getEurToGel() {
 		return eur;
