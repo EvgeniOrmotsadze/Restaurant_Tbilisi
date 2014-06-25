@@ -216,7 +216,7 @@ html,body {
 		<tr>
 		</tr>
 	</table>
-	
+	<%/* %>
 	<table style="margin-top: 20px; margin-left: 215px;">
 		<tr class="table">
 			<%
@@ -257,7 +257,7 @@ html,body {
 		</tr>
 	</table>
 	
-	
+	<%*/ %>
 	<%
 		}
 	%>
