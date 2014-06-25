@@ -32,12 +32,12 @@ html {
 <style type="text/css">
 #wrapper {
   text-align: center;
-  top:200px;
   width: 760px; 
   margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
   font-size: 24px; 
   color: #CDCDCD;
-   position: relative;
    height: 30px
   }
   
@@ -87,19 +87,28 @@ html {
 	float: right;
 	margin-right: 2px;
 }
+
+.widgets {
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
 </style>
 <body>
 	<%@include file="menu-top.jsp"%>
-
-	<div class="lastnews" style="padding-left: 10px;">
-		<%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
-		<div id="options">
-			<h4>აირჩიეთ კატეგორია</h4>
-			<input id="fabric" placeholder="კატეგორია..." /> <br> <br>
-			&nbsp; &nbsp;
-			<button class="k-button" id="get">ძებნა</button>
+	<div class="widgets">
+		<iframe style="background-color: #FFF;" id="forecast_embed" type="text/html" frameborder="0" height="200" width="200" src="http://forecast.io/embed/#lat=41.7167&lon=44.7833&name=Tbilisi&units=uk"> </iframe>
+		<div class="lastnews">
+			<%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
+			<div id="options">
+				<h4>აირჩიეთ კატეგორია</h4>
+				<input id="fabric" placeholder="კატეგორია..." /> <br> <br>
+				&nbsp; &nbsp;
+				<button class="k-button" id="get">ძებნა</button>
+			</div>
 		</div>
 	</div>
+	
 	<script>
 		$(document).ready(
 						function() {
@@ -140,7 +149,7 @@ html {
 
 		<div id="wrapper">ბოლოს დამატებული ობიექტები:</div>
 		<marquee direction="up" scrolldelay="90" scrollamount="4"
-			behavior="alternate" loop="0" style="height: 400px; width:1100px; top: 250px; left: 200px; z-index:0;border: 8px solid #291D06; position: relative;"
+			behavior="alternate" loop="0" style="height: 400px; width:1100px; left: 200px; z-index:0;border: 8px solid #291D06; position: relative;"
 			id="Marquee1" onmouseover="this.stop()" onmouseout="this.start()">
 			<table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
 				<% for (int i = 1; i <= 9; i++) { %>
