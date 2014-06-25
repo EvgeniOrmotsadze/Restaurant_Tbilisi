@@ -1,15 +1,12 @@
 package ge.freeuni.restaurant.controllers;
 
 import ge.freeuni.restaurant.dbconn.DBprovider;
-
 import ge.freeuni.restaurant.model.Menu;
 import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 import ge.freeuni.restaurant.model.User;
 
-
 import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -116,7 +113,7 @@ public class DBQuery {
 		return lastid;
 	}
 
-	public ArrayList<Restaurant> getMyRestaurants(int user_id,int pageNumber)
+	public ArrayList<Restaurant> getMyRestaurants(int user_id)
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();
 		Statement stmt = conn.createStatement();
@@ -181,6 +178,7 @@ public class DBQuery {
 		return res;
 	}
 
+	
 	public boolean ifAlreadyAssessment(int res_id, int user_id)
 			throws SQLException, ClassNotFoundException {
 		Connection conn = DBprovider.CreateConnection();
@@ -197,6 +195,33 @@ public class DBQuery {
 		return false;
 	}
 
+	
+	public ArrayList<Restaurant> getLastAdds() throws ClassNotFoundException, SQLException{
+		Connection conn = DBprovider.CreateConnection();
+		Statement stmt = conn.createStatement();
+		ArrayList<Restaurant> arr = new ArrayList<Restaurant>();
+		
+
+		String sql = "select re.res_id,re.user_id,re.name,re.address,re.counter, "
+				+ "(select AVG(score) from restaurant.score where res_id = re.res_id) as score, "
+				+ "(select name from restaurant.picture where res_id = re.res_id limit 1) as picture "
+				+ "from restaurant.restaurants as re  order by re.res_id limit 8 ";
+		ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			Restaurant res = new Restaurant();
+			res.setID(rs.getInt("re.res_id"));
+			res.setName(rs.getString("re.name"));
+			res.setAddress(rs.getString("re.address"));
+			res.setAvgScore(rs.getInt("score"));
+			res.setPhoto1Address(rs.getBlob("picture"));
+			arr.add(res);
+		}
+		return arr;
+	}
+
+		
+		
+	
 	public void makeAssessment(int user_id, int res_id, int score)
 			throws ClassNotFoundException, SQLException {
 		Connection conn = DBprovider.CreateConnection();

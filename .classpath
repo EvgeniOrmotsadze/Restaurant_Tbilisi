@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jackson-core-asl-1.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jackson-mapper-asl-1.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jdom-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/jta-1.0.1B.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/mail-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/mysql-connector-java-5.1.22.jar"/>
+	<classpathentry kind="lib" path="C:/Users/evgeni/workspace/Restaurants/WebContent/WEB-INF/lib/rome-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

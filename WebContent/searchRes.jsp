@@ -69,7 +69,7 @@ html,body {
 </head>
 
 <body>
-	<%@include file="menu-top.jsp"%>
+	<%@include file="menu-top.jsp" %>
 		<% 
 		@SuppressWarnings("unchecked")
 		ArrayList<Restaurant> arr = (ArrayList<Restaurant>)request.getAttribute("SearchResult");

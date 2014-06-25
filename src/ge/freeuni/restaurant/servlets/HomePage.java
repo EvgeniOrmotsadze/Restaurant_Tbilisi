@@ -1,6 +1,11 @@
 package ge.freeuni.restaurant.servlets;
 
+import ge.freeuni.restaurant.controllers.DBQuery;
+import ge.freeuni.restaurant.model.Restaurant;
+
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +33,18 @@ public class HomePage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<Restaurant> res = new ArrayList<Restaurant>();
+		DBQuery query = new DBQuery();
+		try {
+			res = query.getLastAdds();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("lastAdd", res);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
 		dispatcher.forward(request, response);
 	}
