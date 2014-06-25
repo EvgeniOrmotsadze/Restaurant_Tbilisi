@@ -166,7 +166,7 @@ html {
 							<%}%>
 							<tr>
 					<%}%>
-					<td class="object">
+					<td class="object" onclick="location.href='/Restaurants/ObjectShow?id=<%=res.get(i-1).getID()%>'" >
 						<div class="object_title">
 							<%= res.get(i-1).getName() %>
 						</div>

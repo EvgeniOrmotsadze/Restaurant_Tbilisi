@@ -1,10 +1,12 @@
 package ge.freeuni.restaurant.servlets;
 
 import ge.freeuni.restaurant.controllers.DBQuery;
+import ge.freeuni.restaurant.model.Picture;
 import ge.freeuni.restaurant.model.Restaurant;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,6 +51,17 @@ public class ForwardToEdit extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		ArrayList<Picture> pic = new ArrayList<Picture>();
+		try {
+			pic = query.takePictureByRestaurant(res.getID());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("pictures", pic);
 		request.setAttribute("editRes", res);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("EditRestaurant.jsp");
 		dispatcher.forward(request, response);

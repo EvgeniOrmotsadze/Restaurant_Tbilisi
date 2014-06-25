@@ -1,3 +1,5 @@
+<%@page import="ge.freeuni.restaurant.model.Picture"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="ge.freeuni.restaurant.model.Restaurant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -52,6 +54,23 @@ html,body {
 	font-size: 16px;
 	font-weight: 400;
 	padding: 6px;
+}
+
+.delete {
+	display: block;
+	width: 32px;
+	height: 32px;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: url('delete.png') no-repeat !important;
+}
+
+.delete span.icon {
+	
+	float: left;
+	width: 32px;
+	height: 32px;
 }
 
 .button:hover {
@@ -123,16 +142,23 @@ html,body {
 
 <body>
 	<%@include file="menu-top.jsp"%>
-	<form action="CheckRestaurantRegistrationParaamters" method="post">
+	<form action="EditRestaurants" method="post">
 		<% 
 		@SuppressWarnings("unchecked")
 		Restaurant res =  (Restaurant)request.getAttribute("editRes");
 		%>
 		<table class="table">
 			<tr>
+			<td>
+				<input type="hidden" name="resID" value="<%=res.getID()%>" />
+			</td>
+			</tr>
+			<tr>
 				<td class="textField"><input id="name" type="text" name="Name"
 					placeholder="დასახელება" onchange="ValidateName()" value="<%=res.getName()%>"><font
-					id="FName" color="red" size=2>*</font></td>
+					id="FName" color="red" size=2>*</font>
+					
+				</td>
 			</tr>
 			<tr>
 				<td class="textField"><input id="address" type="text"
@@ -194,5 +220,28 @@ html,body {
 			</tr>
 		</table>
 	</form>
+	<table style="position: absolute; top: 200px; right: 300px;">
+	<%
+	@SuppressWarnings("unchecked")
+	ArrayList<Picture> pic = (ArrayList<Picture>)request.getAttribute("pictures");
+	
+	%>
+	<% for(int k = 0; k < pic.size(); k++){ %>
+		<tr>
+			
+			<td>
+				<img style="max-width: 70px; max-height: 70px;" src="data:image/gif;base64,<%=pic.get(k).getBlob() %>" />
+			</td>
+			<td>
+				<form action="DeletePhotos" method="POST">
+					<input type="hidden" name="value" value="<%=pic.get(k).getID()%>" />
+					<input type="image" src="delete.png" />
+				</form>
+			</td>
+			
+		</tr>
+		<%} %>
+	
+	</table>
 </body>
 </html>
