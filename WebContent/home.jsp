@@ -33,20 +33,19 @@ html {
 
 <style type="text/css">
 #wrapper {
-  text-align: center;
-  width: 760px; 
-  margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  font-size: 24px; 
-  color: #CDCDCD;
-   height: 30px
-  }
-  
-  .result {
-	width: 1000px;
+	text-align: center;
+	width: 760px;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 24px;
+	color: #CDCDCD;
+	height: 30px
 }
 
+.result {
+	width: 1000px;
+}
 
 .object {
 	vertical-align: top;
@@ -70,7 +69,9 @@ html {
 	text-decoration: underline;
 }
 
-.object_imageW {}
+.object_imageW {
+	
+}
 
 .object_image {
 	display: block;
@@ -98,14 +99,17 @@ html {
 <body>
 	<%@include file="menu-top.jsp"%>
 	<div class="widgets">
-		<iframe style="background-color: #FFF;" id="forecast_embed" type="text/html" frameborder="0" height="200" width="200" src="http://forecast.io/embed/#lat=41.7167&lon=44.7833&name=Tbilisi&units=uk"> </iframe>
+		<iframe style="background-color: #FFF;" id="forecast_embed"
+			type="text/html" frameborder="0" height="200" width="200"
+			src="http://forecast.io/embed/#lat=41.7167&lon=44.7833&name=Tbilisi&units=uk">
+		</iframe>
 		<div class="lastnews">
 			<%--<div class="fb-like" data-href="https://www.facebook.com/eormotsadze" data-width="50" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> --%>
 			<div id="options">
 				<h4>აირჩიეთ კატეგორია</h4>
-			
+
 				<form id="saerch" action="SearchByCategory" method="POST">
-					<select name = "category">
+					<select name="category">
 						<option>კატეგორია</option>
 						<option value="1">რესტორანი</option>
 						<option value="2">ბარი</option>
@@ -113,50 +117,90 @@ html {
 						<option value="4">სწრაფი კვება</option>
 						<option value="5">პაბი</option>
 						<option value="6">კლუბი</option>
-					</select>
-					<br/><br/>
-				<button class="k-button" id="get">ძებნა</button>
-			</form>
+					</select> <br /> <br />
+					<button class="k-button" id="get">ძებნა</button>
+				</form>
 			</div>
 		</div>
 	</div>
-	
-	<% 
-	@SuppressWarnings("unchecked")
-	ArrayList<Restaurant> res = (ArrayList<Restaurant>)request.getAttribute("lastAdd");
-	if(res.size() != 0){
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=833039233391495&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<div class="fb-like"
+		data-href="http://localhost:8080/Restaurants/HomePage"
+		data-width="300" data-layout="box_count" data-action="like"
+		data-show-faces="true" data-share="true"></div>
+	<%
+		@SuppressWarnings("unchecked")
+			ArrayList<Restaurant> res = (ArrayList<Restaurant>)request.getAttribute("lastAdd");
+			if(res.size() != 0){
 	%>
-		<div id="wrapper">ბოლოს დამატებული ობიექტები:</div>
-		<marquee direction="up" scrolldelay="90" scrollamount="4"
-			behavior="alternate" loop="0" "
-			id="Marquee1" onmouseover="this.stop()" onmouseout="this.start()">
-			<table class="result" cellpadding="0" cellspacing="5" border="0" align="center">
-				<% for (int i = 1; i <= res.size(); i++) { %>
-					<%if (i % 4 == 1) {
-							if (i != 1) {%>
-								</tr>
-							<%}%>
-							<tr>
-					<%}%>
-					<td class="object" onclick="location.href='/Restaurants/ObjectShow?id=<%=res.get(i-1).getID()%>'" >
-						<div class="object_title">
-							<%= res.get(i-1).getName() %>
-						</div>
-						<div class="object_imageW">
-							<img class="object_image" src="data:image/gif;base64,<%=res.get(i-1).getPhoto1Address()%>" />
-						</div>
-						<div class="rate">
-						<%for(int m = 0; m < 5 - res.get(i-1).getAvgScore(); m ++){ %>
-							<img class="star" src="star-white.jpg" />
-						<%} %>
-						<% for(int m = 0; m < res.get(i-1).getAvgScore(); m ++){ %>
-							<img class="star"src="star-yellow.jpg" />
-						<% } %>
-						</div>
-					</td>
-				<% } %>
-			</table>
-		</marquee>
-		<%} %>
+	<div id="wrapper">ბოლოს დამატებული ობიექტები:</div>
+	<marquee direction="up" scrolldelay="90" scrollamount="4"
+		behavior="alternate" loop="0" "
+			id="Marquee1"
+		onmouseover="this.stop()" onmouseout="this.start()">
+		<table class="result" cellpadding="0" cellspacing="5" border="0"
+			align="center">
+			<%
+				for (int i = 1; i <= res.size(); i++) {
+			%>
+			<%
+				if (i % 4 == 1) {
+									if (i != 1) {
+			%>
+			</tr>
+			<%
+				}
+			%>
+			<tr>
+				<%
+					}
+				%>
+				<td class="object"
+					onclick="location.href='/Restaurants/ObjectShow?id=<%=res.get(i-1).getID()%>'">
+					<div class="object_title">
+						<%=res.get(i-1).getName()%>
+					</div>
+					<div class="object_imageW">
+						<img class="object_image"
+							src="data:image/gif;base64,<%=res.get(i-1).getPhoto1Address()%>" />
+					</div>
+					<div class="rate">
+						<%
+							for(int m = 0; m < 5 - res.get(i-1).getAvgScore(); m ++){
+						%>
+						<img class="star" src="star-white.jpg" />
+						<%
+							}
+						%>
+						<%
+							for(int m = 0; m < res.get(i-1).getAvgScore(); m ++){
+						%>
+						<img class="star" src="star-yellow.jpg" />
+						<%
+							}
+						%>
+					</div>
+				</td>
+				<%
+					}
+				%>
+			
+		</table>
+	</marquee>
+	<%
+		}
+	%>
 </body>
 </html>

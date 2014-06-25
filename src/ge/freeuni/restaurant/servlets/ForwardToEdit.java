@@ -41,13 +41,13 @@ public class ForwardToEdit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("movedi");
-		int id = Integer.parseInt(request.getParameter("value"));
-		System.out.println(id);
+		int id;
 		if(request.getParameter("value") == null){
-			id = Integer.parseInt((String) request.getAttribute("id"));
-			System.out.println(id);
+			id = Integer.parseInt((String) request.getAttribute("value"));
+		} else {
+			id = Integer.parseInt(request.getParameter("value"));
 		}
+		System.out.println(id);
 		Restaurant res = new Restaurant();
 		DBQuery query = new DBQuery();
 		try {

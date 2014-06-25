@@ -30,14 +30,15 @@ public class DeletePhotos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("value"));
+		int id = Integer.parseInt(request.getParameter("picture_value"));
+		int resID = Integer.parseInt(request.getParameter("value"));
 		UpdateDeleteQuery db = new UpdateDeleteQuery();
 		try {
 			db.deletePhotoByRestaurant(id);
@@ -46,8 +47,8 @@ public class DeletePhotos extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("id", request.getParameter("resID"));
+		request.setAttribute("value", resID);
+		System.out.println(request.getAttribute("value"));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ForwardToEdit");
 		dispatcher.forward(request, response);
 		

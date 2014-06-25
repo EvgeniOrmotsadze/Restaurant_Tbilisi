@@ -247,8 +247,19 @@ html,body {
 					</table>
 				</div>
 	</table>
-
-
+	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=833039233391495&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<center>
+	<div class="fb-comments" data-href="http://localhost:8080/Restaurants/ObjectShow?id=<%=res.getID()%>" data-width="800" data-numposts="5" data-colorscheme="light"></div>
+	</center>
 <script type="text/javascript">
 function mapInit() {
 	console.log('mapInit fired');

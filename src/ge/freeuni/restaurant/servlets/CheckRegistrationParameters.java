@@ -72,7 +72,7 @@ public class CheckRegistrationParameters extends HttpServlet {
 		
 		if(ifExist){
 			validation = true;
-			String msg =  "áƒ�áƒ áƒœáƒ˜áƒ¨áƒœáƒ£áƒšáƒ˜ Email áƒ’áƒ�áƒ›áƒ�áƒ§áƒ”áƒœáƒ”áƒ‘áƒ£áƒšáƒ˜áƒ�, áƒ’áƒ—áƒ®áƒ�áƒ•áƒ— áƒ›áƒ˜áƒ£áƒ—áƒ˜áƒ—áƒ�áƒ“ áƒ¡áƒ®áƒ•áƒ� Email ";
+			String msg =  "არსებული იმეილი უკვე არსებობს გთოვთ მიუთითოდ სხვა  Email ";
 			request.setAttribute("isExist", msg);
 		}
 		if(validation){

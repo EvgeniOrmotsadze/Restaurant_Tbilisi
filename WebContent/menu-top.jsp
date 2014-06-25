@@ -146,15 +146,17 @@ height: 25px;
 </head>
 <body>
 
+
+
 <div class="logo"></div>
 	<table class="navigation" cellpadding="0" cellspacing="0" border="0" align="center">
 						<tr>
 							<td onclick="location.href='/Restaurants/HomePage';" class="first_navigation">მთავარი</td>
 							<td onclick="location.href='/Restaurants/MyPage';" class="navigation_item">ჩემი გვერდი</td>
-							<td onclick="location.href='/Restaurants/MyPage';"class="navigation_item">რეკლამა</td>
-							<td onclick="location.href='/Restaurants/MyPage';"class="navigation_item">კონტაქტი</td>
+							<td onclick="location.href='/Restaurants/adverts.jsp';"class="navigation_item">რეკლამა</td>
+							<td onclick="location.href='/Restaurants/adverts.jsp';"class="navigation_item">კონტაქტი</td>
 							<%
-								if (request.getSession().getAttribute("user") == null) {
+								if (request.getSession().getAttribute("user") == null ) {
 							%>
 							<td onclick="location.href='/Restaurants/RegisterPage';"class="navigation_item">რეგისტრაცია</td>
 							<td onclick="location.href='/Restaurants/LoginServletForward';" class="last_navigation">შესვლა</td>

@@ -180,6 +180,15 @@
     <url-pattern>/SearchByCategory</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>fbUser</servlet-name>
+    <servlet-class>ge.freeuni.restaurant.servlets.fbUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fbUser</servlet-name>
+    <url-pattern>/fbUser</url-pattern>
+  </servlet-mapping>
+  
   
   
    <listener>
